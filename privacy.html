@@ -1,0 +1,80 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Privacy Policy — LicenseDigest</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"><style>
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#16233A; --text:#24303F; --muted:#5D6878;
+  --line:#D9DEE6; --accent:#0E6B6B; --accent-ink:#0A5252; --accent-soft:#E3F1F0;
+  --flag:#C9721A; --flag-soft:#FBEEDD; --mono-bg:#EEF1F4;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F151E; --surface:#161E2A; --ink:#EDF1F6; --text:#D5DCE6; --muted:#98A3B3;
+    --line:#2A3544; --accent:#5CC4BE; --accent-ink:#8ADAD5; --accent-soft:#12302F;
+    --flag:#E9A25A; --flag-soft:#3A2812; --mono-bg:#1D2733; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F151E; --surface:#161E2A; --ink:#EDF1F6; --text:#D5DCE6; --muted:#98A3B3;
+  --line:#2A3544; --accent:#5CC4BE; --accent-ink:#8ADAD5; --accent-soft:#12302F;
+  --flag:#E9A25A; --flag-soft:#3A2812; --mono-bg:#1D2733; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:40px 22px 64px}
+header.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:40px}
+.brand{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:19px;color:var(--ink);text-decoration:none}
+.brand small{display:block;font-family:"IBM Plex Sans",sans-serif;font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;margin:0 0 12px}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(30px,4.6vw,42px);line-height:1.12;color:var(--ink);margin:0 0 18px;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:26px;color:var(--ink);margin:0 0 12px;text-wrap:balance}
+p{margin:0 0 16px;max-width:62ch}
+.lede{font-size:19px;color:var(--text)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px}
+.btn{display:inline-block;padding:12px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:16px;border:1px solid transparent}
+.btn:focus-visible{outline:3px solid var(--flag);outline-offset:2px}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-ink)}
+.btn.secondary{background:transparent;color:var(--accent-ink);border-color:var(--accent)}
+.fine{font-size:13px;color:var(--muted)}
+section{margin:52px 0}
+.affidavit{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--flag);padding:18px 20px;margin:22px 0}
+.affidavit .label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--flag);margin:0 0 6px}
+.affidavit p{margin:0;font-size:15.5px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;font-size:13px;font-variant-numeric:tabular-nums;min-width:640px}
+th{text-align:left;font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--mono-bg);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--text)}
+tr:last-child td{border-bottom:0}
+.caption{font-size:13px;color:var(--muted);margin:8px 2px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px}
+.tile .k{font-family:"Source Serif 4",Georgia,serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.tile .v{font-size:13.5px;color:var(--muted)}
+ol.how{padding-left:20px;margin:0;max-width:62ch}
+ol.how li{margin-bottom:10px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px}
+.plan.lead{border-color:var(--accent)}
+.plan .name{font-weight:600;color:var(--ink);font-size:15px;letter-spacing:.02em}
+.plan .price{font-family:"Source Serif 4",Georgia,serif;font-size:34px;font-weight:600;color:var(--ink);margin:8px 0 2px;font-variant-numeric:tabular-nums}
+.plan .price span{font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--muted);font-weight:400}
+.plan ul{padding-left:18px;margin:10px 0 16px;font-size:14.5px}
+.plan li{margin-bottom:5px}
+.seats{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--flag);background:var(--flag-soft);padding:3px 8px;border-radius:4px;margin-top:6px}
+.faq dt{font-weight:600;color:var(--ink);margin-top:16px}
+.faq dd{margin:4px 0 0;max-width:62ch}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:18px;font-size:13px;color:var(--muted)}
+footer p{max-width:none}
+a{color:var(--accent-ink)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:background .15s ease}}
+</style></head>
+<body><div class="wrap"><header class="top"><a class="brand" href="index.html">LicenseDigest<small>Florida · weekly · DBPR public records</small></a><span class="fine">by Kummer Ventures LLC</span></header>
+<h1>Privacy Policy</h1><p class="fine">Effective September 2, 2026 · Kummer Ventures LLC</p>
+<section><h2>What we collect</h2><p><b>From subscribers and prospects:</b> your name, business email, company, territory selection, and billing details processed by Stripe (we never see full card numbers). <b>From email interaction:</b> replies, delivery and bounce status. <b>From public records:</b> the DBPR licensee and applicant extracts described on our home page; these describe licensed contractors and applicants, not our subscribers.</p></section>
+<section><h2>How we use it</h2><p>To deliver the weekly report you subscribed to, to bill you, to answer support requests, to honor opt-outs, and — for prospects we contact — to send a small number of clearly identified commercial emails with a working unsubscribe. We do not sell subscriber or prospect information.</p></section>
+<section><h2>Public-record data and individuals in the reports</h2><p>Reports contain business names, licensee names, license types, license numbers, cities and counties as published by DBPR under Chapter 119, Florida Statutes. We do not add data from people-search or social-media sources and we do not distribute telephone numbers. If you are a licensee and want your record excluded from our reports, email support@licensedigest.com and we will honor the request within ten business days.</p></section>
+<section><h2>Email and opt-out</h2><p>Every commercial email identifies Kummer Ventures LLC, includes a postal address and a working unsubscribe; opt-outs are processed within one business day and kept on a suppression list so you are not contacted again.</p></section>
+<section><h2>Service providers</h2><p>Stripe (payments), Google Workspace (email and documents), GitHub (automation and storage). Each processes data under its own terms and security programs.</p></section>
+<section><h2>Retention, security and your rights</h2><p>Subscriber records are kept while you subscribe and for up to 3 years afterward for tax and dispute purposes. Weekly report files are retained as an audit trail. You may request access to, correction of, or deletion of your personal information by emailing support@licensedigest.com. We use encrypted transport and access-controlled systems but no method is perfectly secure.</p></section>
+<section><h2>Contact</h2><p>Kummer Ventures LLC is an independent company; LicenseDigest is not affiliated with or endorsed by DBPR, the State of Florida, or any government agency. Kummer Ventures LLC · support@licensedigest.com · postal address provided in every email we send.</p></section>
+<footer><p>Questions: <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="index.html">Home</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a></p></footer></div></body></html>

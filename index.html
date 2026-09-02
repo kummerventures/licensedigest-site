@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LicenseDigest — Florida</title>
+<meta name="description" content="Weekly list of every construction license Florida DBPR issued in the last 7 days — individuals and newly qualified businesses — cleaned, grouped by region, with application phone numbers where they match.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#16233A; --text:#24303F; --muted:#5D6878;
+  --line:#D9DEE6; --accent:#0E6B6B; --accent-ink:#0A5252; --accent-soft:#E3F1F0;
+  --flag:#C9721A; --flag-soft:#FBEEDD; --mono-bg:#EEF1F4;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0F151E; --surface:#161E2A; --ink:#EDF1F6; --text:#D5DCE6; --muted:#98A3B3;
+    --line:#2A3544; --accent:#5CC4BE; --accent-ink:#8ADAD5; --accent-soft:#12302F;
+    --flag:#E9A25A; --flag-soft:#3A2812; --mono-bg:#1D2733; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0F151E; --surface:#161E2A; --ink:#EDF1F6; --text:#D5DCE6; --muted:#98A3B3;
+  --line:#2A3544; --accent:#5CC4BE; --accent-ink:#8ADAD5; --accent-soft:#12302F;
+  --flag:#E9A25A; --flag-soft:#3A2812; --mono-bg:#1D2733; color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
+.wrap{max-width:760px;margin:0 auto;padding:40px 22px 64px}
+header.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:40px}
+.brand{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:19px;color:var(--ink);text-decoration:none}
+.brand small{display:block;font-family:"IBM Plex Sans",sans-serif;font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;margin:0 0 12px}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(30px,4.6vw,42px);line-height:1.12;color:var(--ink);margin:0 0 18px;text-wrap:balance;letter-spacing:-.01em}
+h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:26px;color:var(--ink);margin:0 0 12px;text-wrap:balance}
+p{margin:0 0 16px;max-width:62ch}
+.lede{font-size:19px;color:var(--text)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px}
+.btn{display:inline-block;padding:12px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:16px;border:1px solid transparent}
+.btn:focus-visible{outline:3px solid var(--flag);outline-offset:2px}
+.btn.primary{background:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-ink)}
+.btn.secondary{background:transparent;color:var(--accent-ink);border-color:var(--accent)}
+.fine{font-size:13px;color:var(--muted)}
+.notaffil{border-left:3px solid var(--line);padding-left:12px;margin-top:14px;max-width:62ch}
+footer p{margin:0 0 10px}
+section{margin:52px 0}
+.affidavit{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--flag);padding:18px 20px;margin:22px 0}
+.affidavit .label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--flag);margin:0 0 6px}
+.affidavit p{margin:0;font-size:15.5px}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-family:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;font-size:13px;font-variant-numeric:tabular-nums;min-width:640px}
+th{text-align:left;font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--mono-bg);padding:10px 12px;border-bottom:1px solid var(--line)}
+td{padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--text)}
+tr:last-child td{border-bottom:0}
+.caption{font-size:13px;color:var(--muted);margin:8px 2px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px}
+.tile .k{font-family:"Source Serif 4",Georgia,serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
+.tile .v{font-size:13.5px;color:var(--muted)}
+ol.how{padding-left:20px;margin:0;max-width:62ch}
+ol.how li{margin-bottom:10px}
+.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px}
+.plan.lead{border-color:var(--accent)}
+.plan .name{font-weight:600;color:var(--ink);font-size:15px;letter-spacing:.02em}
+.plan .price{font-family:"Source Serif 4",Georgia,serif;font-size:34px;font-weight:600;color:var(--ink);margin:8px 0 2px;font-variant-numeric:tabular-nums}
+.plan .price span{font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--muted);font-weight:400}
+.plan ul{padding-left:18px;margin:10px 0 16px;font-size:14.5px}
+.plan li{margin-bottom:5px}
+.seats{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--flag);background:var(--flag-soft);padding:3px 8px;border-radius:4px;margin-top:6px}
+.faq dt{font-weight:600;color:var(--ink);margin-top:16px}
+.faq dd{margin:4px 0 0;max-width:62ch}
+footer{border-top:1px solid var(--line);margin-top:56px;padding-top:18px;font-size:13px;color:var(--muted)}
+footer p{max-width:none}
+a{color:var(--accent-ink)}
+@media (prefers-reduced-motion:no-preference){.btn{transition:background .15s ease}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a class="brand" href="/">LicenseDigest<small>Florida · weekly · DBPR public records</small></a>
+  <span class="fine">by Kummer Ventures LLC</span>
+</header>
+
+<p class="eyebrow">For agencies, PEO/workers'-comp reps and bonding agents who prospect Florida contractors</p>
+<h1>Every construction license Florida issued last week — with the business behind it.</h1>
+<p class="lede">Each Tuesday morning you get one email and one spreadsheet: every construction license Florida DBPR issued in the previous seven days — about 185 individual certifications and 145 newly qualified businesses a week — with the business name, license type, city and county, issue date and a one-line note on why the row matters, grouped by territory. New license applications on file are added as the weekly comparison comes online.</p>
+
+<div class="affidavit">
+  <p class="label">What the timing means — F.S. §489.115</p>
+  <p>Florida requires an insurance affidavit — general liability, property damage, and workers' compensation or exemption — as a prerequisite for license issuance. A license issued last week means minimum coverage was just placed (often online, at state minimums of $300k/$50k or $100k/$25k). A newly qualified business is a new entity that carries its own policy. Either way you know the account, the trade, the county and, usually, the renewal month.</p>
+</div>
+
+<div class="cta-row">
+  <a class="btn primary" href="mailto:support@licensedigest.com?subject=Send%20me%20this%20week%27s%20Florida%20license%20report&body=Company%3A%0ATerritory%20of%20interest%3A%0A">Send me this week's report (free)</a>
+  <a class="btn secondary" href="#plans">See plans</a>
+</div>
+<p class="fine">No card, no call. You get the full statewide list for one week and decide.</p>
+  <p class="fine notaffil"><strong>LicenseDigest is an independent commercial publication of Kummer Ventures LLC.</strong> It is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation, the State of Florida, or any government agency. We republish and organize public records made available under Chapter 119, Florida Statutes.</p>
+
+<section>
+  <h2>What last week looked like (Aug 26 – Sep 2, 2026)</h2>
+  <p>252 records: 135 individual certifications, 117 qualified businesses. The rows below are real.</p>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Business / licensee</th><th>License</th><th>City</th><th>County</th><th>Issued</th><th>Why it matters</th></tr></thead>
+    <tbody><tr><td>CLEAR SOURCE POOLS LLC</td><td>Certified Pool/Spa Contractor</td><td>Tampa</td><td>Hillsborough</td><td>08/26/2026</td><td>New license qualifying a named business</td></tr><tr><td>WILLIAMS & ROWE COMPANY, INC</td><td>Certified General Contractor</td><td>Jacksonville</td><td>Duval</td><td>08/26/2026</td><td>New license qualifying a named business</td></tr><tr><td>SOUTHERN WOODLANDS ROOFING LLC</td><td>Certified Roofing Contractor</td><td>Tallahassee</td><td>Leon</td><td>08/26/2026</td><td>New license qualifying a named business</td></tr><tr><td>PRO BUILDING LLC</td><td>Certified Building Contractor</td><td>Ferndale</td><td>Other</td><td>08/31/2026</td><td>New license qualifying a named business</td></tr><tr><td>KPS CONTRACTORS GROUP CORP.</td><td>Qualified Business</td><td>Doral</td><td>Miami-Dade</td><td>08/26/2026</td><td>New company license — carries its own GL/WC</td></tr><tr><td>BREIG ELECTRIC AND CONSULTANTS, INC.</td><td>Qualified Business</td><td>Davie</td><td>Broward</td><td>08/28/2026</td><td>New company license — carries its own GL/WC</td></tr></tbody>
+  </table>
+  </div>
+  <p class="caption">Categories covered: certified and registered general, building, residential, roofing, plumbing, HVAC, electrical-adjacent specialty, pool/spa, and all CILB specialty classes.</p>
+
+  <div class="grid">
+    <div class="tile"><div class="k">~370</div><div class="v">new license records a week (2025: 17,674 — double 2019)</div></div>
+    <div class="tile"><div class="k">Weekly</div><div class="v">DBPR refresh cadence; we diff every file and send only what's new</div></div>
+    <div class="tile"><div class="k">6</div><div class="v">regions: South, Southwest, Tampa Bay, Central, Northeast, Panhandle</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>How it works</h2>
+  <ol class="how">
+    <li>DBPR publishes its construction licensee and applicant files under Chapter 119. We pull them every Tuesday morning.</li>
+    <li>Licenses dated in the last seven days are pulled, every record is classified (company license, individual qualifying a business, individual without a business), and the applicant register is compared with last week's snapshot so only genuinely new applications appear.</li>
+    <li>Before anything is sent, the run must pass automated checks — file size, dates, duplicate and match anomalies, region totals — or it does not go out.</li><li>You receive one email grouped by territory and county, plus the CSV for your CRM.</li>
+    <li>Reply to any digest to change regions or stop. No contracts.</li>
+  </ol>
+</section>
+
+<section id="plans">
+  <h2>Plans</h2>
+  <p>Seats are capped so the list stays useful: no more than five agencies per region.</p>
+  <div class="plans">
+    <div class="plan lead">
+      <div class="name">Statewide</div>
+      <div class="price">$97<span> / month</span></div>
+      <ul>
+        <li>All six regions, every category</li>
+        <li>Weekly email + CSV</li>
+        <li>New-applicant feed included as it comes online</li>
+        <li>Cancel anytime</li>
+      </ul>
+      <a class="btn primary" href="mailto:support@licensedigest.com?subject=Statewide%20seat%20-%20LicenseDigest">Reserve a statewide seat</a>
+      <div class="seats">Launch pricing</div>
+    </div>
+    <div class="plan">
+      <div class="name">One region</div>
+      <div class="price">$59<span> / month</span></div>
+      <ul>
+        <li>Pick one of six regions</li>
+        <li>Weekly email + CSV</li>
+        <li>Add regions for $29 each</li>
+        <li>Cancel anytime</li>
+      </ul>
+      <a class="btn secondary" href="mailto:support@licensedigest.com?subject=Regional%20seat%20-%20LicenseDigest&body=Territory%3A%20">Reserve a regional seat</a>
+      <div class="seats">5 seats per region</div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Questions agencies ask</h2>
+  <dl>
+    <dt>Where does the data come from?</dt>
+    <dd>Directly from the Florida Department of Business and Professional Regulation's public-records extracts, refreshed weekly. Nothing is scraped from people-search sites or social networks.</dd>
+    <dt>Are phone numbers included?</dt>
+    <dd>Not in the current edition. DBPR's applicant register contains phone numbers, but we do not distribute them until the applicability of Florida's Telephone Solicitation Act (F.S. 501.059) to this product is resolved. Every record carries the business name, license number and location you need to look a company up.</dd>
+    <dt>Aren't they already insured if the license was issued?</dt>
+    <dd>Usually yes — at state minimums, often bought online in a hurry. That is the rewrite and upgrade conversation (contract limits, completed operations, WC when they hire), and the issue date tells you the renewal month. Qualified-business rows are new entities that need their own policies. Some licensees are qualifying an existing company; the business name column makes that obvious.</dd>
+    <dt>Can't I download this from DBPR myself?</dt>
+    <dd>Yes. The raw files are public — a 45 MB licensee file and a 104,000-row cumulative applicant register with no dates. What you are paying for is the weekly comparison, the classification, the territory grouping, the automated quality checks and a report that is in your inbox by 9 a.m. Tuesday. If you would rather do that yourself, you should.</dd>
+  </dl>
+</section>
+
+<footer>
+  <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, a Florida limited liability company. Support and billing questions: <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a>.</p>
+  <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), the State of Florida, or any government agency. Source records are public records published by DBPR under Chapter 119, Florida Statutes; DBPR does not review, approve, or endorse this product.</p>
+  <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Telephone numbers are not included in this product.</p>
+  <p>Cancel anytime by replying to any report or emailing support; cancellations take effect at the end of the current billing period and are not pro-rated.</p>
+</footer>
+</div>
+</body>
+</html>
