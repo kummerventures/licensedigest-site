@@ -71,6 +71,9 @@ ol.how li{margin-bottom:10px}
 .plan ul{padding-left:18px;margin:10px 0 16px;font-size:14.5px}
 .plan li{margin-bottom:5px}
 .seats{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--flag);background:var(--flag-soft);padding:3px 8px;border-radius:4px;margin-top:6px}
+.regionpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0 4px}
+.regionpick .btn{padding:10px 12px;font-size:14.5px;text-align:center}
+.plan .note{font-size:13.5px;color:var(--muted);margin:8px 0 4px;line-height:1.5}
 .faq dt{font-weight:600;color:var(--ink);margin-top:16px}
 .faq dd{margin:4px 0 0;max-width:62ch}
 footer{border-top:1px solid var(--line);margin-top:56px;padding-top:18px;font-size:13px;color:var(--muted)}
@@ -144,7 +147,7 @@ a{color:var(--accent-ink)}
         <li>New-applicant feed included as it comes online</li>
         <li>Cancel anytime</li>
       </ul>
-      <a class="btn primary" href="mailto:support@licensedigest.com?subject=Statewide%20seat%20-%20LicenseDigest">Reserve a statewide seat</a>
+      <a class="btn primary" href="https://buy.stripe.com/dRm4gz9bm0Tj53G42W7Zu03">Subscribe — statewide</a>
       <div class="seats">Launch pricing</div>
     </div>
     <div class="plan">
@@ -153,10 +156,17 @@ a{color:var(--accent-ink)}
       <ul>
         <li>Pick one of six regions</li>
         <li>Weekly email + CSV</li>
-        <li>Add regions for $29 each</li>
         <li>Cancel anytime</li>
       </ul>
-      <a class="btn secondary" href="mailto:support@licensedigest.com?subject=Regional%20seat%20-%20LicenseDigest&body=Territory%3A%20">Reserve a regional seat</a>
+      <div class="regionpick">
+        <a class="btn secondary" href="https://buy.stripe.com/fZu7sLevG59z8fSark7Zu04">South Florida</a>
+        <a class="btn secondary" href="https://buy.stripe.com/9B64gzevG6dD7bO6b47Zu05">Southwest Florida</a>
+        <a class="btn secondary" href="https://buy.stripe.com/28E7sLafq8lL0Nqczs7Zu06">Tampa Bay</a>
+        <a class="btn secondary" href="https://buy.stripe.com/bJe3cvfzK31r7bO6b47Zu07">Central Florida</a>
+        <a class="btn secondary" href="https://buy.stripe.com/6oU9ATcny45veEgark7Zu08">Northeast Florida</a>
+        <a class="btn secondary" href="https://buy.stripe.com/7sY3cv9bmbxX2Vyczs7Zu09">Panhandle</a>
+      </div>
+      <p class="note">Need more than one region? Two regions cost $118 — statewide is $97 and covers all six.</p>
       <div class="seats">5 seats per region</div>
     </div>
   </div>
