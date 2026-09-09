@@ -51,9 +51,11 @@ section{margin:52px 0}
 .affidavit .label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--flag);margin:0 0 6px}
 .affidavit p{margin:0;font-size:15.5px}
 .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;font-family:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;font-size:13px;font-variant-numeric:tabular-nums;min-width:640px}
+table{border-collapse:collapse;width:100%;font-family:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;font-size:12.5px;font-variant-numeric:tabular-nums;min-width:560px}
 th{text-align:left;font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--mono-bg);padding:10px 12px;border-bottom:1px solid var(--line)}
-td{padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap;color:var(--text)}
+td{padding:9px 10px;border-bottom:1px solid var(--line);white-space:normal;vertical-align:top;color:var(--text)}
+td:nth-child(5){white-space:nowrap}
+td:last-child{min-width:150px;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;color:var(--muted)}
 tr:last-child td{border-bottom:0}
 .caption{font-size:13px;color:var(--muted);margin:8px 2px 0}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
@@ -111,7 +113,7 @@ a{color:var(--accent-ink)}
   <div class="tablewrap">
   <table>
     <thead><tr><th>Business / licensee</th><th>License</th><th>City</th><th>County</th><th>Issued</th><th>Why it matters</th></tr></thead>
-    <tbody><tr><td>BK CONSTRUCTION AND SERVICES OF FLORIDA LLC</td><td>Certified Building Contractor</td><td>Auburndale</td><td>Polk</td><td>09/01/2026</td><td>Individual license issued; DBPR names the business this person qualifies</td></tr><tr><td>SHINE AND COMPANY, INC.</td><td>Certified General Contractor</td><td>High Springs</td><td>Alachua</td><td>09/03/2026</td><td>Individual license issued; DBPR names the business this person qualifies</td></tr><tr><td>PENA GLASS WINDOWS &amp; DOORS INC.</td><td>Certified Specialty Contractor</td><td>Hollywood</td><td>Broward</td><td>09/01/2026</td><td>Individual license issued; DBPR names the business this person qualifies</td></tr><tr><td>G. AIR SERVICES LLC</td><td>Certified Air Conditioning Contractor</td><td>Haines City</td><td>Polk</td><td>09/04/2026</td><td>Individual license issued; DBPR names the business this person qualifies</td></tr><tr><td>JAX CITY HOMES, LLC</td><td>Qualified Business</td><td>Jacksonville</td><td>Duval</td><td>09/03/2026</td><td>Qualified Business license issued — the license DBPR issues to a business that contracts under a qualifying licensee</td></tr><tr><td>THREE RIVERS CONTRACTING, LLC</td><td>Qualified Business</td><td>Baker</td><td>Okaloosa</td><td>09/04/2026</td><td>Qualified Business license issued — the license DBPR issues to a business that contracts under a qualifying licensee</td></tr></tbody>
+    <tbody><tr><td>BK CONSTRUCTION AND SERVICES OF FLORIDA LLC</td><td>Certified Building Contractor</td><td>Auburndale</td><td>Polk</td><td>09/01/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>SHINE AND COMPANY, INC.</td><td>Certified General Contractor</td><td>High Springs</td><td>Alachua</td><td>09/03/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>PENA GLASS WINDOWS &amp; DOORS INC.</td><td>Certified Specialty Contractor</td><td>Hollywood</td><td>Broward</td><td>09/01/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>G. AIR SERVICES LLC</td><td>Certified Air Conditioning Contractor</td><td>Haines City</td><td>Polk</td><td>09/04/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>JAX CITY HOMES, LLC</td><td>Qualified Business</td><td>Jacksonville</td><td>Duval</td><td>09/03/2026</td><td>Qualified Business license — the business itself is licensed to contract under a qualifying licensee</td></tr><tr><td>THREE RIVERS CONTRACTING, LLC</td><td>Qualified Business</td><td>Baker</td><td>Okaloosa</td><td>09/04/2026</td><td>Qualified Business license — the business itself is licensed to contract under a qualifying licensee</td></tr></tbody>
   </table>
   </div>
   <p class="caption">Categories covered: certified and registered general, building, residential, roofing, plumbing, HVAC, electrical-adjacent specialty, pool/spa, and all CILB specialty classes.</p>
@@ -167,7 +169,7 @@ a{color:var(--accent-ink)}
         <a class="btn secondary" href="https://buy.stripe.com/5kQ28rgDO45v53G6b47Zu0e">Northeast Florida</a>
         <a class="btn secondary" href="https://buy.stripe.com/5kQ00jevG0TjdAc5707Zu0f">Panhandle</a>
       </div>
-      <p class="note">Pick your main region below — you can add any of the others for $29 each on the next screen, on one subscription. Three or more? Statewide is $97 and covers all six.</p>
+      <p class="note">Pick your main region above — you can add any of the others for $29 each on the next screen, on one subscription. Three or more? Statewide is $97 and covers all six.</p>
 
     </div>
   </div>
@@ -182,6 +184,8 @@ a{color:var(--accent-ink)}
     <dd>Not in the current edition. DBPR's applicant register contains phone numbers, but we do not distribute them until the applicability of Florida's Telephone Solicitation Act (F.S. 501.059) to this product is resolved. Every record carries the business name, license type, city and county. Individual certifications also carry the license number; DBPR does not publish one for the qualified-business rows in its bulk extract, so those companies are looked up by name.</dd>
     <dt>Aren't they already insured if the license was issued?</dt>
     <dd>Florida requires proof of coverage before issuance, so most are. What the file gives you is timing and a name; the rewrite, limits and workers' comp conversation is yours to have. A qualified-business record is the license DBPR issues to a business that contracts under a qualifying licensee — the file does not say whether the entity itself is new. Some licensees are qualifying an existing company; the business name column makes that obvious.</dd>
+    <dt>How do I update my card, change territory, or cancel?</dt>
+    <dd>Card updates and cancellation are self-service in the Stripe customer portal — the link is at the bottom of every report. Cancellations take effect at the end of the period you have paid for and are not pro-rated. To add or change a territory, reply to any report or email <a href="mailto:support@licensedigest.com">support@licensedigest.com</a>; a person confirms the new monthly total before anything changes.</dd>
     <dt>Can't I download this from DBPR myself?</dt>
     <dd>Yes. The raw files are public — a 45 MB licensee file and a 104,000-row cumulative applicant register with no dates. What you are paying for is the weekly comparison, the classification, the territory grouping, the automated quality checks and a report that is normally in your inbox by 9:00 a.m. Eastern on Tuesday. If you would rather do that yourself, you should.</dd>
   </dl>
