@@ -3,200 +3,243 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LicenseDigest — Florida</title>
-<meta name="description" content="Weekly Excel workbook and CSV of the construction license records Florida DBPR added to its public extract in the previous week — individual licenses and qualified-business records — grouped by territory, with the business behind each license.">
+<title>LicenseDigest | Florida contractor applications, every Tuesday</title>
+<meta name="description" content="Every Tuesday: the Florida contractors who just applied for a license, plus the ones newly licensed, sorted by county and territory for insurance agencies. Excel and CSV. Free sample, no card.">
+<meta property="og:title" content="LicenseDigest | Florida contractor applications, every Tuesday">
+<meta property="og:description" content="The Florida contractors who just applied for a license, sorted by county and territory for insurance agencies.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E6B6B'/%3E%3Cpath d='M10 8h4v12h8v4H10z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@600;700;800&family=Public+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --bg:#F6F7F9; --surface:#FFFFFF; --ink:#16233A; --text:#24303F; --muted:#5D6878;
-  --line:#D9DEE6; --accent:#0E6B6B; --accent-ink:#0A5252; --accent-soft:#E3F1F0;
-  --flag:#C9721A; --flag-soft:#FBEEDD; --mono-bg:#EEF1F4;
+  --page:#FFFFFF; --band:#F4F1EA; --ink:#14213D; --text:#2A3342; --muted:#5E6675; --line:#E3E0D8;
+  --teal:#0E6B6B; --teal-dark:#0A5252; --on-teal:#FFFFFF; --teal-soft:#E4F0EE; --appfill:#EEF5EC; --grid:#E1E5EA; --chrome:#F3F3F3;
+  --shadow:0 1px 2px rgba(20,33,61,.06),0 8px 28px rgba(20,33,61,.10);
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0F151E; --surface:#161E2A; --ink:#EDF1F6; --text:#D5DCE6; --muted:#98A3B3;
-    --line:#2A3544; --accent:#5CC4BE; --accent-ink:#8ADAD5; --accent-soft:#12302F;
-    --flag:#E9A25A; --flag-soft:#3A2812; --mono-bg:#1D2733; color-scheme:dark;
+    --page:#111418; --band:#181C21; --ink:#EEF1F5; --text:#D3D8E0; --muted:#9AA3B0; --line:#2C323A;
+    --teal:#4FB3AD; --teal-dark:#86D3CE; --on-teal:#0B1F1E; --teal-soft:#15302E; --appfill:#1D2A22; --grid:#30363D; --chrome:#1F2328;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 28px rgba(0,0,0,.35);
+    color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0F151E; --surface:#161E2A; --ink:#EDF1F6; --text:#D5DCE6; --muted:#98A3B3;
-  --line:#2A3544; --accent:#5CC4BE; --accent-ink:#8ADAD5; --accent-soft:#12302F;
-  --flag:#E9A25A; --flag-soft:#3A2812; --mono-bg:#1D2733; color-scheme:dark;
+  --page:#111418; --band:#181C21; --ink:#EEF1F5; --text:#D3D8E0; --muted:#9AA3B0; --line:#2C323A;
+  --teal:#4FB3AD; --teal-dark:#86D3CE; --on-teal:#0B1F1E; --teal-soft:#15302E; --appfill:#1D2A22; --grid:#30363D; --chrome:#1F2328;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 28px rgba(0,0,0,.35);
+  color-scheme:dark;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.55}
-.wrap{max-width:760px;margin:0 auto;padding:40px 22px 64px}
-header.top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:40px}
-.brand{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:19px;color:var(--ink);text-decoration:none}
-.brand small{display:block;font-family:"IBM Plex Sans",sans-serif;font-weight:500;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:2px}
-.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);font-weight:600;margin:0 0 12px}
-h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:clamp(30px,4.6vw,42px);line-height:1.12;color:var(--ink);margin:0 0 18px;text-wrap:balance;letter-spacing:-.01em}
-h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:26px;color:var(--ink);margin:0 0 12px;text-wrap:balance}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--page);color:var(--text);font-family:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+.in{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--teal-dark)}
+h1,h2,.logo{font-family:"Libre Franklin","Public Sans",Arial,sans-serif;color:var(--ink)}
+h1{font-size:clamp(32px,5.6vw,50px);line-height:1.08;letter-spacing:-.025em;font-weight:800;margin:0 0 20px;max-width:20ch}
+h2{font-size:clamp(23px,3.2vw,28px);line-height:1.2;letter-spacing:-.015em;font-weight:700;margin:0 0 14px}
 p{margin:0 0 16px;max-width:62ch}
-.lede{font-size:19px;color:var(--text)}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 8px}
-.btn{display:inline-block;padding:12px 18px;border-radius:6px;font-weight:600;text-decoration:none;font-size:16px;border:1px solid transparent}
-.btn:focus-visible{outline:3px solid var(--flag);outline-offset:2px}
-.btn.primary{background:var(--accent);color:#fff}
-.btn.primary:hover{background:var(--accent-ink)}
-.btn.secondary{background:transparent;color:var(--accent-ink);border-color:var(--accent)}
-.fine{font-size:13px;color:var(--muted)}
-.notaffil{border-left:3px solid var(--line);padding-left:12px;margin-top:14px;max-width:62ch}
-footer p{margin:0 0 10px}
-section{margin:52px 0}
-.affidavit{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--flag);padding:18px 20px;margin:22px 0}
-.affidavit .label{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--flag);margin:0 0 6px}
-.affidavit p{margin:0;font-size:15.5px}
-.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:6px;background:var(--surface)}
-table{border-collapse:collapse;width:100%;font-family:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;font-size:12.5px;font-variant-numeric:tabular-nums;min-width:560px}
-th{text-align:left;font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);background:var(--mono-bg);padding:10px 12px;border-bottom:1px solid var(--line)}
-td{padding:9px 10px;border-bottom:1px solid var(--line);white-space:normal;vertical-align:top;color:var(--text)}
-td:nth-child(5){white-space:nowrap}
-td:last-child{min-width:150px;font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;color:var(--muted)}
-tr:last-child td{border-bottom:0}
-.caption{font-size:13px;color:var(--muted);margin:8px 2px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:8px}
-.tile{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px}
-.tile .k{font-family:"Source Serif 4",Georgia,serif;font-size:30px;font-weight:600;color:var(--ink);line-height:1;margin-bottom:6px;font-variant-numeric:tabular-nums}
-.tile .v{font-size:13.5px;color:var(--muted)}
-ol.how{padding-left:20px;margin:0;max-width:62ch}
-ol.how li{margin-bottom:10px}
-.plans{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.plan{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:20px}
-.plan.lead{border-color:var(--accent)}
-.plan .name{font-weight:600;color:var(--ink);font-size:15px;letter-spacing:.02em}
-.plan .price{font-family:"Source Serif 4",Georgia,serif;font-size:34px;font-weight:600;color:var(--ink);margin:8px 0 2px;font-variant-numeric:tabular-nums}
-.plan .price span{font-family:"IBM Plex Sans",sans-serif;font-size:14px;color:var(--muted);font-weight:400}
-.plan ul{padding-left:18px;margin:10px 0 16px;font-size:14.5px}
-.plan li{margin-bottom:5px}
-.badge{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--flag);background:var(--flag-soft);padding:3px 8px;border-radius:4px;margin-top:6px}
-.regionpick{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin:10px 0 4px}
-.regionpick .btn{padding:10px 12px;font-size:14.5px;text-align:center}
-.plan .note{font-size:13.5px;color:var(--muted);margin:8px 0 4px;line-height:1.5}
-.faq dt{font-weight:600;color:var(--ink);margin-top:16px}
-.faq dd{margin:4px 0 0;max-width:62ch}
-footer{border-top:1px solid var(--line);margin-top:56px;padding-top:18px;font-size:13px;color:var(--muted)}
-footer p{max-width:none}
-a{color:var(--accent-ink)}
-@media (prefers-reduced-motion:no-preference){.btn{transition:background .15s ease}}
+
+/* top */
+.bar{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+.logo{font-weight:800;font-size:20px;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--teal)}
+.bar nav{display:flex;gap:20px;font-size:15px}
+.bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
+.bar nav a:hover{color:var(--ink)}
+
+/* hero */
+.hero{padding:42px 0 40px}
+.lede{font-size:clamp(18px,2.2vw,20px);color:var(--text);max-width:56ch}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:28px 0 0}
+.btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:6px;font-size:16.5px}
+.btn:hover{background:var(--teal-dark)}
+.cta .aside{font-size:15px;color:var(--muted)}
+.btn:focus-visible,.pick a:focus-visible,.bar nav a:focus-visible{outline:3px solid #C9721A;outline-offset:2px}
+.facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin:30px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--muted)}
+.facts li{display:flex;align-items:center;gap:8px}
+.facts li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
+
+/* the workbook band */
+.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px}
+.band .kick{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 16px}
+.xl{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--page);box-shadow:var(--shadow);font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif}
+.xl-top{display:flex;align-items:center;gap:10px;background:#0E6B6B;color:#fff;font-size:13px;padding:8px 12px}
+.xl-top b{font-weight:700;letter-spacing:.01em}
+.xl-top .fn{opacity:.88;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.xl-scroll{overflow-x:auto}
+.xl table{border-collapse:collapse;min-width:640px;width:100%;font-size:13px;color:var(--text)}
+.xl th,.xl td{border:1px solid var(--grid);padding:6px 9px;text-align:left;white-space:nowrap}
+.xl .hdr th{background:var(--chrome);color:var(--muted);font-weight:400;text-align:center;font-size:12px;padding:3px 6px}
+.xl .rn{background:var(--chrome);color:var(--muted);text-align:center;width:34px;font-size:12px;padding:3px 4px}
+.xl .t1 td{font-weight:700;font-size:15.5px;color:var(--ink);border-color:transparent var(--grid);padding-top:9px}
+.xl .t2 td{font-size:12.5px;border-color:transparent var(--grid)}
+.xl .t3 td{font-size:12px;color:var(--muted);border-color:transparent var(--grid);padding-bottom:10px}
+.xl .colhead td{background:#0E6B6B;color:#fff;font-weight:700}
+.xl .app td{background:var(--appfill)}
+.xl .blur{filter:blur(3.5px);user-select:none}
+.xl-tabs{display:flex;gap:2px;background:var(--chrome);border-top:1px solid var(--line);padding:0 8px;font-size:12.5px;overflow-x:auto}
+.xl-tabs span{padding:7px 14px;color:var(--muted);white-space:nowrap}
+.xl-tabs span.on{background:var(--page);color:var(--teal-dark);font-weight:700;border-bottom:2px solid var(--teal)}
+.cap{font-size:14px;color:var(--muted);margin:14px 0 0;max-width:none}
+
+/* sections */
+section{padding:56px 0 0}
+.list{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.list li{padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative}
+.list li::before{content:"";position:absolute;left:4px;top:21px;width:12px;height:7px;border-left:2.5px solid var(--teal);border-bottom:2.5px solid var(--teal);transform:rotate(-45deg)}
+
+.me{display:flex;gap:22px;align-items:center;background:var(--band);border:1px solid var(--line);border-radius:10px;padding:24px}
+.me img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--page)}
+.me p{margin:0 0 10px}
+.me .who{font-family:"Libre Franklin",Arial,sans-serif;font-weight:700;color:var(--ink);margin:0}
+.me .who span{font-family:"Public Sans",Arial,sans-serif;font-weight:400;color:var(--muted);font-size:14.5px}
+@media (max-width:560px){.me{flex-direction:column;align-items:flex-start}}
+
+.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.plans{grid-template-columns:1fr}}
+.plan{border:1px solid var(--line);border-radius:10px;padding:22px;background:var(--page)}
+.plan.all{border:2px solid var(--teal)}
+.plan .name{font-weight:700;color:var(--ink);font-size:16px}
+.plan .amt{font-family:"Libre Franklin",Arial,sans-serif;font-weight:800;color:var(--ink);font-size:38px;letter-spacing:-.02em;line-height:1.1;margin:6px 0 2px}
+.plan .amt small{font-family:"Public Sans",Arial,sans-serif;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:0}
+.plan .sub{font-size:14.5px;color:var(--muted);margin:0 0 16px}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pick a{font-size:14px;padding:9px 8px;border:1px solid var(--teal);border-radius:6px;text-decoration:none;color:var(--teal-dark);font-weight:600;text-align:center}
+.pick a:hover{background:var(--teal-soft)}
+.plan.all .btn{display:block;text-align:center}
+.plannote{font-size:14px;color:var(--muted);margin:14px 0 0}
+
+dl{margin:0;border-top:1px solid var(--line)}
+dt{font-weight:700;color:var(--ink);padding-top:16px}
+dd{margin:6px 0 0;padding-bottom:16px;border-bottom:1px solid var(--line)}
+dd p{margin:0}
+
+.last{text-align:left;padding:56px 0 0}
+footer{margin-top:64px;border-top:1px solid var(--line);padding:22px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
+footer p{margin:0 0 10px;max-width:none}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header class="top">
-  <a class="brand" href="/">LicenseDigest<small>Florida · weekly · DBPR public records</small></a>
-  <span class="fine">by Kummer Ventures LLC</span>
-</header>
-
-<p class="eyebrow">For agencies, PEO/workers'-comp reps and bonding agents who prospect Florida contractors</p>
-<h1>The construction license records Florida added last week — with the business behind them.</h1>
-<p class="lede">Each Tuesday morning you get one email with an Excel workbook and a CSV: the construction license records Florida DBPR added to its public extract in the previous week, split between individual licenses and qualified-business records (the license DBPR issues to a business that contracts under a qualifying licensee), with the person's or company's name — and the business DBPR names for that person, where the extract carries one — plus license type, city and county and issue date, grouped by territory, and that week's new license applications.</p>
-
-<div class="affidavit">
-  <p class="label">What the timing means — F.S. §489.115</p>
-  <p>Florida requires proof of general liability and workers' compensation (or exemption) before it issues a construction license, so a new record is a timely reason to call. The file tells you the account, the trade, the county, the issue date and — for qualified-business records where DBPR's extract allows it — the qualifying individual and their license number. It does not tell you what they bought, from whom, or when it renews.</p>
-</div>
-
-<div class="cta-row">
-  <a class="btn primary" href="mailto:support@licensedigest.com?subject=Florida%20license%20file%20sample&body=Send%20it%20%E2%80%94%20please%20send%20me%20this%20week%27s%20Florida%20license%20file.%0A%0ACompany%3A%0ATerritory%20of%20interest%3A%0A">Send me this week's report (free)</a>
-  <a class="btn secondary" href="#plans">See plans</a>
-</div>
-<p class="fine">No card, no call. You get the full statewide list for one week and decide.</p>
-  <p class="fine notaffil"><strong>LicenseDigest is an independent commercial publication of Kummer Ventures LLC.</strong> It is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation, the State of Florida, or any government agency. We republish and organize public records made available under Chapter 119, Florida Statutes.</p>
-
-<section>
-  <h2>Example week: Sep 1 – 7, 2026</h2>
-  <p>171 license records: 92 individual certifications and registrations and 79 qualified-business records (78 distinct businesses), plus 34 new license applications. The rows below are real.</p>
-  <div class="tablewrap">
-  <table>
-    <thead><tr><th>Business / licensee</th><th>License</th><th>City</th><th>County</th><th>Issued</th><th>Why it matters</th></tr></thead>
-    <tbody><tr><td>BK CONSTRUCTION AND SERVICES OF FLORIDA LLC</td><td>Certified Building Contractor</td><td>Auburndale</td><td>Polk</td><td>09/01/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>SHINE AND COMPANY, INC.</td><td>Certified General Contractor</td><td>High Springs</td><td>Alachua</td><td>09/03/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>PENA GLASS WINDOWS &amp; DOORS INC.</td><td>Certified Specialty Contractor</td><td>Hollywood</td><td>Broward</td><td>09/01/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>G. AIR SERVICES LLC</td><td>Certified Air Conditioning Contractor</td><td>Haines City</td><td>Polk</td><td>09/04/2026</td><td>Individual license; the business named is the one this person qualifies</td></tr><tr><td>JAX CITY HOMES, LLC</td><td>Qualified Business</td><td>Jacksonville</td><td>Duval</td><td>09/03/2026</td><td>Qualified Business license — the business itself is licensed to contract under a qualifying licensee</td></tr><tr><td>THREE RIVERS CONTRACTING, LLC</td><td>Qualified Business</td><td>Baker</td><td>Okaloosa</td><td>09/04/2026</td><td>Qualified Business license — the business itself is licensed to contract under a qualifying licensee</td></tr></tbody>
-  </table>
+<div class="in">
+  <div class="bar">
+    <a class="logo" href="/">License<span>Digest</span></a>
+    <nav><a href="#file">The file</a><a href="#plans">Plans</a></nav>
   </div>
-  <p class="caption">Categories covered: certified and registered general, building, residential, roofing, plumbing, HVAC, electrical-adjacent specialty, pool/spa, and all CILB specialty classes.</p>
 
-  <div class="grid">
-    <div class="tile"><div class="k">171</div>
-      <div class="v">license records in the example week shown, plus 34 new applications</div></div>
-    <div class="tile"><div class="k">Weekly</div><div class="v">DBPR refresh cadence; we diff every file and send only what's new</div></div>
-    <div class="tile"><div class="k">6</div><div class="v">regions: South, Southwest, Tampa Bay, Central, Northeast, Panhandle</div></div>
-  </div>
-</section>
-
-<section>
-  <h2>How it works</h2>
-  <ol class="how">
-    <li>DBPR publishes its construction licensee and applicant files under Chapter 119. We pull them every Tuesday morning.</li>
-    <li>Licenses dated since your last report are pulled and every record is classified (company license, individual qualifying a business, individual without a business). A record DBPR adds carrying an older issue date is included the week we first see it, keeping the date DBPR shows. The applicant register is compared with the previous extract, so only applications that were not in it appear.</li>
-    <li>Before anything is sent, the run must pass automated checks — file size, dates, duplicate and match anomalies, region totals — or it does not go out.</li><li>You receive one email grouped by territory and county: an Excel workbook to read, and a CSV of the same records for your CRM.</li>
-    <li>Reply to any report to change territories; cancel any time in the customer portal (the link is in every report). No contracts.</li>
-  </ol>
-</section>
-
-<section id="plans">
-  <h2>Plans</h2>
-
-  <div class="plans">
-    <div class="plan lead">
-      <div class="name">Statewide</div>
-      <div class="price">$97<span> / month</span></div>
-      <ul>
-        <li>All six regions, every category</li>
-        <li>Weekly email · Excel workbook + CSV</li>
-        <li>That week's new license applications included</li>
-        <li>Cancel anytime in the customer portal (link in every report)</li>
-      </ul>
-      <a class="btn primary" href="https://buy.stripe.com/dRm4gz9bm0Tj53G42W7Zu03">Subscribe — statewide</a>
-      <div class="badge">Launch pricing</div>
+  <div class="hero">
+    <h1>Florida contractors who just applied for a license. Every Tuesday.</h1>
+    <p class="lede">Florida won't issue a contractor license until the contractor shows proof of insurance. Every Tuesday you get the people who just applied, before the license is issued, plus the ones newly licensed, sorted by county and territory.</p>
+    <div class="cta">
+      <a class="btn" href="mailto:support@licensedigest.com?subject=Send%20it&body=Please%20send%20me%20this%20week%27s%20Florida%20file.%0A%0AAgency%3A%0ATerritory%3A%0A">Send me this week's file</a>
+      <span class="aside">Free, and no card needed. Or email <a href="mailto:support@licensedigest.com?subject=Send%20it">support@licensedigest.com</a> and say &ldquo;send it.&rdquo;</span>
     </div>
-    <div class="plan">
-      <div class="name">One region</div>
-      <div class="price">$59<span> / month</span></div>
-      <ul>
-        <li>Pick one of six regions</li>
-        <li>Weekly email · Excel workbook + CSV</li>
-        <li>Add more regions for $29 each</li>
-        <li>Cancel anytime in the customer portal (link in every report)</li>
-      </ul>
-      <div class="regionpick">
-        <a class="btn secondary" href="https://buy.stripe.com/3cIaEXbju31r7bO5707Zu0b">South Florida</a>
-        <a class="btn secondary" href="https://buy.stripe.com/3cI6oH9bmgShgMoczs7Zu0c">Southwest Florida</a>
-        <a class="btn secondary" href="https://buy.stripe.com/fZu8wPafqgShgMo8jc7Zu0a">Tampa Bay</a>
-        <a class="btn secondary" href="https://buy.stripe.com/5kQ14n3R2bxX2Vy2YS7Zu0d">Central Florida</a>
-        <a class="btn secondary" href="https://buy.stripe.com/5kQ28rgDO45v53G6b47Zu0e">Northeast Florida</a>
-        <a class="btn secondary" href="https://buy.stripe.com/5kQ00jevG0TjdAc5707Zu0f">Panhandle</a>
+    <ul class="facts">
+      <li>Built from Florida's public licensing records</li>
+      <li>Excel and CSV</li>
+      <li>Cancel anytime</li>
+    </ul>
+  </div>
+</div>
+
+<div class="band" id="file">
+  <div class="in">
+    <p class="kick">This is what lands in your inbox.</p>
+    <div class="xl" role="img" aria-label="The weekly workbook open on its Applications sheet, showing new license applications in Tampa Bay">
+      <div class="xl-top"><b>Excel</b><span class="fn">licensedigest_Tampa_Bay_2026-09-16_to_2026-09-22.xlsx</span></div>
+      <div class="xl-scroll">
+      <table>
+        <tr class="hdr"><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr>
+        <tr class="t1"><td class="rn">1</td><td colspan="6">LicenseDigest &middot; Tampa Bay &middot; new license applications</td></tr>
+        <tr class="t2"><td class="rn">2</td><td colspan="6">74 new license applications, newly appearing between the Sep 15 and Sep 23 applicant extracts</td></tr>
+        <tr class="t3"><td class="rn">3</td><td colspan="6">Pre-license: no license number exists yet &middot; Definitions and sources: see the 'About this file' tab</td></tr>
+        <tr class="colhead"><td class="rn">4</td><td>Record type</td><td>Applicant</td><td>Applying for</td><td>City</td><td>County</td><td>Status</td></tr>
+        <tr class="app"><td class="rn">5</td><td>Application</td><td><span class="blur">Rxxxxx, Dxxxxx</span></td><td>Certified Roofing Contractor</td><td>Lutz</td><td>Hillsborough</td><td>Application on file</td></tr>
+        <tr class="app"><td class="rn">6</td><td>Application</td><td><span class="blur">Mxxxxxxx, Jxxxx</span></td><td>Certified General Contractor</td><td>New Port Richey</td><td>Pasco</td><td>Application on file</td></tr>
+        <tr class="app"><td class="rn">7</td><td>Application</td><td><span class="blur">Txxxxx, Axxxxx</span></td><td>Certified Specialty Contractor</td><td>Lakeland</td><td>Polk</td><td>Application on file</td></tr>
+        <tr class="app"><td class="rn">8</td><td>Application</td><td><span class="blur">Gxxxxxx, Cxxxx</span></td><td>Certified Building Contractor</td><td>Tampa</td><td>Hillsborough</td><td>Application on file</td></tr>
+      </table>
       </div>
-      <p class="note">Pick your main region above — you can add any of the others for $29 each on the next screen, on one subscription. Three or more? Statewide is $97 and covers all six.</p>
+      <div class="xl-tabs"><span class="on">Applications</span><span>License records</span><span>About this file</span></div>
+    </div>
+    <p class="cap">Real rows from last week's Tampa Bay file, drawn here with the names blurred. The file you get has them. Statewide that week: 333 new applications and 349 new licenses.</p>
+  </div>
+</div>
 
+<div class="in">
+  <section>
+    <h2>What's in the file</h2>
+    <ul class="list">
+      <li>An Excel workbook and a CSV every Tuesday. The workbook opens on the applications.</li>
+      <li>New applications with the applicant's name, license type, city and county.</li>
+      <li>New licenses with the business name, license type, city, county and issue date.</li>
+      <li>Everything sorted by territory and county, so you only work your area.</li>
+      <li>No phone numbers. Everything comes from the state's public records.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="me">
+      <img src="data:image/jpeg;base64,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" alt="Dan Kummer" width="104" height="104">
+      <div>
+        <p>I have an engineering background, and I started LicenseDigest because Florida's licensing files are full of useful information that's hard to use in its raw form. Each week I turn them into a list an agency can actually work.</p>
+        <p class="who">Dan Kummer <span>&middot; Kummer Ventures LLC</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="plans">
+    <h2>Plans</h2>
+    <div class="plans">
+      <div class="plan">
+        <div class="name">One territory</div>
+        <div class="amt">$59<small> / month</small></div>
+        <p class="sub">Add more territories for $29 a month each at checkout.</p>
+        <div class="pick">
+          <a href="https://buy.stripe.com/3cIaEXbju31r7bO5707Zu0b">South Florida</a>
+          <a href="https://buy.stripe.com/3cI6oH9bmgShgMoczs7Zu0c">Southwest Florida</a>
+          <a href="https://buy.stripe.com/fZu8wPafqgShgMo8jc7Zu0a">Tampa Bay</a>
+          <a href="https://buy.stripe.com/5kQ14n3R2bxX2Vy2YS7Zu0d">Central Florida</a>
+          <a href="https://buy.stripe.com/5kQ28rgDO45v53G6b47Zu0e">Northeast Florida</a>
+          <a href="https://buy.stripe.com/5kQ00jevG0TjdAc5707Zu0f">Panhandle</a>
+        </div>
+      </div>
+      <div class="plan all">
+        <div class="name">All of Florida</div>
+        <div class="amt">$97<small> / month</small></div>
+        <p class="sub">All six territories in one file. If you want three or more, this is the better deal.</p>
+        <a class="btn" href="https://buy.stripe.com/dRm4gz9bm0Tj53G42W7Zu03">Subscribe to all of Florida</a>
+      </div>
+    </div>
+    <p class="plannote">Cancel anytime. Every button goes to a secure Stripe checkout.</p>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <dl>
+      <dt>Where does the data come from?</dt>
+      <dd><p>From the Florida Department of Business and Professional Regulation's public-records files, which it updates every week. Nothing is scraped from people-search sites or social media.</p></dd>
+      <dt>Can't I download this from the state myself?</dt>
+      <dd><p>You can. The raw files are public: a 45 MB licensee file and an applicant register of over 100,000 rows with no dates on it. What you're paying for is the weekly comparison that finds what's new, the sorting by territory, and the checks that run before anything is sent. If you'd rather do that yourself, you should.</p></dd>
+      <dt>How do I change territories or cancel?</dt>
+      <dd><p>Cancel anytime in the customer portal. The link is at the bottom of every report. Cancellation takes effect at the end of the period you've paid for and isn't pro-rated. To add or change a territory, reply to any report or email <a href="mailto:support@licensedigest.com">support@licensedigest.com</a>, and a person confirms the new monthly total before anything changes.</p></dd>
+    </dl>
+  </section>
+
+  <div class="last">
+    <h2>See a week before you decide.</h2>
+    <div class="cta" style="margin-top:14px">
+      <a class="btn" href="mailto:support@licensedigest.com?subject=Send%20it&body=Please%20send%20me%20this%20week%27s%20Florida%20file.%0A%0AAgency%3A%0ATerritory%3A%0A">Send me this week's file</a>
+      <span class="aside">Free, and no card needed. Or email <a href="mailto:support@licensedigest.com?subject=Send%20it">support@licensedigest.com</a> and say &ldquo;send it.&rdquo;</span>
     </div>
   </div>
-</section>
 
-<section class="faq">
-  <h2>Questions agencies ask</h2>
-  <dl>
-    <dt>Where does the data come from?</dt>
-    <dd>Directly from the Florida Department of Business and Professional Regulation's public-records extracts, refreshed weekly. Nothing is scraped from people-search sites or social networks.</dd>
-    <dt>Are phone numbers included?</dt>
-    <dd>Not in the current edition. DBPR's applicant register contains phone numbers, but we do not distribute them until the applicability of Florida's Telephone Solicitation Act (F.S. 501.059) to this product is resolved. Every record carries the business name, license type, city and county. Individual certifications also carry the license number; DBPR does not publish one for the qualified-business rows in its bulk extract, so those companies are looked up by name.</dd>
-    <dt>Aren't they already insured if the license was issued?</dt>
-    <dd>Florida requires proof of coverage before issuance, so most are. What the file gives you is timing and a name; the rewrite, limits and workers' comp conversation is yours to have. A qualified-business record is the license DBPR issues to a business that contracts under a qualifying licensee — the file does not say whether the entity itself is new. Some licensees are qualifying an existing company, and the extract does not distinguish the two — DBPR publishes no formation date for the business.</dd>
-    <dt>How do I update my card, change territory, or cancel?</dt>
-    <dd>Card updates and cancellation are self-service in the Stripe customer portal — the link is at the bottom of every report. Cancellations take effect at the end of the period you have paid for and are not pro-rated. To add or change a territory, reply to any report or email <a href="mailto:support@licensedigest.com">support@licensedigest.com</a>; a person confirms the new monthly total before anything changes.</dd>
-    <dt>Can't I download this from DBPR myself?</dt>
-    <dd>Yes. The raw files are public — a 45 MB licensee file and a 104,000-row cumulative applicant register with no dates. What you are paying for is the weekly comparison, the classification, the territory grouping, the automated quality checks and a report that is normally in your inbox by 9:00 a.m. Eastern on Tuesday. If you would rather do that yourself, you should.</dd>
-  </dl>
-</section>
-
-<footer>
-  <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>. Support and billing questions: <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a>.</p>
-  <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), the State of Florida, or any government agency. Source records are public records published by DBPR under Chapter 119, Florida Statutes; DBPR does not review, approve, or endorse this product.</p>
-  <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Telephone numbers are not included in this product.</p>
-  <p>Cancel anytime in the Stripe customer portal — the link is in every report — or by emailing support. Cancellations take effect at the end of the current billing period and are not pro-rated.</p>
-</footer>
+  <footer>
+    <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, 5366 Central Florida Pkwy #158, Orlando, FL 32821. <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+    <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), the State of Florida, or any government agency. Source records are public records published by DBPR under Chapter 119, Florida Statutes; DBPR does not review, approve, or endorse this product.</p>
+    <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Telephone numbers are not included in this product.</p>
+  </footer>
 </div>
 <script>
 (function () {
