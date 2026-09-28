@@ -110,6 +110,10 @@ section{padding:56px 0 0}
 .pick a:hover{background:var(--teal-soft)}
 .plan.all .btn{display:block;text-align:center}
 .plannote{font-size:14px;color:var(--muted);margin:14px 0 0}
+.yearly{margin:18px 0 0;border:1px solid var(--line);border-radius:10px;padding:18px 22px;background:var(--band)}
+.yearly p{font-size:15px;margin:0 0 12px;max-width:none}
+.yearly .pick{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+.yearly .pick a{background:var(--page)}
 
 dl{margin:0;border-top:1px solid var(--line)}
 dt{font-weight:700;color:var(--ink);padding-top:16px}
@@ -125,7 +129,7 @@ footer p{margin:0 0 10px;max-width:none}
 <div class="in">
   <div class="bar">
     <a class="logo" href="/">License<span>Digest</span></a>
-    <nav><a href="#file">The file</a><a href="#plans">Plans</a></nav>
+    <nav><a href="#file">The file</a><a href="/fl/">Counties</a><a href="#plans">Plans</a></nav>
   </div>
 
   <div class="hero">
@@ -212,6 +216,18 @@ footer p{margin:0 0 10px;max-width:none}
         <a class="btn" href="https://buy.stripe.com/dRm4gz9bm0Tj53G42W7Zu03">Subscribe to all of Florida</a>
       </div>
     </div>
+    <div class="yearly">
+      <p><strong>Pay yearly and get two months free.</strong> One territory is $590 a year, and extra territories are $290 a year each, added at checkout. All of Florida is $970 a year.</p>
+      <div class="pick">
+          <a href="https://buy.stripe.com/5kQ00jbjuatTfIk2YS7Zu0h">South Florida</a>
+          <a href="https://buy.stripe.com/7sYaEX4V631reEg9ng7Zu0i">Southwest Florida</a>
+          <a href="https://buy.stripe.com/aFaeVd0EQ0Tj9jWark7Zu0j">Tampa Bay</a>
+          <a href="https://buy.stripe.com/6oU7sL87ifOd53G5707Zu0k">Central Florida</a>
+          <a href="https://buy.stripe.com/eVqcN5bju45v3ZC7f87Zu0l">Northeast Florida</a>
+          <a href="https://buy.stripe.com/dRmdR9bju6dD8fS9ng7Zu0m">Panhandle</a>
+          <a href="https://buy.stripe.com/dRmcN55ZagSh1Ru7f87Zu0g">All of Florida</a>
+      </div>
+    </div>
     <p class="plannote">Cancel anytime. Every button goes to a secure Stripe checkout.</p>
   </section>
 
@@ -223,7 +239,7 @@ footer p{margin:0 0 10px;max-width:none}
       <dt>Can't I download this from the state myself?</dt>
       <dd><p>You can get most of it. The raw files are public: a 45 MB licensee file and an applicant register of over 100,000 rows with no dates on it. The email addresses aren't in those downloads at all; we request them from DBPR every week. What you're paying for is the weekly comparison that finds what's new, the sorting by territory, and the checks that run before anything is sent. If you'd rather do that yourself, you should.</p></dd>
       <dt>How do I change territories or cancel?</dt>
-      <dd><p>Cancel anytime in the customer portal. The link is at the bottom of every report. Cancellation takes effect at the end of the period you've paid for and isn't pro-rated. To add or change a territory, reply to any report or email <a href="mailto:support@licensedigest.com">support@licensedigest.com</a>, and a person confirms the new monthly total before anything changes.</p></dd>
+      <dd><p>Cancel anytime in the customer portal. The link is at the bottom of every report. Cancellation takes effect at the end of the period you've paid for and isn't pro-rated. To add or change a territory, reply to any report or email <a href="mailto:support@licensedigest.com">support@licensedigest.com</a>, and a person confirms the new total before anything changes.</p></dd>
     </dl>
   </section>
 
