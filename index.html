@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>LicenseDigest | Florida contractor applications, every Tuesday</title>
-<meta name="description" content="Every Tuesday: the Florida contractors who just applied for a license, plus the ones newly licensed, sorted by county and territory for insurance agencies. Excel and CSV. Free sample, no card.">
+<meta name="description" content="Every Tuesday: the Florida contractors who just applied for a license, plus the ones newly licensed, on a private page for your territory with a ready-made note for each. Free for four weeks, no card.">
 <meta property="og:title" content="LicenseDigest | Florida contractor applications, every Tuesday">
 <meta property="og:description" content="The Florida contractors who just applied for a license, sorted by county and territory for insurance agencies.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E6B6B'/%3E%3Cpath d='M10 8h4v12h8v4H10z' fill='white'/%3E%3C/svg%3E">
@@ -56,33 +56,50 @@ p{margin:0 0 16px;max-width:62ch}
 .btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:6px;font-size:16.5px}
 .btn:hover{background:var(--teal-dark)}
 .cta .aside{font-size:15px;color:var(--muted)}
-.btn:focus-visible,.pick a:focus-visible,.bar nav a:focus-visible{outline:3px solid #C9721A;outline-offset:2px}
+.btn:focus-visible,.pick a:focus-visible,.bar nav a:focus-visible,.get input:focus-visible,.get select:focus-visible,.get button:focus-visible{outline:3px solid #C9721A;outline-offset:2px}
 .facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin:30px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--muted)}
 .facts li{display:flex;align-items:center;gap:8px}
 .facts li::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--teal)}
 
-/* the workbook band */
+/* the sign-up form */
+.get{margin:28px 0 0;max-width:640px}
+.get label.t{display:block;font-weight:700;color:var(--ink);font-size:15.5px;margin:0 0 10px}
+.get .row{display:flex;flex-wrap:wrap;gap:10px}
+.get input,.get select{height:50px;border:1px solid var(--line);border-radius:8px;background:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 14px}
+.get input{flex:1 1 240px;min-width:0}
+.get select{flex:0 1 200px;appearance:none;-webkit-appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235E6675' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.get button{height:50px;border:0;border-radius:8px;background:var(--teal);color:var(--on-teal);font:inherit;font-weight:700;font-size:16.5px;padding:0 22px;cursor:pointer;flex:0 0 auto}
+.get button:hover{background:var(--teal-dark)}
+.get button[disabled]{opacity:.6;cursor:default}
+.get .aside{font-size:15px;color:var(--muted);margin:12px 0 0}
+.get .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.get .msg{margin:14px 0 0;padding:14px 16px;border-radius:8px;font-size:15.5px;max-width:none}
+.get .msg.ok{background:var(--teal-soft);color:var(--ink)}
+.get .msg.err{background:#FBEFE3;color:#7A4110}
+@media (max-width:560px){.get select,.get button{flex:1 1 100%}}
+
+/* the desk band */
 .band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px}
-.band .kick{font-size:15px;font-weight:600;color:var(--ink);margin:0 0 16px}
-.xl{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--page);box-shadow:var(--shadow);font-family:Calibri,Carlito,"Segoe UI",Arial,sans-serif}
-.xl-top{display:flex;align-items:center;gap:10px;background:#0E6B6B;color:#fff;font-size:13px;padding:8px 12px}
-.xl-top b{font-weight:700;letter-spacing:.01em}
-.xl-top .fn{opacity:.88;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
-.xl-scroll{overflow-x:auto}
-.xl table{border-collapse:collapse;min-width:640px;width:100%;font-size:13px;color:var(--text)}
-.xl th,.xl td{border:1px solid var(--grid);padding:6px 9px;text-align:left;white-space:nowrap}
-.xl .hdr th{background:var(--chrome);color:var(--muted);font-weight:400;text-align:center;font-size:12px;padding:3px 6px}
-.xl .rn{background:var(--chrome);color:var(--muted);text-align:center;width:34px;font-size:12px;padding:3px 4px}
-.xl .t1 td{font-weight:700;font-size:15.5px;color:var(--ink);border-color:transparent var(--grid);padding-top:9px}
-.xl .t2 td{font-size:12.5px;border-color:transparent var(--grid)}
-.xl .t3 td{font-size:12px;color:var(--muted);border-color:transparent var(--grid);padding-bottom:10px}
-.xl .colhead td{background:#0E6B6B;color:#fff;font-weight:700}
-.xl .app td{background:var(--appfill)}
-.xl .blur{filter:blur(3.5px);user-select:none}
-.xl-tabs{display:flex;gap:2px;background:var(--chrome);border-top:1px solid var(--line);padding:0 8px;font-size:12.5px;overflow-x:auto}
-.xl-tabs span{padding:7px 14px;color:var(--muted);white-space:nowrap}
-.xl-tabs span.on{background:var(--page);color:var(--teal-dark);font-weight:700;border-bottom:2px solid var(--teal)}
-.cap{font-size:14px;color:var(--muted);margin:14px 0 0;max-width:none}
+.band .kick{font-family:"Libre Franklin","Public Sans",Arial,sans-serif;font-size:22px;font-weight:700;color:var(--ink);margin:0 0 16px;letter-spacing:-.01em}
+.wide{max-width:1040px;margin:0 auto;padding:0 20px}
+.frame{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+.frame .chrome{display:flex;align-items:center;gap:7px;height:34px;padding:0 14px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.frame .chrome i{width:10px;height:10px;border-radius:50%;background:#D5D2CA;display:block}
+.frame .chrome span{margin-left:10px;font-size:12.5px;color:var(--muted);background:var(--page);border:1px solid var(--line);border-radius:6px;padding:2px 12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frame video,.frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#F4F1EA}
+.phone{display:none;max-width:300px;margin:0 auto;border:8px solid var(--ink);border-radius:30px;overflow:hidden;box-shadow:var(--shadow);background:#fff}
+.phone img{display:block;width:100%;height:auto}
+@media (max-width:640px){.frame.big{display:none}.phone{display:block}.band .kick{text-align:center}.band .cap{text-align:center}}
+@media (max-width:420px){.bar nav{gap:14px;font-size:14px}.bar nav a[href="/fl/"]{display:none}}
+.band .cap{font-size:15px;color:var(--muted);margin:14px 0 0;max-width:none}
+.band .cap a{font-weight:600}
+
+/* how it works */
+.steps{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.steps .n{grid-row:span 2;display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--teal-soft);color:var(--teal-dark);font-weight:700;font-size:15.5px}
+.steps b{color:var(--ink);font-size:17.5px;line-height:1.35;padding-top:5px}
+.steps p{margin:0;font-size:16px;color:var(--text)}
 
 /* sections */
 section{padding:56px 0 0}
@@ -129,57 +146,74 @@ footer p{margin:0 0 10px;max-width:none}
 <div class="in">
   <div class="bar">
     <a class="logo" href="/">License<span>Digest</span></a>
-    <nav><a href="#file">The file</a><a href="/fl/">Counties</a><a href="#plans">Plans</a></nav>
+    <nav><a href="#desk">The desk</a><a href="/fl/">Counties</a><a href="#plans">Plans</a></nav>
   </div>
 
   <div class="hero">
     <h1>Florida contractors who just applied for a license. Every Tuesday.</h1>
-    <p class="lede">Florida won't issue a contractor license until the contractor signs an affidavit that they carry liability insurance. Every Tuesday you get the people who just applied, before the license is issued, plus the ones newly licensed, with the email address each one gave the state, sorted by county and territory.</p>
-    <div class="cta">
-      <a class="btn" href="mailto:support@licensedigest.com?subject=Send%20it&body=Please%20send%20me%20this%20week%27s%20Florida%20file.%0A%0AAgency%3A%0ATerritory%3A%0A">Send me this week's file</a>
-      <span class="aside">Free, and no card needed. Or email <a href="mailto:support@licensedigest.com?subject=Send%20it">support@licensedigest.com</a> and say &ldquo;send it.&rdquo;</span>
-    </div>
+    <p class="lede">Florida won't issue a contractor license until the contractor signs an affidavit that they carry liability insurance. Every Tuesday you get the people who just applied, before the license is issued, plus the ones newly licensed, each with the email address they gave the state. It all lands on a private page for your territory, where a ready-made note to any of them is one click away.</p>
+    <form class="get" id="get" action="https://d.licensedigest.com/signup" method="post" novalidate>
+      <label class="t" for="get-email">Get this week's list for your territory</label>
+      <div class="row">
+        <input id="get-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your work email" required>
+        <select name="territory" aria-label="Territory">
+          <option value="" selected>Pick a territory</option>
+          <option>South Florida</option>
+          <option>Southwest Florida</option>
+          <option>Tampa Bay</option>
+          <option>Central Florida</option>
+          <option>Northeast Florida</option>
+          <option>Panhandle</option>
+          <option value="Statewide">All of Florida</option>
+        </select>
+        <button type="submit">Send me the link</button>
+      </div>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p class="aside">Free for four weeks, no card. The link comes by email, usually within the hour on weekdays. <a href="https://d.licensedigest.com/demo">See a sample desk first</a>.</p>
+      <p class="msg" role="status" hidden></p>
+    </form>
     <ul class="facts">
       <li>Built from Florida's public licensing records</li>
-      <li>Excel and CSV</li>
+      <li>Works on any computer or phone</li>
       <li>Cancel anytime</li>
     </ul>
   </div>
 </div>
 
-<div class="band" id="file">
-  <div class="in">
-    <p class="kick">This is what lands in your inbox.</p>
-    <div class="xl" role="img" aria-label="The weekly workbook open on its Applications sheet, showing new license applications in Tampa Bay">
-      <div class="xl-top"><b>Excel</b><span class="fn">licensedigest_Tampa_Bay_2026-09-16_to_2026-09-22.xlsx</span></div>
-      <div class="xl-scroll">
-      <table>
-        <tr class="hdr"><th></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr>
-        <tr class="t1"><td class="rn">1</td><td colspan="7">LicenseDigest &middot; Tampa Bay &middot; new license applications</td></tr>
-        <tr class="t2"><td class="rn">2</td><td colspan="7">74 new license applications, newly appearing between the Sep 15 and Sep 23 applicant extracts</td></tr>
-        <tr class="t3"><td class="rn">3</td><td colspan="7">Pre-license: no license number exists yet &middot; Definitions and sources: see the 'About this file' tab</td></tr>
-        <tr class="colhead"><td class="rn">4</td><td>Record type</td><td>Applicant</td><td>Email</td><td>Applying for</td><td>City</td><td>County</td><td>Status</td></tr>
-        <tr class="app"><td class="rn">5</td><td>Application</td><td><span class="blur">Rxxxxx, Dxxxxx</span></td><td><span class="blur">dxxxxxxx@gmail.com</span></td><td>Certified Roofing Contractor</td><td>Lutz</td><td>Hillsborough</td><td>Application on file</td></tr>
-        <tr class="app"><td class="rn">6</td><td>Application</td><td><span class="blur">Mxxxxxxx, Jxxxx</span></td><td><span class="blur">jxxxx.mxxxxxxx@yahoo.com</span></td><td>Certified General Contractor</td><td>New Port Richey</td><td>Pasco</td><td>Application on file</td></tr>
-        <tr class="app"><td class="rn">7</td><td>Application</td><td><span class="blur">Txxxxx, Axxxxx</span></td><td><span class="blur">info@axxxxxxxxxx.com</span></td><td>Certified Specialty Contractor</td><td>Lakeland</td><td>Polk</td><td>Application on file</td></tr>
-        <tr class="app"><td class="rn">8</td><td>Application</td><td><span class="blur">Gxxxxxx, Cxxxx</span></td><td><span class="blur">cxxxxgxxxxxx@gmail.com</span></td><td>Certified Building Contractor</td><td>Tampa</td><td>Hillsborough</td><td>Application on file</td></tr>
-      </table>
-      </div>
-      <div class="xl-tabs"><span class="on">Applications</span><span>License records</span><span>About this file</span></div>
+<div class="band" id="desk">
+  <div class="wide">
+    <p class="kick">This is your desk.</p>
+    <div class="frame big">
+      <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>d.licensedigest.com</span></div>
+      <video id="deskvid" autoplay muted loop playsinline preload="metadata" poster="media/desk-poster.jpg" aria-label="A sample desk: filtering this week's contractors, opening a ready-made note, and ticking a contractor off">
+        <source src="media/desk-loop.webm" type="video/webm">
+        <source src="media/desk-loop.mp4" type="video/mp4">
+      </video>
+      <script>if (window.matchMedia && matchMedia('(max-width: 640px)').matches) { var v = document.getElementById('deskvid'); while (v.firstElementChild) v.removeChild(v.firstElementChild); v.removeAttribute('autoplay'); v.load(); }</script>
     </div>
-    <p class="cap">Real rows from last week's Tampa Bay file, drawn here with the names and emails blurred. The file you get has them. Statewide that week: 333 new applications and 349 new licenses.</p>
+    <div class="phone"><img src="media/desk-phone.jpg" width="390" height="760" alt="The desk on a phone: this week's counts and each contractor as a card with an Email button" loading="lazy"></div>
+    <p class="cap">A sample desk with made-up contractors. Yours shows this week's real list for your territory. <a href="https://d.licensedigest.com/demo">Open the sample desk and click around</a>.</p>
   </div>
 </div>
 
 <div class="in">
   <section>
-    <h2>What's in the file</h2>
+    <h2>How it works</h2>
+    <ol class="steps">
+      <li><span class="n">1</span><b>Tuesday morning, your desk fills up.</b><p>This week's new applications, new licenses and new companies in your territory, with the bigger trades and new companies first.</p></li>
+      <li><span class="n">2</span><b>One click writes the note.</b><p>Click Email next to anyone and a short note opens in your own email program, with your name and agency filled in. Change anything before you send it.</p></li>
+      <li><span class="n">3</span><b>Tick off who you've reached.</b><p>The desk remembers, on any computer or phone. Rather work in a spreadsheet? Download the list for mail merge.</p></li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>What's on every row</h2>
     <ul class="list">
-      <li>An Excel workbook and a CSV every Tuesday. The workbook opens on the applications.</li>
-      <li>New applications with the applicant's name, email address, license type, city and county.</li>
-      <li>New licenses with the business name, email address, license type, city, county and issue date.</li>
-      <li>Everything sorted by territory and county, so you only work your area.</li>
-      <li>Emails are filled in for most rows, straight from the state's licensing records. No phone numbers.</li>
+      <li>The contractor's name, or the new company and the person who qualified it.</li>
+      <li>Trade, city and county.</li>
+      <li>Where they are: applied, newly licensed or a new company, with the date.</li>
+      <li>The email address they gave the state. Most rows have one, straight from the state's licensing records.</li>
+      <li>No phone numbers.</li>
     </ul>
   </section>
 
@@ -187,12 +221,11 @@ footer p{margin:0 0 10px;max-width:none}
     <div class="me">
       <img src="data:image/jpeg;base64,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" alt="Dan Kummer" width="104" height="104">
       <div>
-        <p>I have an engineering background, and I started LicenseDigest because Florida's licensing files are full of useful information that's hard to use in its raw form. Each week I turn them into a list an agency can actually work.</p>
+        <p>I have an engineering background, and I started LicenseDigest because Florida's licensing files are full of useful information that's hard to use in its raw form. Each week I turn them into a desk an agency can actually work from.</p>
         <p class="who">Dan Kummer <span>&middot; Kummer Ventures LLC</span></p>
       </div>
     </div>
   </section>
-
   <section id="plans">
     <h2>Plans</h2>
     <div class="plans">
@@ -212,7 +245,7 @@ footer p{margin:0 0 10px;max-width:none}
       <div class="plan all">
         <div class="name">All of Florida</div>
         <div class="amt">$97<small> / month</small></div>
-        <p class="sub">All six territories in one file. If you want three or more, this is the better deal.</p>
+        <p class="sub">All six territories on one desk. If you want three or more, this is the better deal.</p>
         <a class="btn" href="https://buy.stripe.com/dRm4gz9bm0Tj53G42W7Zu03">Subscribe to all of Florida</a>
       </div>
     </div>
@@ -236,8 +269,12 @@ footer p{margin:0 0 10px;max-width:none}
     <dl>
       <dt>Where does the data come from?</dt>
       <dd><p>From the Florida Department of Business and Professional Regulation's public-records files, which it updates every week. The email addresses come from DBPR's licensing records, which we request under Florida's public records law every week. Nothing is scraped from people-search sites or social media.</p></dd>
+      <dt>Do I need an account or a password?</dt>
+      <dd><p>No. Your desk is a private link that works in any browser, on a computer or a phone. Anyone with the link can open it, so keep it to your agency. If it ever gets out, reply to any LicenseDigest email and I'll switch it off and send you a new one.</p></dd>
+      <dt>Is it OK to email these contractors?</dt>
+      <dd><p>Each ready-made note says who you are, includes your mailing address and gives the contractor an easy way to say no. How you use the list is up to you, including following the federal CAN-SPAM rules for business email. We're not lawyers, so if you're unsure, ask yours.</p></dd>
       <dt>Can't I download this from the state myself?</dt>
-      <dd><p>You can get most of it. The raw files are public: a 45 MB licensee file and an applicant register of over 100,000 rows with no dates on it. The email addresses aren't in those downloads at all; we request them from DBPR every week. What you're paying for is the weekly comparison that finds what's new, the sorting by territory, and the checks that run before anything is sent. If you'd rather do that yourself, you should.</p></dd>
+      <dd><p>You can get most of it. The raw files are public: a 45 MB licensee file and an applicant register of over 100,000 rows with no dates on it. The email addresses aren't in those downloads at all; we request them from DBPR every week. What you're paying for is the weekly comparison that finds what's new, the sorting by territory, the desk, and the checks that run before anything is sent. If you'd rather do that yourself, you should.</p></dd>
       <dt>How do I change territories or cancel?</dt>
       <dd><p>Cancel anytime in the customer portal. The link is at the bottom of every report. Cancellation takes effect at the end of the period you've paid for and isn't pro-rated. To add or change a territory, reply to any report or email <a href="mailto:support@licensedigest.com">support@licensedigest.com</a>, and a person confirms the new total before anything changes.</p></dd>
     </dl>
@@ -245,10 +282,27 @@ footer p{margin:0 0 10px;max-width:none}
 
   <div class="last">
     <h2>See a week before you decide.</h2>
-    <div class="cta" style="margin-top:14px">
-      <a class="btn" href="mailto:support@licensedigest.com?subject=Send%20it&body=Please%20send%20me%20this%20week%27s%20Florida%20file.%0A%0AAgency%3A%0ATerritory%3A%0A">Send me this week's file</a>
-      <span class="aside">Free, and no card needed. Or email <a href="mailto:support@licensedigest.com?subject=Send%20it">support@licensedigest.com</a> and say &ldquo;send it.&rdquo;</span>
-    </div>
+    <form class="get" id="get2" action="https://d.licensedigest.com/signup" method="post" novalidate>
+      <label class="t" for="get2-email">Get this week's list for your territory</label>
+      <div class="row">
+        <input id="get2-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your work email" required>
+        <select name="territory" aria-label="Territory">
+          <option value="" selected>Pick a territory</option>
+          <option>South Florida</option>
+          <option>Southwest Florida</option>
+          <option>Tampa Bay</option>
+          <option>Central Florida</option>
+          <option>Northeast Florida</option>
+          <option>Panhandle</option>
+          <option value="Statewide">All of Florida</option>
+        </select>
+        <button type="submit">Send me the link</button>
+      </div>
+      <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <p class="aside">Free for four weeks, no card. The link comes by email, usually within the hour on weekdays. <a href="https://d.licensedigest.com/demo">See a sample desk first</a>.</p>
+      <p class="msg" role="status" hidden></p>
+    </form>
+    <p class="aside" style="font-size:15px;color:var(--muted);margin-top:12px">Or email <a href="mailto:support@licensedigest.com?subject=Send%20it">support@licensedigest.com</a> and say &ldquo;send it.&rdquo;</p>
   </div>
 
   <footer>
@@ -272,6 +326,32 @@ footer p{margin:0 0 10px;max-width:none}
       links[i].setAttribute('href', href + (href.indexOf('?') === -1 ? '?' : '&') + 'client_reference_id=' + encodeURIComponent(ref));
     }
   }
+})();
+</script>
+<script>
+(function () {
+  // The sign-up forms post to the desk Worker, which queues the request; the hourly job emails the link.
+  var forms = document.querySelectorAll('form.get');
+  for (var i = 0; i < forms.length; i++) (function (f) {
+    var msg = f.querySelector('.msg'), btn = f.querySelector('button'), email = f.querySelector('input[type=email]');
+    function show(cls, text) { msg.className = 'msg ' + cls; msg.textContent = text; msg.hidden = false; }
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var addr = (email.value || '').trim();
+      if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(addr)) { show('err', 'Please enter your email address.'); email.focus(); return; }
+      btn.disabled = true;
+      var body = new URLSearchParams(new FormData(f));
+      var ref = /[?&]ref=([^&#]+)/.exec(location.search); if (ref) body.set('ref', decodeURIComponent(ref[1]));
+      fetch(f.action, { method: 'POST', body: body, credentials: 'omit' }).then(function (r) {
+        if (!r.ok) throw 0;
+        show('ok', 'Thanks. Your link is on its way to ' + addr + '. It usually arrives within the hour on weekdays.');
+        f.querySelector('.row').hidden = true;
+      }).catch(function () {
+        show('err', "That didn't go through. Email support@licensedigest.com and say \u201csend it,\u201d and I'll send your link.");
+        btn.disabled = false;
+      });
+    });
+  })(forms[i]);
 })();
 </script>
 </body>
