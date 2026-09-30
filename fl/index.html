@@ -197,14 +197,19 @@ footer p{margin:0 0 10px;max-width:none}
   for (var i = 0; i < forms.length; i++) (function (f) {
     var msg = f.querySelector('.msg'), btn = f.querySelector('button'), email = f.querySelector('input[type=email]');
     function show(cls, text) { msg.className = 'msg ' + cls; msg.textContent = text; msg.hidden = false; }
+    // D-091: desks go to business addresses only (the desk Worker enforces it; this just answers sooner).
+    var WORK = 'Please use your agency\u2019s email address. If you only use a personal one, write to support@licensedigest.com.';
+    var PERSONAL = /@(gmail|googlemail|yahoo|ymail|rocketmail|hotmail|outlook|live|msn|aol|icloud|me|mac|comcast|att|bellsouth|sbcglobal|verizon|cox|earthlink|proton|protonmail|gmx)\.(com|net|me)$/i;
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var addr = (email.value || '').trim();
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(addr)) { show('err', 'Please enter your email address.'); email.focus(); return; }
+      if (PERSONAL.test(addr)) { show('err', WORK); email.focus(); return; }
       btn.disabled = true;
       var body = new URLSearchParams(new FormData(f));
       var ref = /[?&]ref=([^&#]+)/.exec(location.search); if (ref) body.set('ref', decodeURIComponent(ref[1]));
       fetch(f.action, { method: 'POST', body: body, credentials: 'omit' }).then(function (r) {
+        if (r.status === 422) { show('err', WORK); btn.disabled = false; email.focus(); return; }
         if (!r.ok) throw 0;
         show('ok', 'Thanks. Your link is on its way to ' + addr + '. It usually arrives within the hour on weekdays. If you use Gmail and don\u2019t see it, check the Promotions tab.');
         f.querySelector('.row').hidden = true;
