@@ -204,7 +204,7 @@ footer p{margin:0 0 10px;max-width:none}
     var msg = f.querySelector('.msg'), btn = f.querySelector('button'), email = f.querySelector('input[type=email]');
     function show(cls, text) { msg.className = 'msg ' + cls; msg.textContent = text; msg.hidden = false; }
     // D-091: desks go to business addresses only (the desk Worker enforces it; this just answers sooner).
-    var WORK = 'Please use your agency\u2019s email address. If you only use a personal one, write to support@licensedigest.com.';
+    var WORK = 'Please use your agency\u2019s email address, or the one on your Florida insurance license. If neither works, write to support@licensedigest.com.';
     var PERSONAL = /@(gmail|googlemail|yahoo|ymail|rocketmail|hotmail|outlook|live|msn|aol|icloud|me|mac|comcast|att|bellsouth|sbcglobal|verizon|cox|earthlink|proton|protonmail|gmx)\.(com|net|me)$/i;
     f.addEventListener('submit', function (e) {
       e.preventDefault();
