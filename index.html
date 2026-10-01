@@ -53,6 +53,11 @@ p{margin:0 0 16px;max-width:62ch}
 /* hero */
 .hero{padding:42px 0 40px}
 .lede{font-size:clamp(18px,2.2vw,20px);color:var(--text);max-width:56ch}
+.for{font-size:15.5px;font-weight:700;color:var(--teal);margin:0 0 14px;letter-spacing:.01em}
+.demo{margin:16px 0 0}
+.btn2{display:inline-block;border:2px solid var(--teal);color:var(--teal);background:transparent;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:4px;font-size:16px}
+.btn2:hover{background:var(--teal-soft)}
+.btn2:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
 .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:28px 0 0}
 .btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:4px;font-size:16.5px}
 .btn:hover{background:var(--teal-dark)}
@@ -157,6 +162,7 @@ footer p{margin:0 0 10px;max-width:none}
   </div>
 
   <div class="hero hero2"><div class="hero-main">
+    <p class="for">For Florida insurance agencies that write contractors</p>
     <h1>Florida contractors who just applied for a license. Every Tuesday.</h1>
     <p class="lede">Florida won't issue a contractor license until the contractor signs an affidavit that they carry liability insurance. Every Tuesday you get the people who just applied, before the license is issued, plus the ones newly licensed. Most come with an email address and a phone number, all from the state's licensing records. It all lands on a private page for your territory, where a ready-made note to any of them is one click away.</p>
     <form class="get" id="get" action="https://d.licensedigest.com/signup" method="post" novalidate>
@@ -176,7 +182,8 @@ footer p{margin:0 0 10px;max-width:none}
         <button type="submit">Send me the link</button>
       </div>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
-      <p class="aside">Free for two weeks, no card. The link comes by email, usually within the hour on weekdays. <a href="https://d.licensedigest.com/demo">See a sample desk first</a>.</p>
+      <p class="aside">Free for two weeks, no card. The link comes by email, usually within the hour on weekdays.</p>
+      <p class="demo"><a class="btn2" href="https://d.licensedigest.com/demo">See a sample desk first</a></p>
       <p class="msg" role="status" hidden></p>
     </form>
     <ul class="facts">
@@ -188,7 +195,7 @@ footer p{margin:0 0 10px;max-width:none}
 <p class="wk-n"><b>594</b> new contractors in Florida</p>
 <p class="wk-s">290 applied, 161 newly licensed, 143 new companies</p>
 <p class="wk-n"><b>623</b> workers&#x27; comp policies renewing in about three months</p>
-<p class="wk-s">with the insurance company and agency on each</p>
+<p class="wk-s">with the insurance company on each and the agency on nearly all</p>
 <p class="wk-f">From Florida&#x27;s public records. New counts every Tuesday.</p></aside><script>(function(){var w=document.getElementById("wk");if(!w)return;var d=Date.now()-Date.parse(w.getAttribute("data-asof")+"T12:00:00Z");if(d>-864e5&&d<=8*864e5){w.hidden=false;document.documentElement.classList.add("has-wk")}})();</script><!-- /week-counts --></div>
 </div>
 
@@ -212,7 +219,7 @@ footer p{margin:0 0 10px;max-width:none}
   <section>
     <h2>How it works</h2>
     <ol class="steps">
-      <li><span class="n">1</span><b>Tuesday morning, your desk fills up.</b><p>This week's new applications, new licenses and new companies in your territory, with the bigger trades and new companies first.</p></li>
+      <li><span class="n">1</span><b>Tuesday morning, your desk fills up.</b><p>This week's new applications, new licenses, new companies and comp renewals in your territory, with ten to start on at the top.</p></li>
       <li><span class="n">2</span><b>One click writes the note.</b><p>Click Email next to anyone and a short note opens in your own email program, with your name and agency filled in. Change anything before you send it.</p></li>
       <li><span class="n">3</span><b>Check off who you've reached.</b><p>The desk remembers, on any computer or phone. Rather work in a spreadsheet? Download the list for mail merge.</p></li>
     </ol>
@@ -224,8 +231,9 @@ footer p{margin:0 0 10px;max-width:none}
       <li>The contractor's name, or the new company and the person who qualified it.</li>
       <li>Trade, city and county.</li>
       <li>Where they are: applied, newly licensed or a new company, with the date.</li>
-      <li>The email address they gave the state. Most rows have one, straight from the state's licensing records.</li>
+      <li>The email address they gave the state. Most new contractors have one, straight from the state's licensing records.</li>
       <li>A phone number when the state's records have one, after we check it against Florida's Do Not Call list. Numbers on that list are left out.</li>
+      <li>For a comp renewal: the date the policy ends, the insurance company, the agency when one is on file, and the business's phone number when the state has one.</li>
     </ul>
   </section>
 
@@ -311,7 +319,8 @@ footer p{margin:0 0 10px;max-width:none}
         <button type="submit">Send me the link</button>
       </div>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
-      <p class="aside">Free for two weeks, no card. The link comes by email, usually within the hour on weekdays. <a href="https://d.licensedigest.com/demo">See a sample desk first</a>.</p>
+      <p class="aside">Free for two weeks, no card. The link comes by email, usually within the hour on weekdays.</p>
+      <p class="demo"><a class="btn2" href="https://d.licensedigest.com/demo">See a sample desk first</a></p>
       <p class="msg" role="status" hidden></p>
     </form>
     <p class="aside" style="font-size:15px;color:var(--muted);margin-top:12px">Or email <a href="mailto:support@licensedigest.com?subject=Send%20it">support@licensedigest.com</a> and say &ldquo;send it.&rdquo;</p>
