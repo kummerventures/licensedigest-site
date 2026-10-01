@@ -140,16 +140,23 @@ dd p{margin:0}
 .last{text-align:left;padding:56px 0 0}
 footer{margin-top:64px;border-top:1px solid var(--line);padding:22px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
 footer p{margin:0 0 10px;max-width:none}
+.wk[hidden]{display:none}
+.has-wk .in-top{max-width:1120px}.has-wk .hero2{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start}
+.wk{margin-top:10px;border:2px solid var(--stamp);outline:1px solid var(--stamp);outline-offset:3px;padding:18px 20px;color:var(--ink)}
+.wk p{margin:0;max-width:none}.wk-h{color:var(--stamp);font-weight:800;font-stretch:90%;font-size:15px;margin-bottom:12px!important}
+.wk-n{font-size:15px;line-height:1.3;margin-top:10px!important}.wk-n b{display:block;font-size:44px;font-stretch:80%;font-weight:800;line-height:1}
+.wk-s{font-size:13.5px;color:var(--muted)}.wk-f{font-size:12.5px;color:var(--muted);margin-top:14px!important;padding-top:10px;border-top:1px solid var(--line)}
+@media (max-width:900px){.has-wk .hero2{grid-template-columns:1fr;gap:24px}}
 </style>
 </head>
 <body>
-<div class="in">
+<div class="in in-top">
   <div class="bar">
     <a class="logo" href="/">License<span>Digest</span></a>
     <nav><a href="#desk">The desk</a><a href="/fl/">Counties</a><a href="#plans">Plans</a></nav>
   </div>
 
-  <div class="hero">
+  <div class="hero hero2"><div class="hero-main">
     <h1>Florida contractors who just applied for a license. Every Tuesday.</h1>
     <p class="lede">Florida won't issue a contractor license until the contractor signs an affidavit that they carry liability insurance. Every Tuesday you get the people who just applied, before the license is issued, plus the ones newly licensed. Most come with an email address and a phone number, all from the state's licensing records. It all lands on a private page for your territory, where a ready-made note to any of them is one click away.</p>
     <form class="get" id="get" action="https://d.licensedigest.com/signup" method="post" novalidate>
@@ -177,7 +184,7 @@ footer p{margin:0 0 10px;max-width:none}
       <li>Works on any computer or phone</li>
       <li>Cancel anytime</li>
     </ul>
-  </div>
+  </div><!-- week-counts --><!-- /week-counts --></div>
 </div>
 
 <div class="band" id="desk">
