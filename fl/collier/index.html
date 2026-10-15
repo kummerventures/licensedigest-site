@@ -35,37 +35,48 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--page);color:var(--text);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--page);color:var(--text);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
 .in{max-width:760px;margin:0 auto;padding:0 20px}
+.page{max-width:1120px;margin:0 auto;padding:0 20px}
+.col,.page>footer{max-width:760px}
 a{color:var(--teal-dark)}
-h1,h2,.logo{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;color:var(--ink)}
+h1,h2,h3,.logo{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;color:var(--ink)}
 h1{font-size:clamp(36px,6vw,58px);line-height:1.02;letter-spacing:-.005em;font-weight:800;margin:0 0 22px;max-width:18ch;text-wrap:balance}
 h2{font-size:clamp(25px,3.4vw,32px);line-height:1.12;font-weight:800;margin:0 0 14px;text-wrap:balance}
 p{margin:0 0 16px;max-width:62ch}
 
 /* top */
-.bar{display:flex;justify-content:space-between;align-items:center;padding:18px 0 14px;border-bottom:2px solid var(--ink)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:2px solid var(--ink)}
 .logo{font-weight:800;font-size:23px;text-decoration:none;letter-spacing:.005em}
 .logo span{color:inherit}
 .bar nav{display:flex;gap:20px;font-size:15px}
 .bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
 .bar nav a:hover{color:var(--ink)}
+@media (max-width:420px){.bar nav{gap:14px;font-size:14px}.bar nav a[href="/fl/"]{display:none}}
 
 /* hero */
-.hero{padding:42px 0 40px}
+.hero{padding:42px 0 8px}
 .lede{font-size:clamp(18px,2.2vw,20px);color:var(--text);max-width:56ch}
 .for{font-size:15.5px;font-weight:700;color:var(--teal);margin:0 0 14px;letter-spacing:.01em}
-.demo{margin:16px 0 0}
+@media (min-width:980px){
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:56px;align-items:start}
+  .hero .sample{margin-top:8px}
+}
+.btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:4px;font-size:16.5px;border:2px solid var(--teal)}
+.btn:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
 .btn2{display:inline-block;border:2px solid var(--teal);color:var(--teal);background:transparent;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:4px;font-size:16px}
 .btn2:hover{background:var(--teal-soft)}
-.btn2:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
 .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:28px 0 0}
-.btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:4px;font-size:16.5px}
-.btn:hover{background:var(--teal-dark)}
 .cta .aside{font-size:15px;color:var(--muted)}
-.btn:focus-visible,.pick a:focus-visible,.bar nav a:focus-visible,.get input:focus-visible,.get select:focus-visible,.get button:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
-.facts{display:flex;flex-wrap:wrap;gap:6px 22px;margin:30px 0 0;padding:0;list-style:none;font-size:14.5px;color:var(--muted)}
-.facts li{display:flex;align-items:center;gap:8px;padding-left:10px;border-left:2px solid var(--line)}
+.btn:focus-visible,.btn2:focus-visible,.pick a:focus-visible,.bar nav a:focus-visible,.get input:focus-visible,.get select:focus-visible,.get button:focus-visible,.plan select:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
+
+/* the free sample (home page); the county pages put the same form in their own box */
+.sample{background:var(--band);border:1px solid var(--line);border-top:2px solid var(--ink);padding:20px 20px 18px}
+.sample h2{font-size:26px;margin:0 0 6px}
+.sample .line{font-size:16px;color:var(--text);margin:0 0 14px;max-width:none}
+.sample .get{margin:0;max-width:none}
+.hero .sample .get input,.hero .sample .get select,.hero .sample .get button{flex:1 1 100%}
 
 /* the sign-up form */
 .get{margin:28px 0 0;max-width:640px}
@@ -73,7 +84,7 @@ p{margin:0 0 16px;max-width:62ch}
 .get .row{display:flex;flex-wrap:wrap;gap:10px}
 .get input,.get select{height:50px;border:1px solid #AAB4AC;border-radius:3px;background:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 14px}
 .get input{flex:1 1 240px;min-width:0}
-.get select{flex:0 1 200px;appearance:none;-webkit-appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235E6675' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.get select,.plan select{flex:0 1 200px;appearance:none;-webkit-appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235E6675' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
 .get button{height:50px;border:0;border-radius:4px;background:var(--teal);color:var(--on-teal);font:inherit;font-weight:700;font-size:16.5px;padding:0 22px;cursor:pointer;flex:0 0 auto}
 .get button:hover{background:var(--teal-dark)}
 .get button[disabled]{opacity:.6;cursor:default}
@@ -84,10 +95,28 @@ p{margin:0 0 16px;max-width:62ch}
 .get .msg.err{background:#FBEFE3;color:#7A4110}
 @media (max-width:560px){.get select,.get button{flex:1 1 100%}}
 
+/* sections */
+section{padding:56px 0 0}
+.nw{white-space:nowrap}
+.honest{font-size:15.5px;color:var(--text);margin:16px 0 0;padding-left:14px;border-left:3px solid var(--stamp)}
+
+/* where we have GL dates: the county register, stamped with its date */
+.cov{margin:22px 4px 0;max-width:500px;border:2px solid var(--stamp);outline:1px solid var(--stamp);outline-offset:3px;padding:4px 20px 6px;color:var(--ink)}
+.cov table{width:100%;border-collapse:collapse}
+.cov th,.cov td{padding:10px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:baseline}
+.cov thead th{font-size:13.5px;font-weight:600;color:var(--stamp);padding:10px 0 8px;border-bottom:1px solid var(--stamp)}
+.cov tbody th{font-weight:600;font-size:17px;color:var(--ink)}
+.cov .n{text-align:right}
+.cov tbody td{font-stretch:80%;font-weight:800;font-size:30px;line-height:1;color:var(--ink)}
+.cov tr.all th,.cov tr.all td{border-top:2px solid var(--ink);border-bottom:0;padding-top:12px}
+.cov tbody tr:nth-last-child(2) th,.cov tbody tr:nth-last-child(2) td{border-bottom:0}
+
 /* the desk band */
-.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px}
+.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px;margin-top:56px}
 .band .kick{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;font-size:28px;font-weight:800;color:var(--ink);margin:0 0 16px}
-.wide{max-width:1040px;margin:0 auto;padding:0 20px}
+.band .txt{max-width:720px;margin:0 0 24px}
+.band .txt p{margin:0}
+.wide{max-width:1120px;margin:0 auto;padding:0 20px}
 .frame{border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;overflow:hidden;background:#fff}
 .frame .chrome{display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
 .frame .chrome i{display:none}
@@ -95,20 +124,16 @@ p{margin:0 0 16px;max-width:62ch}
 .frame video,.frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#EDF0EC}
 .phone{display:none;max-width:300px;margin:0 auto;border:8px solid var(--ink);border-radius:30px;overflow:hidden;background:#fff}
 .phone img{display:block;width:100%;height:auto}
-@media (max-width:640px){.frame.big{display:none}.phone{display:block}.band .kick{text-align:center}.band .cap{text-align:center}}
-@media (max-width:420px){.bar nav{gap:14px;font-size:14px}.bar nav a[href="/fl/"]{display:none}}
+@media (max-width:640px){.frame.big{display:none}.phone{display:block}.band .cap{text-align:center}}
 .band .cap{font-size:15px;color:var(--muted);margin:14px 0 0;max-width:none}
 .band .cap a{font-weight:600}
 
-/* how it works */
+/* how it works: a real sequence, so numbered with the stamp */
 .steps{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;padding:18px 0;border-bottom:1px solid var(--line)}
-.steps .n{grid-row:span 2;display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:2px;border:2px solid var(--stamp);color:var(--stamp);font-weight:800;font-size:16px;font-stretch:85%}
-.steps b{color:var(--ink);font-size:17.5px;line-height:1.35;padding-top:5px}
-.steps p{margin:0;font-size:16px;color:var(--text)}
+.steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
+.steps .n{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:2px;border:2px solid var(--stamp);color:var(--stamp);font-weight:800;font-size:16px;font-stretch:85%}
+.steps p{margin:0;padding-top:3px;font-size:17.5px;line-height:1.45;color:var(--ink)}
 
-/* sections */
-section{padding:56px 0 0}
 .list{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
 .list li{padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative}
 .list li::before{content:"";position:absolute;left:6px;top:22px;width:8px;height:8px;background:var(--teal)}
@@ -120,23 +145,26 @@ section{padding:56px 0 0}
 .me .who span{font-weight:400;color:var(--muted);font-size:14.5px}
 @media (max-width:560px){.me{flex-direction:column;align-items:flex-start}}
 
-.plans{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media (max-width:640px){.plans{grid-template-columns:1fr}}
-.plan{border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;padding:22px;background:var(--page)}
+/* plans */
+.plans{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:680px){.plans{grid-template-columns:1fr 1fr}}
+@media (min-width:1060px){.plans{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.plan{display:flex;flex-direction:column;border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;padding:22px;background:var(--page)}
 .plan.all{border:2px solid var(--teal)}
-.plan .name{font-weight:700;color:var(--ink);font-size:16px}
-.plan .amt{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;font-weight:800;color:var(--ink);font-size:42px;line-height:1.05;margin:6px 0 2px}
+.plan h3{font-stretch:100%;font-weight:700;font-size:16px;margin:0}
+.plan .amt{font-stretch:80%;font-weight:800;color:var(--ink);font-size:42px;line-height:1.05;margin:6px 0 2px}
 .plan .amt small{font-stretch:100%;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:0}
+.plan .bill{font-size:15px;color:var(--text);margin:0 0 12px}
 .plan .sub{font-size:14.5px;color:var(--muted);margin:0 0 16px}
-.pick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.pick a{font-size:14px;padding:9px 8px;border:1.5px solid var(--teal);border-radius:3px;text-decoration:none;color:var(--teal-dark);font-weight:600;text-align:center}
-.pick a:hover{background:var(--teal-soft)}
-.plan.all .btn{display:block;text-align:center}
-.plannote{font-size:14px;color:var(--muted);margin:14px 0 0}
-.yearly{margin:18px 0 0;border:1px solid var(--line);border-radius:0;padding:18px 22px;background:var(--band)}
-.yearly p{font-size:15px;margin:0 0 12px;max-width:none}
-.yearly .pick{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
-.yearly .pick a{background:var(--page)}
+.plan select{display:none;flex:none;width:100%;height:46px;border:1px solid #AAB4AC;border-radius:3px;background-color:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 38px 0 12px;margin:0 0 12px}
+.js .plan select{display:block}
+.plan .go{margin-top:auto;display:grid;gap:8px}
+.plan .go a{display:block;text-align:center;padding:11px 14px;font-size:16px}
+.founding{margin:0 0 16px;padding:14px;background:var(--teal-soft);border-left:3px solid var(--teal)}
+.founding[hidden]{display:none}
+.founding p{font-size:14.5px;color:var(--ink);margin:0 0 10px;max-width:none}
+.founding a{display:block;text-align:center;padding:11px 14px;font-size:16px}
+.plannote{font-size:15px;color:var(--muted);margin:16px 0 0}
 
 dl{margin:0;border-top:2px solid var(--ink)}
 dt{font-weight:700;color:var(--ink);padding-top:16px}
@@ -146,13 +174,6 @@ dd p{margin:0}
 .last{text-align:left;padding:56px 0 0}
 footer{margin-top:64px;border-top:1px solid var(--line);padding:22px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
 footer p{margin:0 0 10px;max-width:none}
-.wk[hidden]{display:none}
-.has-wk .in-top{max-width:1120px}.has-wk .hero2{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:56px;align-items:start}
-.wk{margin-top:10px;border:2px solid var(--stamp);outline:1px solid var(--stamp);outline-offset:3px;padding:18px 20px;color:var(--ink)}
-.wk p{margin:0;max-width:none}.wk-h{color:var(--stamp);font-weight:800;font-stretch:90%;font-size:15px;margin-bottom:12px!important}
-.wk-n{font-size:15px;line-height:1.3;margin-top:10px!important}.wk-n b{display:block;font-size:44px;font-stretch:80%;font-weight:800;line-height:1}
-.wk-s{font-size:13.5px;color:var(--muted)}.wk-f{font-size:12.5px;color:var(--muted);margin-top:14px!important;padding-top:10px;border-top:1px solid var(--line)}
-@media (max-width:900px){.has-wk .hero2{grid-template-columns:1fr;gap:24px}}
 </style>
 <style>
 .cp h1{font-size:clamp(30px,5vw,44px);max-width:22ch}
@@ -187,16 +208,16 @@ footer p{margin:0 0 10px;max-width:none}
     <div class="tbl"><table><tr><th>Week</th><th class="n">Applications</th><th class="n">New licenses</th></tr><tr><td>Oct 6 to 12, 2026</td><td class="n">5</td><td class="n">3</td></tr><tr><td>Sep 29 to Oct 5, 2026</td><td class="n">10</td><td class="n">5</td></tr><tr><td>Sep 22 to 28, 2026</td><td class="n">3</td><td class="n">9</td></tr><tr><td>Sep 16 to 22, 2026</td><td class="n">7</td><td class="n">11</td></tr></table></div>
   </section>
   <div class="box">
-    <p>These are counts. Your LicenseDigest desk has the names, what each contractor applied for or was licensed as, the city and, for most of them, the email address they gave the state, for Collier County and the rest of the Southwest Florida territory.</p>
+    <p>These are counts. The names, and for most of them the email address they gave the state, are on the desk that comes with our region and all-of-Florida plans. Our weekly list is Florida contractors whose general liability date on file with the county is coming up. Try a free sample for your area.</p>
     <form class="get" id="get-southwest-florida" action="https://desk.licensedigest.com/signup" method="post" novalidate>
-      <label class="t" for="get-southwest-florida-email">Get this week&#x27;s list for your territory</label>
+      <label class="t" for="get-southwest-florida-email">Get a free sample</label>
       <div class="row">
         <input id="get-southwest-florida-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="Your work email" required>
-        <select name="territory" aria-label="Territory"><option value="">Pick a territory</option><option value="South Florida">South Florida</option><option value="Southwest Florida" selected>Southwest Florida</option><option value="Tampa Bay">Tampa Bay</option><option value="Central Florida">Central Florida</option><option value="Northeast Florida">Northeast Florida</option><option value="Panhandle">Panhandle</option><option value="Statewide">All of Florida</option></select>
-        <button type="submit">Send me the link</button>
+        <select name="territory" aria-label="Area"><option value="">Pick your area</option><option value="South Florida">South Florida</option><option value="Northeast Florida">Northeast Florida</option><option value="Central Florida">Central Florida</option><option value="Tampa Bay">Tampa Bay</option><option value="Southwest Florida" selected>Southwest Florida</option><option value="Statewide">All of Florida</option></select>
+        <button type="submit">Send me the sample</button>
       </div>
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
-      <p class="aside">Free for two weeks, no card. <a href="https://desk.licensedigest.com/demo">See a sample desk first</a>.</p>
+      <p class="aside">25 contractors from your area whose GL date on file is in the next 30 days. Free, no card. <a href="/#plans">See the plans</a>.</p>
       <p class="msg" role="status" hidden></p>
     </form>
   </div>
@@ -204,18 +225,19 @@ footer p{margin:0 0 10px;max-width:none}
   <p class="links"><a href="/fl/">All Florida counties</a><a href="/">How LicenseDigest works</a></p>
   <footer>
     <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, 5366 Central Florida Pkwy #158, Orlando, FL 32821. <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a></p>
-    <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), the State of Florida, or any government agency. Source records are public records published by DBPR under Chapter 119, Florida Statutes; DBPR does not review, approve, or endorse this product.</p>
-    <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Phone numbers appear only on the desk, and only after screening against Florida's Do Not Call list; they are not screened against the National Do Not Call Registry.</p>
+    <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), any Florida county, the State of Florida, or any government agency. Source records are public records published by DBPR and by Florida counties under Chapter 119, Florida Statutes; neither DBPR nor any county reviews, approves, or endorses this product.</p>
+    <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Phone numbers appear only after screening against Florida's Do Not Call list; they are not screened against the National Do Not Call Registry.</p>
   </footer>
 </div>
 <script>
 (function () {
-  // The sign-up forms post to the desk Worker, which queues the request; the hourly job emails the link.
+  // The sign-up forms post to the desk Worker, which queues the request; the hourly job emails the free sample (D-212).
   var forms = document.querySelectorAll('form.get');
   for (var i = 0; i < forms.length; i++) (function (f) {
     var msg = f.querySelector('.msg'), btn = f.querySelector('button'), email = f.querySelector('input[type=email]');
+    var area = f.querySelector('select[name=territory]');
     function show(cls, text) { msg.className = 'msg ' + cls; msg.textContent = text; msg.hidden = false; }
-    // D-091: desks go to business addresses only (the desk Worker enforces it; this just answers sooner).
+    // D-091: sign-ups go to business addresses only (the desk Worker enforces it; this just answers sooner).
     var WORK = 'Please use your agency\u2019s email address, or the one on your Florida insurance license. If neither works, write to support@licensedigest.com.';
     var PERSONAL = /@(gmail|googlemail|yahoo|ymail|rocketmail|hotmail|outlook|live|msn|aol|icloud|me|mac|comcast|att|bellsouth|sbcglobal|verizon|cox|earthlink|proton|protonmail|gmx)\.(com|net|me)$/i;
     f.addEventListener('submit', function (e) {
@@ -223,16 +245,17 @@ footer p{margin:0 0 10px;max-width:none}
       var addr = (email.value || '').trim();
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(addr)) { show('err', 'Please enter your email address.'); email.focus(); return; }
       if (PERSONAL.test(addr)) { show('err', WORK); email.focus(); return; }
+      if (area && !area.value) { show('err', 'Please pick your area.'); area.focus(); return; }
       btn.disabled = true;
       var body = new URLSearchParams(new FormData(f));
       var ref = /[?&]ref=([^&#]+)/.exec(location.search); if (ref) body.set('ref', decodeURIComponent(ref[1]));
       fetch(f.action, { method: 'POST', body: body, credentials: 'omit' }).then(function (r) {
         if (r.status === 422) { show('err', WORK); btn.disabled = false; email.focus(); return; }
         if (!r.ok) throw 0;
-        show('ok', 'Thanks. Your link is on its way to ' + addr + '. It usually arrives within the hour on weekdays. If you use Gmail and don\u2019t see it, check the Promotions tab.');
+        show('ok', 'Thanks. Your sample is on its way to ' + addr + '. It usually comes within a few hours. If you use Gmail and don\u2019t see it, check the Promotions tab.');
         f.querySelector('.row').hidden = true;
       }).catch(function () {
-        show('err', "That didn't go through. Email support@licensedigest.com and say \u201csend it,\u201d and I'll send your link.");
+        show('err', "That didn't go through. Email support@licensedigest.com with your area, and I'll send your sample.");
         btn.disabled = false;
       });
     });
