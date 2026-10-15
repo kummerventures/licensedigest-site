@@ -223,8 +223,8 @@ footer p{margin:0 0 10px;max-width:none}
       <table>
         <thead><tr><th scope="col">Area</th><th scope="col" class="n">Next 90 days</th></tr></thead>
         <tbody>
-          <tr><th scope="row">South Florida</th><td class="n" data-cov="South Florida">1,903</td></tr>
-          <tr><th scope="row">Northeast Florida</th><td class="n" data-cov="Northeast Florida">596</td></tr>
+          <tr><th scope="row">South Florida</th><td class="n" data-cov="South Florida">1,768</td></tr>
+          <tr><th scope="row">Northeast Florida</th><td class="n" data-cov="Northeast Florida">595</td></tr>
           <tr><th scope="row">Central Florida</th><td class="n" data-cov="Central Florida">589</td></tr>
           <tr><th scope="row">Tampa Bay</th><td class="n" data-cov="Tampa Bay">240</td></tr>
           <tr><th scope="row">Southwest Florida</th><td class="n" data-cov="Southwest Florida">101</td></tr>
@@ -403,20 +403,20 @@ footer p{margin:0 0 10px;max-width:none}
   // D-212: the plan buttons' Stripe Payment Links, by Stripe lookup key. This is the one place to fill them in.
   // "#plans" means the link isn't live yet: that button keeps the email link it has in the page.
   var PLAN_LINKS = {
-    fl_gl_county_quarterly: "#plans",
-    fl_gl_county_annual: "#plans",
-    fl_gl_south_quarterly: "#plans",
-    fl_gl_south_annual: "#plans",
-    fl_gl_northeast_quarterly: "#plans",
-    fl_gl_northeast_annual: "#plans",
-    fl_gl_central_quarterly: "#plans",
-    fl_gl_central_annual: "#plans",
-    fl_gl_tampa_bay_quarterly: "#plans",
-    fl_gl_tampa_bay_annual: "#plans",
-    fl_gl_southwest_quarterly: "#plans",
-    fl_gl_southwest_annual: "#plans",
-    fl_gl_statewide_quarterly: "#plans",
-    fl_gl_statewide_annual: "#plans"
+    fl_gl_county_quarterly: "https://buy.stripe.com/bJe00j5Za7hHbs442W7Zu0r",
+    fl_gl_county_annual: "https://buy.stripe.com/28E00jfzKcC1bs45707Zu0s",
+    fl_gl_south_quarterly: "https://buy.stripe.com/fZucN5gDObxX8fSdDw7Zu0t",
+    fl_gl_south_annual: "https://buy.stripe.com/7sY14n1IU9pP1Ruark7Zu0u",
+    fl_gl_northeast_quarterly: "https://buy.stripe.com/cNicN50EQ0Tj0Nq42W7Zu0v",
+    fl_gl_northeast_annual: "https://buy.stripe.com/7sYcN5drCgShao01UO7Zu0w",
+    fl_gl_central_quarterly: "https://buy.stripe.com/aFa6oHgDOdG567K9ng7Zu0x",
+    fl_gl_central_annual: "https://buy.stripe.com/cNi4gz1IU31r67K1UO7Zu0y",
+    fl_gl_tampa_bay_quarterly: "https://buy.stripe.com/28E9AT73eatT67K1UO7Zu0z",
+    fl_gl_tampa_bay_annual: "https://buy.stripe.com/aFafZhgDO0TjfIk7f87Zu0A",
+    fl_gl_southwest_quarterly: "https://buy.stripe.com/3cI4gz4V6dG5ao08jc7Zu0B",
+    fl_gl_southwest_annual: "https://buy.stripe.com/fZueVd5ZaeK9fIk6b47Zu0C",
+    fl_gl_statewide_quarterly: "https://buy.stripe.com/6oUbJ14V60Tjao05707Zu0D",
+    fl_gl_statewide_annual: "https://buy.stripe.com/6oU4gz1IU31rao09ng7Zu0E"
   };
   // Prospecting email links carry ?ref=<org key>. Forward it to every Stripe Payment Link as
   // client_reference_id so a purchase can be attributed to the organisation that was contacted.
