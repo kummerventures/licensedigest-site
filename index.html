@@ -148,7 +148,7 @@ section{padding:56px 0 0}
 /* plans */
 .plans{display:grid;grid-template-columns:1fr;gap:16px}
 @media (min-width:680px){.plans{grid-template-columns:1fr 1fr}}
-@media (min-width:1060px){.plans{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media (min-width:1060px){.plans{grid-template-columns:repeat(3,minmax(0,1fr))}}
 .plan{display:flex;flex-direction:column;border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;padding:22px;background:var(--page)}
 .plan.all{border:2px solid var(--teal)}
 .plan h3{font-stretch:100%;font-weight:700;font-size:16px;margin:0}
@@ -305,29 +305,17 @@ footer p{margin:0 0 10px;max-width:none}
         <h3>One region</h3>
         <p class="amt">$199<small> a month,</small></p>
         <p class="bill">billed every three months ($597), or $1,990 a year.</p>
-        <p class="sub">South Florida, Northeast Florida or Central Florida, with the region's desk.</p>
+        <p class="sub">South Florida, Northeast Florida, Central Florida, Tampa Bay or Southwest Florida, with the region's desk.</p>
         <select aria-label="Region">
           <option value="south">South Florida</option>
           <option value="northeast">Northeast Florida</option>
           <option value="central">Central Florida</option>
-        </select>
-        <div class="go">
-          <a class="btn" data-plan="fl_gl_{area}_quarterly" href="mailto:dan@licensedigest.com?subject=One%20region%20plan%2C%20every%20three%20months">Every three months</a>
-          <a class="btn2" data-plan="fl_gl_{area}_annual" href="mailto:dan@licensedigest.com?subject=One%20region%20plan%2C%20yearly">Yearly</a>
-        </div>
-      </div>
-      <div class="plan">
-        <h3>Tampa Bay or Southwest Florida</h3>
-        <p class="amt">$99<small> a month,</small></p>
-        <p class="bill">billed every three months ($297), or $990 a year.</p>
-        <p class="sub">These regions are thinner for now, so they're priced like a county. The region's desk comes with it.</p>
-        <select aria-label="Region">
           <option value="tampa_bay">Tampa Bay</option>
           <option value="southwest">Southwest Florida</option>
         </select>
         <div class="go">
-          <a class="btn" data-plan="fl_gl_{area}_quarterly" href="mailto:dan@licensedigest.com?subject=Tampa%20Bay%20or%20Southwest%20Florida%20plan%2C%20every%20three%20months">Every three months</a>
-          <a class="btn2" data-plan="fl_gl_{area}_annual" href="mailto:dan@licensedigest.com?subject=Tampa%20Bay%20or%20Southwest%20Florida%20plan%2C%20yearly">Yearly</a>
+          <a class="btn" data-plan="fl_gl_{area}_quarterly" href="mailto:dan@licensedigest.com?subject=One%20region%20plan%2C%20every%20three%20months">Every three months</a>
+          <a class="btn2" data-plan="fl_gl_{area}_annual" href="mailto:dan@licensedigest.com?subject=One%20region%20plan%2C%20yearly">Yearly</a>
         </div>
       </div>
       <div class="plan all">
@@ -411,10 +399,10 @@ footer p{margin:0 0 10px;max-width:none}
     fl_gl_northeast_annual: "https://buy.stripe.com/7sYcN5drCgShao01UO7Zu0w",
     fl_gl_central_quarterly: "https://buy.stripe.com/aFa6oHgDOdG567K9ng7Zu0x",
     fl_gl_central_annual: "https://buy.stripe.com/cNi4gz1IU31r67K1UO7Zu0y",
-    fl_gl_tampa_bay_quarterly: "https://buy.stripe.com/28E9AT73eatT67K1UO7Zu0z",
-    fl_gl_tampa_bay_annual: "https://buy.stripe.com/aFafZhgDO0TjfIk7f87Zu0A",
-    fl_gl_southwest_quarterly: "https://buy.stripe.com/3cI4gz4V6dG5ao08jc7Zu0B",
-    fl_gl_southwest_annual: "https://buy.stripe.com/fZueVd5ZaeK9fIk6b47Zu0C",
+    fl_gl_tampa_bay_quarterly: "https://buy.stripe.com/cNidR9evG0Tj53Gczs7Zu0F",
+    fl_gl_tampa_bay_annual: "https://buy.stripe.com/fZu28revG59zbs4bvo7Zu0G",
+    fl_gl_southwest_quarterly: "https://buy.stripe.com/28EaEXbjudG50Nq2YS7Zu0H",
+    fl_gl_southwest_annual: "https://buy.stripe.com/bJe8wP73eeK9eEg2YS7Zu0I",
     fl_gl_statewide_quarterly: "https://buy.stripe.com/6oUbJ14V60Tjao05707Zu0D",
     fl_gl_statewide_annual: "https://buy.stripe.com/6oU4gz1IU31rao09ng7Zu0E"
   };
