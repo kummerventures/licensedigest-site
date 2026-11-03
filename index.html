@@ -11,11 +11,12 @@
 <meta property="og:description" content="Florida contractors whose general liability date on file with the county falls in the next 90 days, by area, for insurance agencies.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E6B6B'/%3E%3Cpath d='M10 8h4v12h8v4H10z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&display=swap">
 <script>document.documentElement.className += " js";</script>
 <style>
 :root{
-  /* D-105 look v1: form-stock ground, printed ink, ballpoint blue for actions, violet dater stamp */
+  /* D-105 look v1, kept: form-stock ground, printed ink, ballpoint blue for actions, violet dater stamp. D-259: wider grid, record card, custom files band */
   --page:#FFFFFF; --band:#EDF0EC; --ink:#1A2230; --text:#2B3440; --muted:#5A6472; --line:#C9D1CA;
   --teal:#243F8F; --teal-dark:#1A2F6E; --on-teal:#FFFFFF; --teal-soft:#E9EDF8; --appfill:#EEF5EC; --grid:#E1E5EA; --chrome:#F6F8F5;
   --stamp:#6B3FA8; --shadow:none;
@@ -44,38 +45,45 @@ body{margin:0;background:var(--page);color:var(--text);font-family:"Archivo",sys
 .col,.page>footer{max-width:760px}
 a{color:var(--teal-dark)}
 h1,h2,h3,.logo{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;color:var(--ink)}
-h1{font-size:clamp(36px,6vw,58px);line-height:1.02;letter-spacing:-.005em;font-weight:800;margin:0 0 22px;max-width:18ch;text-wrap:balance}
-h2{font-size:clamp(25px,3.4vw,32px);line-height:1.12;font-weight:800;margin:0 0 14px;text-wrap:balance}
+h1{font-size:clamp(36px,6vw,60px);line-height:1.02;letter-spacing:-.005em;font-weight:800;margin:0 0 22px;max-width:17ch;text-wrap:balance}
+h2{font-size:clamp(25px,3.4vw,34px);line-height:1.1;font-weight:800;margin:0 0 14px;text-wrap:balance}
+h3{font-size:21px;line-height:1.2;font-weight:800;margin:0 0 6px}
 p{margin:0 0 16px;max-width:62ch}
+.skip{position:absolute;left:-9999px;top:0}
+.skip:focus{left:12px;top:12px;z-index:9;background:var(--page);padding:8px 12px;border:2px solid var(--teal)}
 
 /* top */
 .bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:2px solid var(--ink)}
 .logo{font-weight:800;font-size:23px;text-decoration:none;letter-spacing:.005em}
 .logo span{color:inherit}
-.bar nav{display:flex;gap:20px;font-size:15px}
+.bar nav{display:flex;gap:22px;font-size:15px}
 .bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
 .bar nav a:hover{color:var(--ink)}
-@media (max-width:420px){.bar nav{gap:14px;font-size:14px}.bar nav a[href="/fl/"]{display:none}}
+@media (max-width:460px){.bar nav{gap:14px;font-size:14px}.bar nav a[href="/fl/"]{display:none}}
 
 /* hero */
-.hero{padding:42px 0 8px}
-.lede{font-size:clamp(18px,2.2vw,20px);color:var(--text);max-width:56ch}
+.hero{padding:46px 0 10px}
+.lede{font-size:clamp(18px,2.2vw,20.5px);color:var(--text);max-width:54ch}
 .for{font-size:15.5px;font-weight:700;color:var(--teal);margin:0 0 14px;letter-spacing:.01em}
+.facts{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:1fr;border-top:2px solid var(--ink);max-width:640px}
+.facts li{padding:12px 0 12px 30px;border-bottom:1px solid var(--line);position:relative;font-size:16px;color:var(--ink)}
+.facts li::before{content:"";position:absolute;left:4px;top:19px;width:12px;height:7px;border-left:2.5px solid var(--stamp);border-bottom:2.5px solid var(--stamp);transform:rotate(-45deg)}
+@media (min-width:700px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}.facts li{border-bottom:0;padding:14px 16px 4px 30px}.facts li+li{border-left:1px solid var(--line)}.facts li+li::before{left:10px}.facts li+li{padding-left:36px}}
 @media (min-width:980px){
-  .hero{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:56px;align-items:start}
-  .hero .sample{margin-top:8px}
+  .hero{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:56px;align-items:start}
+  .hero .sample{margin-top:6px;position:sticky;top:18px}
 }
 .btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:4px;font-size:16.5px;border:2px solid var(--teal)}
 .btn:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
-.btn2{display:inline-block;border:2px solid var(--teal);color:var(--teal);background:transparent;font-weight:700;text-decoration:none;padding:10px 20px;border-radius:4px;font-size:16px}
+.btn2{display:inline-block;border:2px solid var(--teal);color:var(--teal);background:transparent;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:4px;font-size:16px}
 .btn2:hover{background:var(--teal-soft)}
 .cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:28px 0 0}
 .cta .aside{font-size:15px;color:var(--muted)}
-.btn:focus-visible,.btn2:focus-visible,.pick a:focus-visible,.bar nav a:focus-visible,.get input:focus-visible,.get select:focus-visible,.get button:focus-visible,.plan select:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
+.btn:focus-visible,.btn2:focus-visible,.bar nav a:focus-visible,.get input:focus-visible,.get select:focus-visible,.get button:focus-visible,.plan select:focus-visible,footer a:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
 
 /* the free sample (home page); the county pages put the same form in their own box */
-.sample{background:var(--band);border:1px solid var(--line);border-top:2px solid var(--ink);padding:20px 20px 18px}
-.sample h2{font-size:26px;margin:0 0 6px}
+.sample{background:var(--band);border:1px solid var(--line);border-top:3px solid var(--ink);padding:22px 22px 20px}
+.sample h2{font-size:27px;margin:0 0 6px}
 .sample .line{font-size:16px;color:var(--text);margin:0 0 14px;max-width:none}
 .sample .get{margin:0;max-width:none}
 .hero .sample .get input,.hero .sample .get select,.hero .sample .get button{flex:1 1 100%}
@@ -84,7 +92,7 @@ p{margin:0 0 16px;max-width:62ch}
 .get{margin:28px 0 0;max-width:640px}
 .get label.t{display:block;font-weight:700;color:var(--ink);font-size:15.5px;margin:0 0 10px}
 .get .row{display:flex;flex-wrap:wrap;gap:10px}
-.get input,.get select{height:50px;border:1px solid #AAB4AC;border-radius:3px;background:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 14px}
+.get input,.get select{height:50px;border:1px solid #8E9890;border-radius:3px;background:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 14px}
 .get input{flex:1 1 240px;min-width:0}
 .get select,.plan select{flex:0 1 200px;appearance:none;-webkit-appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235E6675' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
 .get button{height:50px;border:0;border-radius:4px;background:var(--teal);color:var(--on-teal);font:inherit;font-weight:700;font-size:16.5px;padding:0 22px;cursor:pointer;flex:0 0 auto}
@@ -98,9 +106,25 @@ p{margin:0 0 16px;max-width:62ch}
 @media (max-width:560px){.get select,.get button{flex:1 1 100%}}
 
 /* sections */
-section{padding:56px 0 0}
+section{padding:64px 0 0}
 .nw{white-space:nowrap}
 .honest{font-size:15.5px;color:var(--text);margin:16px 0 0;padding-left:14px;border-left:3px solid var(--stamp)}
+.two{display:grid;grid-template-columns:minmax(0,1fr);gap:40px 56px;align-items:start}
+@media (min-width:980px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.two>section{padding-top:0}.two{padding-top:64px}}
+
+/* what's on a row: the list, and one made-up row printed like a record card */
+.rowcard{position:relative;border:1px solid var(--line);border-top:3px solid var(--ink);background:var(--page);padding:18px 20px 8px;margin-top:4px}
+.rowcard .tag{position:absolute;top:-14px;right:14px;background:var(--page);color:var(--stamp);border:2px solid var(--stamp);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;transform:rotate(-2deg)}
+.rowcard dl{border:0;margin:0;display:grid;grid-template-columns:132px minmax(0,1fr);column-gap:14px}
+.rowcard dt,.rowcard dd{padding:9px 0;border-bottom:1px solid var(--line);margin:0}
+.rowcard dt{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding-top:12px}
+.rowcard dd{color:var(--ink);font-size:16px}
+.rowcard dd b{font-stretch:80%;font-size:22px;font-weight:800}
+.rowcard .hl{background:var(--teal-soft);box-shadow:-8px 0 0 var(--teal-soft),8px 0 0 var(--teal-soft)}
+.rowcard dt:last-of-type,.rowcard dd:last-of-type{border-bottom:0}
+.rowcard .ok{display:inline-block;font-size:12.5px;font-weight:700;color:var(--stamp);border:1.5px solid var(--stamp);padding:0 6px;margin-left:6px;vertical-align:2px}
+.rowcard .cap{font-size:13.5px;color:var(--muted);margin:8px 0 6px;max-width:none}
+@media (max-width:420px){.rowcard dl{grid-template-columns:92px minmax(0,1fr);column-gap:10px}.rowcard dt{font-size:11.5px;letter-spacing:.02em}.rowcard{padding:16px 14px 6px}}
 
 /* where we have GL dates: the county register, stamped with its date */
 .cov{margin:22px 4px 0;max-width:500px;border:2px solid var(--stamp);outline:1px solid var(--stamp);outline-offset:3px;padding:4px 20px 6px;color:var(--ink)}
@@ -113,23 +137,6 @@ section{padding:56px 0 0}
 .cov tr.all th,.cov tr.all td{border-top:2px solid var(--ink);border-bottom:0;padding-top:12px}
 .cov tbody tr:nth-last-child(2) th,.cov tbody tr:nth-last-child(2) td{border-bottom:0}
 
-/* the desk band */
-.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px;margin-top:56px}
-.band .kick{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;font-size:28px;font-weight:800;color:var(--ink);margin:0 0 16px}
-.band .txt{max-width:720px;margin:0 0 24px}
-.band .txt p{margin:0}
-.wide{max-width:1120px;margin:0 auto;padding:0 20px}
-.frame{border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;overflow:hidden;background:#fff}
-.frame .chrome{display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
-.frame .chrome i{display:none}
-.frame .chrome span{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.frame video,.frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#EDF0EC}
-.phone{display:none;max-width:300px;margin:0 auto;border:8px solid var(--ink);border-radius:30px;overflow:hidden;background:#fff}
-.phone img{display:block;width:100%;height:auto}
-@media (max-width:640px){.frame.big{display:none}.phone{display:block}.band .cap{text-align:center}}
-.band .cap{font-size:15px;color:var(--muted);margin:14px 0 0;max-width:none}
-.band .cap a{font-weight:600}
-
 /* how it works: a real sequence, so numbered with the stamp */
 .steps{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
 .steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
@@ -140,6 +147,18 @@ section{padding:56px 0 0}
 .list li{padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative}
 .list li::before{content:"";position:absolute;left:6px;top:22px;width:8px;height:8px;background:var(--teal)}
 
+/* custom files: everything else we can build from the same data */
+.custom{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0 52px;margin-top:72px}
+.custom .intro{font-size:18px;max-width:60ch}
+.cells{display:grid;grid-template-columns:minmax(0,1fr);gap:0 40px;margin-top:22px;border-top:2px solid var(--ink)}
+@media (min-width:760px){.cells{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.cells div{padding:18px 0 16px;border-bottom:1px solid var(--line)}
+.cells h3{font-size:20px}
+.cells p{margin:0;font-size:16px}
+.custom .cta{margin-top:26px}
+section.custom{padding-top:56px}
+
+/* about */
 .me{display:flex;gap:22px;align-items:center;background:var(--band);border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;padding:24px}
 .me img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--page)}
 .me p{margin:0 0 10px}
@@ -151,31 +170,52 @@ section{padding:56px 0 0}
 .plans{display:grid;grid-template-columns:1fr;gap:16px}
 @media (min-width:680px){.plans{grid-template-columns:1fr 1fr}}
 @media (min-width:1060px){.plans{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.plan{display:flex;flex-direction:column;border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;padding:22px;background:var(--page)}
-.plan.all{border:2px solid var(--teal)}
+.plan{display:flex;flex-direction:column;border:1px solid var(--line);border-top:3px solid var(--ink);border-radius:0;padding:22px;background:var(--page)}
+.plan.all{border:2px solid var(--teal);border-top:3px solid var(--teal)}
 .plan h3{font-stretch:100%;font-weight:700;font-size:16px;margin:0}
-.plan .amt{font-stretch:80%;font-weight:800;color:var(--ink);font-size:42px;line-height:1.05;margin:6px 0 2px}
+.plan .amt{font-stretch:80%;font-weight:800;color:var(--ink);font-size:44px;line-height:1.05;margin:6px 0 2px}
 .plan .amt small{font-stretch:100%;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:0}
 .plan .bill{font-size:15px;color:var(--text);margin:0 0 12px}
 .plan .sub{font-size:14.5px;color:var(--muted);margin:0 0 16px}
-.plan select{display:none;flex:none;width:100%;height:46px;border:1px solid #AAB4AC;border-radius:3px;background-color:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 38px 0 12px;margin:0 0 12px}
+.plan select{display:none;flex:none;width:100%;height:46px;border:1px solid #8E9890;border-radius:3px;background-color:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 38px 0 12px;margin:0 0 12px}
 .js .plan select{display:block}
 .plan .go{margin-top:auto;display:grid;gap:8px}
 .plan .go a{display:block;text-align:center;padding:11px 14px;font-size:16px}
-.founding{margin:0 0 16px;padding:14px;background:var(--teal-soft);border-left:3px solid var(--teal)}
-.founding[hidden]{display:none}
-.founding p{font-size:14.5px;color:var(--ink);margin:0 0 10px;max-width:none}
-.founding a{display:block;text-align:center;padding:11px 14px;font-size:16px}
 .plannote{font-size:15px;color:var(--muted);margin:16px 0 0}
+
+/* the desk band (comes with region and all-of-Florida plans) */
+.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px;margin-top:72px}
+.band .kick{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;font-size:28px;font-weight:800;color:var(--ink);margin:0 0 16px}
+.band .txt p{margin:0}
+@media (min-width:980px){.band .wide{display:grid;grid-template-columns:330px minmax(0,1fr);gap:44px;align-items:start}.band .cap{grid-column:2}}
+.wide{max-width:1120px;margin:0 auto;padding:0 20px}
+.band .txt{margin:0 0 24px}
+.frame{border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;overflow:hidden;background:#fff}
+.frame .chrome{display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.frame .chrome i{display:none}
+.frame .chrome span{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.frame video,.frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#EDF0EC}
+.phone{display:none;max-width:300px;margin:0 auto;border:8px solid var(--ink);border-radius:30px;overflow:hidden;background:#fff}
+.phone img{display:block;width:100%;height:auto}
+@media (max-width:640px){.frame.big{display:none}.phone{display:block}.band .cap{text-align:center}}
+.band .cap{font-size:15px;color:var(--muted);margin:14px 0 0;max-width:none}
+.band .cap a{font-weight:600}
 
 dl{margin:0;border-top:2px solid var(--ink)}
 dt{font-weight:700;color:var(--ink);padding-top:16px}
 dd{margin:6px 0 0;padding-bottom:16px;border-bottom:1px solid var(--line)}
 dd p{margin:0}
 
-.last{text-align:left;padding:56px 0 0}
-footer{margin-top:64px;border-top:1px solid var(--line);padding:22px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
+.last{text-align:left;padding:64px 0 0}
+footer{margin-top:64px;border-top:2px solid var(--ink);padding:22px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
 footer p{margin:0 0 10px;max-width:none}
+footer .fnav{font-size:15px;margin:0 0 16px;display:flex;flex-wrap:wrap;gap:6px 22px}
+footer .fnav a{font-weight:600;text-decoration:none}
+footer .fnav a:hover{text-decoration:underline}
+
+/* the county pages and monthly reports (county_pages.py) take this style sheet */
+.cp h1{margin-top:34px}
+.cp .gl p{font-size:18px;color:var(--ink);border-left:3px solid var(--stamp);padding-left:14px}
 </style>
 <!-- seo: written by the weekly build (pipeline/site_seo.py, D-259); edits here are replaced -->
 <link rel="canonical" href="https://licensedigest.com/">
@@ -183,22 +223,27 @@ footer p{margin:0 0 10px;max-width:none}
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LicenseDigest">
 <meta name="twitter:card" content="summary">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://licensedigest.com/#org","name":"LicenseDigest","url":"https://licensedigest.com/","legalName":"Kummer Ventures LLC","email":"support@licensedigest.com","address":{"@type":"PostalAddress","streetAddress":"5366 Central Florida Pkwy #158","addressLocality":"Orlando","addressRegion":"FL","postalCode":"32821","addressCountry":"US"}},{"@type":"WebSite","@id":"https://licensedigest.com/#site","url":"https://licensedigest.com/","name":"LicenseDigest","publisher":{"@id":"https://licensedigest.com/#org"},"description":"Every Tuesday: the Florida contractors in your area whose general liability date on file with the county falls in the next 90 days, with an email address and a phone number screened against Florida's Do Not Call list. Free 25-row sample, no card."},{"@type":"FAQPage","@id":"https://licensedigest.com/#faq","mainEntity":[{"@type":"Question","name":"Where does the data come from?","acceptedAnswer":{"@type":"Answer","text":"From county contractor-registration records: the certificates of general liability insurance contractors keep on file with the county, and the dates they expire. Emails and phone numbers come from the state's licensing records (DBPR) and the counties. Nothing is scraped from people-search sites or social media."}},{"@type":"Question","name":"Can I get the carrier and the policy number?","acceptedAnswer":{"@type":"Answer","text":"For some contractors, yes. Most county lists show only the expiration date, but where a county keeps each contractor's certificate of insurance, I can put together a separate file with the insurance carrier, the policy number and the expiration date. It covers a few counties so far, so email me and I'll tell you what I have for your area. The workers' comp dates come from the state's policy records."}},{"@type":"Question","name":"Is it OK to email and call these contractors?","acceptedAnswer":{"@type":"Answer","text":"The desk's ready-made notes say who you are, include your mailing address and give the contractor an easy way to say no. How you use the list is up to you, including following the federal CAN-SPAM rules for business email and, for calls, Florida and federal telemarketing rules: calling hours, saying who you are, and no autodialed or prerecorded calls to cell phones without consent. Phone numbers are screened against Florida's Do Not Call list, not the National Do Not Call Registry, so check that before you call. We're not lawyers, so if you're unsure, ask yours."}},{"@type":"Question","name":"Do I need an account or a password?","acceptedAnswer":{"@type":"Answer","text":"No. The list comes by email every Tuesday, as a spreadsheet and a CSV. On region and all-of-Florida plans, your desk is a private link that works in any browser, on a computer or a phone. Anyone with the link can open it, so keep it to your agency. If it ever gets out, reply to any LicenseDigest email and I'll switch it off and send you a new one."}},{"@type":"Question","name":"Can't I get this from the counties myself?","acceptedAnswer":{"@type":"Answer","text":"Some of it. Each county keeps its own records: a few let you search them online, and others send them only on a public records request. We collect them, match each contractor to an email and a phone number from the state's licensing records or the county, screen the phones against Florida's Do Not Call list, and sort it all by area every Tuesday. If you'd rather do that yourself, you should."}},{"@type":"Question","name":"How do I change my area or cancel?","acceptedAnswer":{"@type":"Answer","text":"Plans renew automatically at the end of each period until you cancel. A one-time file or a custom invoice doesn't renew unless we've agreed that with you first. Cancel anytime in your billing portal, or email support@licensedigest.com . Cancellation takes effect at the end of the period you've paid for and isn't pro-rated. To change your area, reply to any LicenseDigest email or write to support@licensedigest.com, and a person confirms the new total before anything changes."}}]}]}</script>
 <!-- /seo -->
 </head>
 <body>
+<a class="skip" href="#get">Skip to the free sample</a>
 <div class="page">
   <div class="bar">
     <a class="logo" href="/">License<span>Digest</span></a>
-    <nav><a href="#desk">The desk</a><a href="/fl/">Counties</a><a href="#plans">Plans</a></nav>
+    <nav aria-label="Main"><a href="/fl/">Counties</a><a href="/custom-files/">Custom files</a><a href="#plans">Plans</a></nav>
   </div>
 
   <div class="hero">
     <div class="hero-main">
       <p class="for">For Florida insurance agencies that write contractors</p>
       <h1>Florida contractors whose general liability is coming up. Every Tuesday.</h1>
-      <p class="lede">Many Florida counties require contractors who register with them to keep a certificate of general liability insurance on file, with the date it expires. We collect those dates from the county records. Every Tuesday you get the contractors in your area whose GL date on file falls in the next 90 days, with an email address and a phone number screened against Florida's Do Not Call list, as a spreadsheet and a CSV ready for your CRM.</p>
+      <p class="lede">Many Florida counties require contractors who register with them to keep a certificate of general liability insurance on file, with the date it expires. We collect those dates from the county records. Every Tuesday you get the contractors in your area whose GL date on file falls in the next 90 days.</p>
+      <ul class="facts">
+        <li>With an email address and a phone number where we have them</li>
+        <li>Phones screened against Florida's Do Not Call list</li>
+        <li>A spreadsheet and a CSV ready for your CRM</li>
+      </ul>
     </div>
     <div class="sample" id="get">
       <h2 id="get-h">Get a free sample</h2>
@@ -223,11 +268,43 @@ footer p{margin:0 0 10px;max-width:none}
       </form>
     </div>
   </div>
-</div>
 
-<div class="page">
-  <section id="coverage" class="col">
-    <h2>Where we have GL dates</h2>
+  <div class="two">
+    <section id="row">
+      <h2>What's on every row</h2>
+      <ul class="list">
+        <li>The business and the contact person, as the county has them.</li>
+        <li>Trade, city and county.</li>
+        <li>The general liability expiration date on file with the county, and how many days out it is.</li>
+        <li>The workers' comp expiration date, when the county has one on file.</li>
+        <li>An email address and a phone number, from the state's licensing records or the county, with the phone checked against Florida's Do Not Call list. Numbers on that list are left out.</li>
+        <li>The state license number, which county's records the row came from, and the date of that county's file.</li>
+      </ul>
+      <p class="honest">A contractor may have renewed or changed carriers since the county's file was made. Confirm the date before you quote.</p>
+    </section>
+    <section aria-label="An example row">
+      <div class="rowcard">
+        <span class="tag" aria-hidden="true">Example</span>
+        <dl>
+          <dt>Business</dt><dd>Seagrape Roofing LLC</dd>
+          <dt>Contact</dt><dd>Jordan Sample</dd>
+          <dt>Trade</dt><dd>Roofing</dd>
+          <dt>City, county</dt><dd>Jupiter, Palm Beach</dd>
+          <dt>GL expires</dt><dd><span class="hl"><b>Dec 14, 2026</b></span> &nbsp;<span class="nw">42 days out</span></dd>
+          <dt>Comp expires</dt><dd>Mar 2, 2027</dd>
+          <dt>Email</dt><dd>jordan@example.com</dd>
+          <dt>Phone</dt><dd>(561) 555-0142 <span class="ok">DNC checked</span></dd>
+          <dt>License</dt><dd>CCC0000000</dd>
+          <dt>Source</dt><dd>Palm Beach County's file, with its date</dd>
+        </dl>
+        <p class="cap">One row, with a made-up contractor, to show the columns. Your file has one like it for every contractor in your area.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="two">
+    <section id="coverage">
+      <h2>Where we have GL dates</h2>
     <!-- gl-coverage -->
     <p>Contractors with a GL date on file in the next 90 days, by area. Counts as of <span data-cov="asof">November 3, 2026</span>. They come from county records, so some areas are deeper than others, and we add counties as they send their records. We don't cover the Panhandle yet.</p>
     <div class="cov" data-asof="2026-11-03">
@@ -244,60 +321,17 @@ footer p{margin:0 0 10px;max-width:none}
       </table>
     </div>
     <!-- /gl-coverage -->
-  </section>
-
-  <section class="col">
-    <h2>How it works</h2>
-    <ol class="steps">
-      <li><span class="n" aria-hidden="true">1</span><p>Pick your area: one county, a region, or all of Florida.</p></li>
-      <li><span class="n" aria-hidden="true">2</span><p>The day you start, you get the next 90 days (the next 12 months on a yearly plan).</p></li>
-      <li><span class="n" aria-hidden="true">3</span><p>Every Tuesday after that, a fresh <span class="nw">90-day</span> call list, with the new names marked and the phone numbers screened again that day.</p></li>
-    </ol>
-  </section>
-
-  <section class="col">
-    <h2>What's on every row</h2>
-    <ul class="list">
-      <li>The business and the contact person, as the county has them.</li>
-      <li>Trade, city and county.</li>
-      <li>The general liability expiration date on file with the county, and how many days out it is.</li>
-      <li>The workers' comp expiration date, when the county has one on file.</li>
-      <li>An email address and a phone number, from the state's licensing records or the county, with the phone checked against Florida's Do Not Call list. Numbers on that list are left out.</li>
-      <li>The state license number, which county's records the row came from, and the date of that county's file.</li>
-    </ul>
-    <p class="honest">A contractor may have renewed or changed carriers since the county's file was made. Confirm the date before you quote.</p>
-  </section>
-</div>
-
-<div class="band" id="desk">
-  <div class="wide">
-    <div class="txt">
-      <h2 class="kick">The desk</h2>
-      <p>Region and all-of-Florida plans also come with the desk: a private page for your area where a ready-made note to any contractor is one click away and you can check off who you've reached. It also shows the week's new license applicants and workers' comp renewals.</p>
-    </div>
-    <div class="frame big">
-      <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>desk.licensedigest.com</span></div>
-      <video id="deskvid" autoplay muted loop playsinline preload="metadata" poster="media/desk-poster.jpg" aria-label="A sample desk: filtering this week's applicants, their phone numbers, opening a ready-made note, checking a contractor off, and the GL renewals tab">
-        <source src="media/desk-loop.webm" type="video/webm">
-        <source src="media/desk-loop.mp4" type="video/mp4">
-      </video>
-      <script>if (window.matchMedia && matchMedia('(max-width: 640px)').matches) { var v = document.getElementById('deskvid'); while (v.firstElementChild) v.removeChild(v.firstElementChild); v.removeAttribute('autoplay'); v.load(); }</script>
-    </div>
-    <div class="phone"><img src="media/desk-phone.jpg" width="390" height="760" alt="The desk on a phone: this week's counts and each contractor as a card with an Email button, and a Call button when there's a number" loading="lazy"></div>
-    <p class="cap">A sample desk with made-up contractors. <a href="https://desk.licensedigest.com/demo">Open the sample desk and click around</a>.</p>
+    </section>
+    <section>
+      <h2>How it works</h2>
+      <ol class="steps">
+        <li><span class="n" aria-hidden="true">1</span><p>Pick your area: one county, a region, or all of Florida.</p></li>
+        <li><span class="n" aria-hidden="true">2</span><p>The day you start, you get the next 90 days (the next 12 months on a yearly plan).</p></li>
+        <li><span class="n" aria-hidden="true">3</span><p>Every Tuesday after that, a fresh <span class="nw">90-day</span> call list, with the new names marked and the phone numbers screened again that day.</p></li>
+      </ol>
+      <div class="cta"><a class="btn2" href="#plans">See the plans</a><span class="aside">From $99 a month for one county.</span></div>
+    </section>
   </div>
-</div>
-
-<div class="page">
-  <section class="col">
-    <div class="me">
-      <img src="data:image/jpeg;base64,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" alt="Dan Kummer" width="104" height="104">
-      <div>
-        <p>I'm a mechanical engineer who started out fixing industrial equipment in the field, and I like tools that just work. LicenseDigest is one of them: Florida's contractor records, cleaned up and ready for your agency every Tuesday. If a row looks wrong or you want something on it, reply to any email. It comes straight to me.</p>
-        <p class="who">Dan Kummer <span>&middot; Kummer Ventures LLC</span></p>
-      </div>
-    </div>
-  </section>
 
   <section id="plans">
     <h2>Plans</h2>
@@ -334,10 +368,6 @@ footer p{margin:0 0 10px;max-width:none}
         <p class="amt">$299<small> a month,</small></p>
         <p class="bill">billed every three months ($897), or $2,990 a year.</p>
         <p class="sub">Every area we cover, with the all-of-Florida desk.</p>
-        <div class="founding" id="founding" data-until="2026-11-01T00:00:00-04:00">
-          <p>Founding price: $1,500 a year if you start by October 31, 2026, with the next 12 months the day you start.</p>
-          <a class="btn" href="https://buy.stripe.com/3cI8wPfzK8lLfIkdDw7Zu0q">Founding, $1,500 a year</a>
-        </div>
         <div class="go">
           <a class="btn" data-plan="fl_gl_statewide_quarterly" href="mailto:dan@licensedigest.com?subject=All%20of%20Florida%20plan%2C%20every%20three%20months">Every three months</a>
           <a class="btn2" data-plan="fl_gl_statewide_annual" href="mailto:dan@licensedigest.com?subject=All%20of%20Florida%20plan%2C%20yearly">Yearly</a>
@@ -348,7 +378,56 @@ footer p{margin:0 0 10px;max-width:none}
     <p class="plannote col">Want a one-time file instead, for a set of counties and dates? Email <a href="mailto:dan@licensedigest.com">dan@licensedigest.com</a> and I'll quote it. It costs the same as the matching plan for the same stretch.</p>
     <p class="plannote">Plans renew automatically every three months, or every year on a yearly plan, until you cancel. You'll get an email a week before each renewal. A one-time file or a custom invoice never renews unless we've agreed that with you first. Cancel anytime in your billing portal. Every button goes to a secure Stripe checkout.</p>
   </section>
+</div>
 
+<section class="custom" id="custom">
+  <div class="page">
+    <h2>Custom files from the same data</h2>
+    <p class="intro">The GL list is our main product. If you need something different, tell me what it is. I'll let you know what I have and what it costs before you pay anything.</p>
+    <div class="cells">
+      <div><h3>GL lists your way</h3><p>Any county or region we cover, for the dates you pick, in one spreadsheet. One payment, and nothing renews unless we've agreed that with you first.</p></div>
+      <div><h3>Carrier and policy number</h3><p>Where a county keeps each contractor's certificate of insurance, the file can show the insurance carrier and the policy number next to the expiration date. It's a few counties so far, so ask what I have for yours.</p></div>
+      <div><h3>New contractor licenses</h3><p>A file of the contractors Florida just licensed, for the weeks you pick, with an email address where we have one. Handy if you sell to new businesses, not only insurance.</p></div>
+      <div><h3>Something else</h3><p>Different columns, a different area, a different mix. If it's in the data, I'll tell you straight whether I can build it and what it costs.</p></div>
+    </div>
+    <div class="cta"><a class="btn" href="mailto:dan@licensedigest.com?subject=Custom%20file&amp;body=What%20I%27m%20looking%20for%3A%0A%0AArea%3A%0ADates%3A%0AColumns%3A%0A">Tell me what you need</a><a class="btn2" href="/custom-files/">More on custom files</a></div>
+  </div>
+</section>
+
+<div class="page">
+  <section class="col">
+    <div class="me">
+      <img src="data:image/jpeg;base64,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" alt="Dan Kummer" width="104" height="104">
+      <div>
+        <p>I'm a mechanical engineer who started out fixing industrial equipment in the field, and I like tools that just work. LicenseDigest is one of them: Florida's contractor records, cleaned up and ready for your agency every Tuesday. If a row looks wrong or you want something on it, reply to any email. It comes straight to me.</p>
+        <p class="who">Dan Kummer <span>&middot; Kummer Ventures LLC</span></p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="band" id="desk">
+  <div class="wide">
+    <div class="txt">
+      <h2 class="kick">The desk</h2>
+      <p>Region and all-of-Florida plans also come with the desk: a private page for your area where a ready-made note to any contractor is one click away and you can check off who you've reached. It also shows the week's new license applicants and workers' comp renewals.</p>
+    </div>
+    <div class="frame big">
+      <div class="chrome" aria-hidden="true"><i></i><i></i><i></i><span>desk.licensedigest.com</span></div>
+      <video id="deskvid" autoplay muted loop playsinline preload="metadata" poster="media/desk-poster.jpg" aria-label="A sample desk: filtering this week's applicants, their phone numbers, opening a ready-made note, checking a contractor off, and the GL renewals tab">
+        <source src="media/desk-loop.webm" type="video/webm">
+        <source src="media/desk-loop.mp4" type="video/mp4">
+      </video>
+      <script>if (window.matchMedia && matchMedia('(max-width: 640px)').matches) { var v = document.getElementById('deskvid'); while (v.firstElementChild) v.removeChild(v.firstElementChild); v.removeAttribute('autoplay'); v.load(); }</script>
+    </div>
+    <div class="phone"><img src="media/desk-phone.jpg" width="390" height="760" alt="The desk on a phone: this week's counts and each contractor as a card with an Email button, and a Call button when there's a number" loading="lazy"></div>
+    <p class="cap">A sample desk with made-up contractors. <a href="https://desk.licensedigest.com/demo">Open the sample desk and click around</a>.</p>
+  </div>
+</div>
+
+
+<div class="page">
   <section class="col">
     <h2>Questions</h2>
     <dl>
@@ -393,7 +472,8 @@ footer p{margin:0 0 10px;max-width:none}
   </div>
 
   <footer>
-    <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, 5366 Central Florida Pkwy #158, Orlando, FL 32821. <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="terms.html">Terms of Service</a> · <a href="privacy.html">Privacy Policy</a></p>
+    <p class="fnav"><a href="/fl/">Florida counties</a><a data-latest-report href="/fl/report/2026-10/">Monthly report</a><a href="/custom-files/">Custom files</a><a href="/#plans">Plans</a></p>
+    <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, 5366 Central Florida Pkwy #158, Orlando, FL 32821. <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a></p>
     <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), any Florida county, the State of Florida, or any government agency. Source records are public records published by DBPR and by Florida counties under Chapter 119, Florida Statutes; neither DBPR nor any county reviews, approves, or endorses this product.</p>
     <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Phone numbers appear only after screening against Florida's Do Not Call list; they are not screened against the National Do Not Call Registry.</p>
   </footer>
@@ -443,9 +523,6 @@ footer p{margin:0 0 10px;max-width:none}
     if (pick) pick.addEventListener('change', set);
     set();
   })(plans[i]);
-  // The founding price ends with October 31, 2026, Eastern time. Without JavaScript the line still names its date.
-  var f = document.getElementById('founding');
-  if (f && Date.now() >= Date.parse(f.getAttribute('data-until'))) f.hidden = true;
   var links = document.querySelectorAll('a[href^="https://buy.stripe.com/"]');
   for (var k = 0; k < links.length; k++) links[k].setAttribute('href', withRef(links[k].getAttribute('href')));
 })();
