@@ -36,7 +36,7 @@ jobs:
           fi
       - name: Wait for Pages to publish
         run: |
-          KEY=$(python3 -c "import re;print(re.search(r'KEY = \"(\w+)\"',open('tools/indexnow.py').read()).group(1)")
+          KEY=$(sed -n 's/^KEY = "\(.*\)"/\1/p' tools/indexnow.py)
           for i in $(seq 1 40); do
             if [ "$(curl -fsS "https://licensedigest.com/$KEY.txt" 2>/dev/null)" = "$KEY" ]; then
               P="${{ steps.pick.outputs.probe }}"
