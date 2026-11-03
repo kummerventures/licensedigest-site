@@ -1,0 +1,51 @@
+name: IndexNow
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - ".github/**"
+      - "tools/**"
+  workflow_dispatch:
+    inputs:
+      all:
+        description: "Submit every sitemap URL"
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 2
+      - name: Pick URLs
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.all }}" = "true" ]; then
+            echo "args=--all" >> "$GITHUB_OUTPUT"
+            echo "probe=" >> "$GITHUB_OUTPUT"
+          else
+            BASE="${{ github.event.before }}"
+            if [ -z "$BASE" ] || [ "$BASE" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BASE" 2>/dev/null; then BASE=HEAD~1; fi
+            echo "args=--base $BASE --head HEAD" >> "$GITHUB_OUTPUT"
+            F=$(git diff --name-only --diff-filter=AMR "$BASE" HEAD | grep -E 'index\.html$' | head -1 || true)
+            echo "probe=${F%index.html}" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Wait for Pages to publish
+        run: |
+          KEY=$(python3 -c "import re;print(re.search(r'KEY = \"(\w+)\"',open('tools/indexnow.py').read()).group(1)")
+          for i in $(seq 1 40); do
+            if [ "$(curl -fsS "https://licensedigest.com/$KEY.txt" 2>/dev/null)" = "$KEY" ]; then
+              P="${{ steps.pick.outputs.probe }}"
+              if [ -z "$P" ] || curl -fsS "https://licensedigest.com/$P" 2>/dev/null | cmp -s - "${P}index.html"; then
+                echo "published after $i checks"; exit 0
+              fi
+            fi
+            sleep 15
+          done
+          echo "Pages did not publish in time; pinging anyway"
+      - name: Ping IndexNow
+        run: python3 tools/indexnow.py ${{ steps.pick.outputs.args }}
