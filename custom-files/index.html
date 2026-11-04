@@ -61,7 +61,8 @@ p{margin:0 0 16px;max-width:62ch}
 .bar nav{display:flex;gap:22px;font-size:15px}
 .bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
 .bar nav a:hover{color:var(--ink)}
-@media (max-width:460px){.bar nav{gap:14px;font-size:14px}.bar nav a[href="/fl/"]{display:none}}
+@media (max-width:460px){.bar{flex-wrap:wrap;row-gap:8px}.bar nav{gap:13px;font-size:14px;flex-wrap:wrap}.bar nav a{white-space:nowrap}}
+.bar nav a[aria-current="page"]{color:var(--ink);font-weight:700}
 
 /* hero */
 .hero{padding:46px 0 10px}
@@ -225,7 +226,7 @@ footer .fnav a:hover{text-decoration:underline}
 <div class="page">
   <div class="bar">
     <a class="logo" href="/">License<span>Digest</span></a>
-    <nav aria-label="Main"><a href="/fl/">Counties</a><a href="/custom-files/" aria-current="page">Custom files</a><a href="/#plans">Plans</a></nav>
+    <nav aria-label="Main"><a href="/">GL list</a><a href="/new-contractor-licenses/">New licenses</a><a href="/custom-files/" aria-current="page">Custom files</a><a href="/fl/">Florida data</a></nav>
   </div>
 
   <div class="hero col" style="display:block">
@@ -265,7 +266,7 @@ footer .fnav a:hover{text-decoration:underline}
   </section>
 
   <footer>
-    <p class="fnav"><a href="/fl/">Florida counties</a><a data-latest-report href="/fl/report/2026-10/">Monthly report</a><a href="/custom-files/">Custom files</a><a href="/#plans">Plans</a></p>
+    <p class="fnav"><a href="/">GL list</a><a href="/new-contractor-licenses/">New licenses</a><a href="/custom-files/">Custom files</a><a href="/fl/">Florida data</a><a data-latest-report href="/fl/report/2026-10/">Monthly report</a></p>
     <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, 5366 Central Florida Pkwy #158, Orlando, FL 32821. <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a></p>
     <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), any Florida county, the State of Florida, or any government agency. Source records are public records published by DBPR and by Florida counties under Chapter 119, Florida Statutes; neither DBPR nor any county reviews, approves, or endorses this product.</p>
     <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Phone numbers appear only after screening against Florida's Do Not Call list; they are not screened against the National Do Not Call Registry.</p>
