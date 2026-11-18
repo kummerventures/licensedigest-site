@@ -252,9 +252,10 @@ dd p{margin:0}
 .faq dt button{all:unset;box-sizing:border-box;display:block;cursor:pointer;width:100%}
 .faq dt button:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
 @media (max-width:899px){
-  .faq dt button{position:relative;padding:2px 36px 2px 0}
-  .faq dt button::after{content:"";position:absolute;right:8px;top:7px;width:9px;height:9px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
-  .faq dt button[aria-expanded="true"]::after{transform:rotate(-135deg);top:12px}
+  .faq dt button{position:relative;padding:14px 36px 14px 0;min-height:48px}
+  .faq dt button::after{content:"";position:absolute;right:8px;top:19px;width:9px;height:9px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
+  .faq dt button[aria-expanded="true"]::after{transform:rotate(-135deg);top:24px}
+  .js .faq dt{padding:0}
   .faq dt{padding-bottom:14px;border-bottom:1px solid var(--line)}
   .faq dd{margin:0;padding:0 0 14px;border-bottom:1px solid var(--line)}
   .js .faq dt.has-b{border-bottom:1px solid var(--line)}
