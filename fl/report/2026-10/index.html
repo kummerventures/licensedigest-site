@@ -405,19 +405,18 @@ footer .fnav a:hover{text-decoration:underline}
 <script>
 (function () {
   // The sign-up forms post to the desk Worker, which queues the request; the hourly job emails the free sample (D-212).
+  // Sample form v2: the Worker decides who gets the automatic sample; this script never sorts addresses itself.
   var forms = document.querySelectorAll('form.get');
   for (var i = 0; i < forms.length; i++) (function (f) {
     var msg = f.querySelector('.msg'), btn = f.querySelector('button'), email = f.querySelector('input[type=email]');
     var area = f.querySelector('select[name=territory]');
     function show(cls, text) { msg.className = 'msg ' + cls; msg.textContent = text; msg.hidden = false; }
-    // D-091: sign-ups go to business addresses only (the desk Worker enforces it; this just answers sooner).
+    // Shown only if a Worker from before v2 answers 422 (the deploy window or a rollback).
     var WORK = 'Please use your agency\u2019s email address, or the one on your Florida insurance license. If neither works, write to support@licensedigest.com.';
-    var PERSONAL = /@(gmail|googlemail|yahoo|ymail|rocketmail|hotmail|outlook|live|msn|aol|icloud|me|mac|comcast|att|bellsouth|sbcglobal|verizon|cox|earthlink|proton|protonmail|gmx)\.(com|net|me)$/i;
     f.addEventListener('submit', function (e) {
       e.preventDefault();
       var addr = (email.value || '').trim();
       if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(addr)) { show('err', 'Please enter your email address.'); email.focus(); return; }
-      if (PERSONAL.test(addr)) { show('err', WORK); email.focus(); return; }
       if (area && !area.value) { show('err', 'Please pick your area.'); area.focus(); return; }
       btn.disabled = true;
       var body = new URLSearchParams(new FormData(f));
@@ -425,8 +424,12 @@ footer .fnav a:hover{text-decoration:underline}
       fetch(f.action, { method: 'POST', body: body, credentials: 'omit' }).then(function (r) {
         if (r.status === 422) { show('err', WORK); btn.disabled = false; email.focus(); return; }
         if (!r.ok) throw 0;
-        show('ok', 'Thanks. Your sample is on its way to ' + addr + '. It usually comes within a few hours. If you use Gmail and don\u2019t see it, check the Promotions tab.');
-        f.querySelector('.row').hidden = true;
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          show('ok', j && j.personal
+            ? 'Thanks. We got your request and will answer at ' + addr + '. If you use Gmail and don\u2019t see it, check the Promotions tab.'
+            : 'Thanks. Your sample is on its way to ' + addr + '. It usually comes within a few hours. If you use Gmail and don\u2019t see it, check the Promotions tab.');
+          f.querySelector('.row').hidden = true;
+        });
       }).catch(function () {
         show('err', "That didn't go through. Email support@licensedigest.com with your area, and I'll send your sample.");
         btn.disabled = false;
