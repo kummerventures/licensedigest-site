@@ -12,211 +12,291 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LicenseDigest">
 <meta name="twitter:card" content="summary">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230E6B6B'/%3E%3Cpath d='M10 8h4v12h8v4H10z' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23243F8F'/%3E%3Cpath d='M10 8h4v12h8v4H10z' fill='white'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,400..800&display=swap">
 <style>
 :root{
-  /* D-105 look v1, kept: form-stock ground, printed ink, ballpoint blue for actions, violet dater stamp. D-259: wider grid, record card, custom files band */
-  --page:#FFFFFF; --band:#EDF0EC; --ink:#1A2230; --text:#2B3440; --muted:#5A6472; --line:#C9D1CA;
-  --teal:#243F8F; --teal-dark:#1A2F6E; --on-teal:#FFFFFF; --teal-soft:#E9EDF8; --appfill:#EEF5EC; --grid:#E1E5EA; --chrome:#F6F8F5;
-  --stamp:#6B3FA8; --shadow:none;
+  /* D-105 look, kept: form-stock ground, printed ink, ballpoint blue for actions, violet dater stamp for dates only.
+     Home v4: one spacing scale (4 8 12 16 24 32 48 64), one rule weight per job (2px ink opens a section, 1px line
+     between rows), square corners on boxes, 4px on buttons and fields. The county pages and reports take this sheet. */
+  --page:#FFFFFF; --band:#EEF1EC; --ink:#18202D; --text:#2B3440; --muted:#596371; --line:#C9D1CA; --field:#8E9890;
+  --teal:#243F8F; --teal-dark:#1A2F6E; --on-teal:#FFFFFF; --teal-soft:#E8ECF8; --appfill:#EEF5EC; --grid:#E1E5EA; --chrome:#F6F8F5;
+  --stamp:#6B3FA8; --stamp-soft:#F3EEFA; --shadow:none; --ring:#7F95D6;
   color-scheme:light;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --page:#12161C; --band:#1A1F26; --ink:#EEF1F5; --text:#D3D8E0; --muted:#9AA3B0; --line:#343B44;
+    --page:#12161C; --band:#1A1F26; --ink:#EEF1F5; --text:#D3D8E0; --muted:#9AA3B0; --line:#343B44; --field:#6B7480;
     --teal:#9DB0EA; --teal-dark:#C2CEF3; --on-teal:#0E1630; --teal-soft:#1C2540; --appfill:#1D2A22; --grid:#30363D; --chrome:#1F2328;
-    --stamp:#B89BE6; --shadow:none;
+    --stamp:#C3A9EC; --stamp-soft:#231B33; --shadow:none; --ring:#9DB0EA;
     color-scheme:dark;
   }
 }
 :root[data-theme="dark"]{
-  --page:#12161C; --band:#1A1F26; --ink:#EEF1F5; --text:#D3D8E0; --muted:#9AA3B0; --line:#343B44;
+  --page:#12161C; --band:#1A1F26; --ink:#EEF1F5; --text:#D3D8E0; --muted:#9AA3B0; --line:#343B44; --field:#6B7480;
   --teal:#9DB0EA; --teal-dark:#C2CEF3; --on-teal:#0E1630; --teal-soft:#1C2540; --appfill:#1D2A22; --grid:#30363D; --chrome:#1F2328;
-  --stamp:#B89BE6; --shadow:none;
+  --stamp:#C3A9EC; --stamp-soft:#231B33; --shadow:none; --ring:#9DB0EA;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-body{margin:0;background:var(--page);color:var(--text);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums;font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
+body{margin:0;background:var(--page);color:var(--text);font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-variant-numeric:tabular-nums;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-wrap:break-word}
 .in{max-width:760px;margin:0 auto;padding:0 20px}
 .page{max-width:1120px;margin:0 auto;padding:0 20px}
 .col,.page>footer{max-width:760px}
 a{color:var(--teal-dark)}
 h1,h2,h3,.logo{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;color:var(--ink)}
-h1{font-size:clamp(36px,6vw,60px);line-height:1.02;letter-spacing:-.005em;font-weight:800;margin:0 0 22px;max-width:17ch;text-wrap:balance}
-h2{font-size:clamp(25px,3.4vw,34px);line-height:1.1;font-weight:800;margin:0 0 14px;text-wrap:balance}
-h3{font-size:21px;line-height:1.2;font-weight:800;margin:0 0 6px}
+h1{font-size:clamp(38px,6vw,60px);line-height:1;letter-spacing:-.005em;font-weight:800;margin:0 0 16px;max-width:17ch;text-wrap:balance}
+h2{font-size:clamp(27px,3.4vw,34px);line-height:1.08;font-weight:800;margin:0 0 16px;text-wrap:balance}
+h3{font-size:21px;line-height:1.2;font-weight:800;margin:0 0 8px}
 p{margin:0 0 16px;max-width:62ch}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:-9999px;top:0}
 .skip:focus{left:12px;top:12px;z-index:9;background:var(--page);padding:8px 12px;border:2px solid var(--teal)}
+.nw{white-space:nowrap}
 
 /* top */
-.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 0 14px;border-bottom:2px solid var(--ink)}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0 12px;border-bottom:2px solid var(--ink)}
 .logo{font-weight:800;font-size:23px;text-decoration:none;letter-spacing:.005em}
 .logo span{color:inherit}
 .bar nav{display:flex;gap:22px;font-size:15px}
-.bar nav a{text-decoration:none;color:var(--muted);font-weight:500}
+.bar nav a{text-decoration:none;color:var(--muted);font-weight:500;padding:4px 0}
 .bar nav a:hover{color:var(--ink)}
-@media (max-width:460px){.bar{flex-wrap:wrap;row-gap:8px}.bar nav{gap:13px;font-size:14px;flex-wrap:wrap}.bar nav a{white-space:nowrap}}
 .bar nav a[aria-current="page"]{color:var(--ink);font-weight:700}
+@media (max-width:460px){.bar{flex-wrap:wrap;row-gap:2px;padding-top:12px;padding-bottom:8px}.bar nav{gap:2px 14px;font-size:14.5px;flex-wrap:wrap}.bar nav a{white-space:nowrap}}
+@media (max-width:374px){.bar nav{gap:2px 12px;font-size:14px}}
 
-/* hero */
-.hero{padding:46px 0 10px}
-.lede{font-size:clamp(18px,2.2vw,20.5px);color:var(--text);max-width:54ch}
-.for{font-size:15.5px;font-weight:700;color:var(--teal);margin:0 0 14px;letter-spacing:.01em}
-.xd{font-size:clamp(19px,2.4vw,22px);font-weight:700;color:var(--ink);margin:-6px 0 16px;max-width:none;text-wrap:balance}
-.facts{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:1fr;border-top:2px solid var(--ink);max-width:640px}
-.facts li{padding:12px 0 12px 30px;border-bottom:1px solid var(--line);position:relative;font-size:16px;color:var(--ink)}
-.facts li::before{content:"";position:absolute;left:4px;top:19px;width:12px;height:7px;border-left:2.5px solid var(--stamp);border-bottom:2.5px solid var(--stamp);transform:rotate(-45deg)}
-@media (min-width:700px){.facts{grid-template-columns:repeat(3,minmax(0,1fr))}.facts li{border-bottom:0;padding:14px 16px 4px 30px}.facts li+li{border-left:1px solid var(--line)}.facts li+li::before{left:10px}.facts li+li{padding-left:36px}}
-@media (min-width:980px){
-  .hero{display:grid;grid-template-columns:minmax(0,1fr) 370px;gap:56px;align-items:start}
-  .hero .sample{margin-top:6px;position:sticky;top:18px}
-}
-.btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:14px 24px;border-radius:4px;font-size:16.5px;border:2px solid var(--teal)}
+/* buttons and focus */
+.btn{display:inline-block;background:var(--teal);color:var(--on-teal);font-weight:700;text-decoration:none;padding:13px 22px;border-radius:4px;font-size:16.5px;line-height:1.2;border:2px solid var(--teal);text-align:center}
 .btn:hover{background:var(--teal-dark);border-color:var(--teal-dark)}
-.btn2{display:inline-block;border:2px solid var(--teal);color:var(--teal);background:transparent;font-weight:700;text-decoration:none;padding:12px 22px;border-radius:4px;font-size:16px}
+.btn2{display:inline-block;border:2px solid var(--teal);color:var(--teal);background:transparent;font-weight:700;text-decoration:none;padding:12px 20px;border-radius:4px;font-size:16px;line-height:1.2;text-align:center}
 .btn2:hover{background:var(--teal-soft)}
-.cta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin:28px 0 0}
+.cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin:24px 0 0}
 .cta .aside{font-size:15px;color:var(--muted)}
-.btn:focus-visible,.btn2:focus-visible,.bar nav a:focus-visible,.get input:focus-visible,.get select:focus-visible,.get button:focus-visible,.plan select:focus-visible,footer a:focus-visible{outline:3px solid #8FA3DB;outline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
 
-/* the free sample (home page); the county pages put the same form in their own box */
-.sample{background:var(--band);border:1px solid var(--line);border-top:3px solid var(--ink);padding:22px 22px 20px}
-.sample h2{font-size:27px;margin:0 0 6px}
-.sample .line{font-size:16px;color:var(--text);margin:0 0 14px;max-width:none}
-.sample .get{margin:0;max-width:none}
-.hero .sample .get input,.hero .sample .get select,.hero .sample .get button{flex:1 1 100%}
-
-/* the sign-up form */
-.get{margin:28px 0 0;max-width:640px}
-.get label.t{display:block;font-weight:700;color:var(--ink);font-size:15.5px;margin:0 0 10px}
-.get .row{display:flex;flex-wrap:wrap;gap:10px}
-.get input,.get select{height:50px;border:1px solid #8E9890;border-radius:3px;background:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 14px}
+/* the sign-up form (home page and county pages) */
+.get{margin:24px 0 0;max-width:640px}
+.get label.t{display:block;font-weight:700;color:var(--ink);font-size:15.5px;margin:0 0 8px}
+.get .row{display:flex;flex-wrap:wrap;gap:8px}
+.get input,.get select{height:48px;border:1px solid var(--field);border-radius:4px;background:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 14px}
 .get input{flex:1 1 240px;min-width:0}
-.get select,.plan select{flex:0 1 200px;appearance:none;-webkit-appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235E6675' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-.get button{height:50px;border:0;border-radius:4px;background:var(--teal);color:var(--on-teal);font:inherit;font-weight:700;font-size:16.5px;padding:0 22px;cursor:pointer;flex:0 0 auto}
+.get input::placeholder{color:var(--muted);opacity:1}
+.get select{flex:0 1 200px;appearance:none;-webkit-appearance:none;padding-right:38px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23808896' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.get button{height:48px;border:0;border-radius:4px;background:var(--teal);color:var(--on-teal);font:inherit;font-weight:700;font-size:16.5px;padding:0 22px;cursor:pointer;flex:0 0 auto}
 .get button:hover{background:var(--teal-dark)}
 .get button[disabled]{opacity:.6;cursor:default}
-.get .aside{font-size:15px;color:var(--muted);margin:12px 0 0}
+.get .aside{font-size:14.5px;color:var(--muted);margin:12px 0 0}
 .get .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.get .msg{margin:14px 0 0;padding:14px 16px;border-radius:3px;font-size:15.5px;max-width:none}
+.get .msg{margin:12px 0 0;padding:12px 16px;border-radius:4px;font-size:15.5px;max-width:none}
 .get .msg.ok{background:var(--teal-soft);color:var(--ink)}
 .get .msg.err{background:#FBEFE3;color:#7A4110}
 @media (max-width:560px){.get select,.get button{flex:1 1 100%}}
 
-/* sections */
-section{padding:64px 0 0}
-.nw{white-space:nowrap}
+/* the free sample slip (home page, top and bottom) */
+.sample{background:var(--band);border-top:3px solid var(--ink);padding:16px 16px 18px}
+.sample h2{font-size:26px;margin:0 0 4px}
+.sample .line{font-size:15.5px;color:var(--text);margin:0 0 12px;line-height:1.45;max-width:none}
+.sample .get{margin:0;max-width:none}
+.sample .get input,.sample .get select,.sample .get button{flex:1 1 100%}
+.sample .more{margin:4px 0 -8px;font-size:15px;max-width:none}
+.sample .more a{display:inline-flex;align-items:center;min-height:44px;font-weight:700;text-decoration:none;color:var(--teal)}
+.sample .more a:hover{text-decoration:underline}
+@media (min-width:600px){.sample{padding:20px 22px 22px}}
+
+/* hero: on a phone the sample form sits right under the headline; on a wide screen it takes the right column */
+.hero{padding:24px 0 0;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"for" "h1" "xd" "sample" "more"}
+.hero .for{grid-area:for}.hero h1{grid-area:h1}.hero .xd{grid-area:xd}.hero .sample{grid-area:sample}.hero .more-hero{grid-area:more}
+.for{font-size:15px;font-weight:700;color:var(--teal);margin:0 0 10px;line-height:1.4}
+.xd{font-size:clamp(18px,2.3vw,21px);line-height:1.38;font-weight:700;color:var(--ink);margin:0 0 20px;max-width:34em;text-wrap:balance}
+.lede{font-size:clamp(17px,2vw,19px);color:var(--text);max-width:56ch}
+.more-hero{padding-top:32px}
+.facts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:minmax(0,1fr);border-top:1px solid var(--line);max-width:640px}
+.facts li{padding:10px 0 10px 28px;border-bottom:1px solid var(--line);position:relative;font-size:16px;color:var(--ink);line-height:1.4}
+.facts li::before{content:"";position:absolute;left:3px;top:15px;width:11px;height:6px;border-left:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(-45deg)}
+@media (min-width:700px){.facts{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:24px}}
+@media (min-width:980px){
+  .hero{padding-top:48px;grid-template-columns:minmax(0,1fr) 372px;column-gap:64px;grid-template-areas:"for sample" "h1 sample" "xd sample" "more sample";grid-template-rows:auto auto auto 1fr;align-items:start}
+  .hero .sample{margin-top:4px}
+  .more-hero{padding-top:8px}
+}
+
+/* sections: each opens with a 2px ink rule, like a section of a printed form */
+.s{margin-top:56px;padding-top:24px;border-top:2px solid var(--ink)}
+@media (min-width:980px){.s{margin-top:80px;padding-top:28px}}
+.s>h2:first-child{margin-top:0}
+
+/* what's on every row: a few made-up rows laid out like the spreadsheet; it scrolls sideways inside itself */
+.sheetwrap{position:relative;margin-top:8px}
+.sheetwrap .tag{position:absolute;top:-13px;right:10px;z-index:3;background:var(--page);color:var(--stamp);border:2px solid var(--stamp);font-weight:800;font-size:12.5px;letter-spacing:.06em;padding:2px 8px;transform:rotate(-2deg)}
+.sheet{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-top:2px solid var(--ink);background:var(--page);overscroll-behavior-x:contain}
+.sheet table{border-collapse:separate;border-spacing:0;font-size:14.5px;line-height:1.3;white-space:nowrap;min-width:100%}
+.sheet th,.sheet td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--grid);border-right:1px solid var(--grid);vertical-align:middle}
+.sheet tr>:last-child{border-right:0}
+.sheet tbody tr:last-child>*{border-bottom:0}
+.sheet .let th{font-size:12px;font-weight:600;color:var(--muted);text-align:center;padding:3px 12px;background:var(--chrome)}
+.sheet .hd th{font-weight:700;color:var(--ink);font-size:13.5px;background:var(--chrome);border-bottom:1px solid var(--line)}
+.sheet .rn{width:34px;min-width:34px;padding:9px 6px;text-align:center;font-size:12px;color:var(--muted);background:var(--chrome)}
+.sheet .biz{position:sticky;left:0;z-index:1;background:var(--page);font-weight:700;color:var(--ink);box-shadow:1px 0 0 var(--line)}
+@media (max-width:599px){.sheet .biz{white-space:normal;min-width:118px;max-width:118px}.sheet tbody .biz{font-size:14px}}
+.sheet thead .biz{background:var(--chrome)}
+.sheet .num{text-align:right}
+.sheet td.xd-cell{color:var(--stamp);font-weight:800;font-stretch:85%;font-size:15.5px;background:var(--stamp-soft)}
+.sheet .hd th.xd-cell{color:var(--stamp)}
+.sheet td{color:var(--text)}
+.sheetnote{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 24px;margin:8px 0 0;font-size:14px;color:var(--muted)}
+.sheetnote p{margin:0;max-width:62ch}
+/* the hint shows whenever the table is wider than its box (the script measures; without it, always), and a soft
+   fade on the right edge says there is more to scroll until the last column is in view */
+.swipe{display:none}
+html:not(.js) .swipe,.js #row.over .swipe{display:block}
+.sheetwrap::after{content:"";position:absolute;top:2px;right:1px;bottom:1px;width:56px;z-index:2;pointer-events:none;background:linear-gradient(to right,rgba(255,255,255,0),var(--page));opacity:0;transition:opacity .2s}
+.sheetwrap.more::after{opacity:1}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .sheetwrap::after{background:linear-gradient(to right,rgba(18,22,28,0),var(--page))}}
+:root[data-theme="dark"] .sheetwrap::after{background:linear-gradient(to right,rgba(18,22,28,0),var(--page))}
 .honest{font-size:15.5px;color:var(--text);margin:16px 0 0;padding-left:14px;border-left:3px solid var(--stamp)}
-.two{display:grid;grid-template-columns:minmax(0,1fr);gap:40px 56px;align-items:start}
-@media (min-width:980px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.two>section{padding-top:0}.two{padding-top:64px}}
 
-/* what's on a row: the list, and one made-up row printed like a record card */
-.rowcard{position:relative;border:1px solid var(--line);border-top:3px solid var(--ink);background:var(--page);padding:18px 20px 8px;margin-top:4px}
-.rowcard .tag{position:absolute;top:-14px;right:14px;background:var(--page);color:var(--stamp);border:2px solid var(--stamp);font-weight:800;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;transform:rotate(-2deg)}
-.rowcard dl{border:0;margin:0;display:grid;grid-template-columns:132px minmax(0,1fr);column-gap:14px}
-.rowcard dt,.rowcard dd{padding:9px 0;border-bottom:1px solid var(--line);margin:0}
-.rowcard dt{font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;padding-top:12px}
-.rowcard dd{color:var(--ink);font-size:16px}
-.rowcard dd b{font-stretch:80%;font-size:22px;font-weight:800}
-.rowcard .hl{background:var(--teal-soft);box-shadow:-8px 0 0 var(--teal-soft),8px 0 0 var(--teal-soft)}
-.rowcard dt:last-of-type,.rowcard dd:last-of-type{border-bottom:0}
-.rowcard .ok{display:inline-block;font-size:12.5px;font-weight:700;color:var(--stamp);border:1.5px solid var(--stamp);padding:0 6px;margin-left:6px;vertical-align:2px}
-.rowcard .cap{font-size:13.5px;color:var(--muted);margin:8px 0 6px;max-width:none}
-@media (max-width:420px){.rowcard dl{grid-template-columns:92px minmax(0,1fr);column-gap:10px}.rowcard dt{font-size:11.5px;letter-spacing:.02em}.rowcard{padding:16px 14px 6px}}
+/* coverage and buying: pick your area on the ledger, then how you want it */
+.step{display:flex;gap:12px;align-items:baseline;margin:0 0 12px;font-weight:700;color:var(--ink);font-size:18px;line-height:1.35;max-width:none}
+#pick{scroll-margin-top:16px}
+.step .k{flex:none;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border:2px solid var(--ink);font-size:15px;font-stretch:85%;font-weight:800;transform:translateY(-1px)}
+.covline{font-size:15.5px;color:var(--text);max-width:64ch}
+@media (min-width:980px){
+  #coverage{display:grid;grid-template-columns:minmax(0,640px) minmax(0,1fr);column-gap:64px;align-items:start}
+  #coverage .step{grid-column:1;grid-row:1}#coverage .cov{grid-column:1;grid-row:2}
+  #coverage .covline{grid-column:2;grid-row:2;margin-top:2px;padding-left:16px;border-left:1px solid var(--line);color:var(--muted)}
+}
+.cov{margin:0 0 32px;max-width:640px}
+.ledger{border:0;margin:0;padding:0;min-width:0}
+.ledger .lh{display:flex;justify-content:space-between;font-size:13.5px;font-weight:600;color:var(--muted);padding:0 12px 6px 48px;border-bottom:2px solid var(--ink)}
+.li{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;column-gap:16px;min-height:56px;padding:8px 12px;border-bottom:1px solid var(--line);cursor:pointer;position:relative}
+.li:hover{background:var(--band)}
+.li input{appearance:none;-webkit-appearance:none;margin:0;width:22px;height:22px;border:2px solid var(--ink);border-radius:50%;background:var(--page);display:grid;place-content:center;cursor:pointer}
+.li input:checked{border-color:var(--teal)}
+.li input:checked::after{content:"";width:10px;height:10px;border-radius:50%;background:var(--teal)}
+.li .nm{font-weight:600;color:var(--ink);font-size:17px;line-height:1.25}
+.li .ct{font-stretch:80%;font-weight:800;font-size:28px;line-height:1;color:var(--ink);text-align:right}
+.li .ct.small{font-stretch:100%;font-weight:500;font-size:14.5px;color:var(--muted);line-height:1.3;max-width:15ch}
+.li.all{border-top:2px solid var(--ink);margin-top:-1px}
+.li input:checked~.nm{color:var(--teal-dark);font-weight:800}
+.li:has(input:checked){background:var(--teal-soft);box-shadow:inset 3px 0 0 var(--teal)}
+.counties{border-bottom:1px solid var(--line);padding:12px 12px 16px 52px;background:var(--teal-soft)}
+.counties p{font-size:14.5px;margin:0 0 8px;color:var(--text)}
+.counties ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:20px}
+.counties li{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.counties li span:first-child{color:var(--ink);font-weight:600}
+.counties b{font-weight:700;color:var(--ink)}
+@media (min-width:600px){.counties ul{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:380px){.counties{padding-left:12px}.li{column-gap:12px;padding:8px 8px}.li .ct{font-size:26px}}
 
-/* where we have GL x-dates: the county register, stamped with its date */
-.cov{margin:22px 4px 0;max-width:500px;border:2px solid var(--stamp);outline:1px solid var(--stamp);outline-offset:3px;padding:4px 20px 6px;color:var(--ink)}
-.cov table{width:100%;border-collapse:collapse}
-.cov th,.cov td{padding:10px 0;border-bottom:1px solid var(--line);text-align:left;vertical-align:baseline}
-.cov thead th{font-size:13.5px;font-weight:600;color:var(--stamp);padding:10px 0 8px;border-bottom:1px solid var(--stamp)}
-.cov tbody th{font-weight:600;font-size:17px;color:var(--ink)}
-.cov .n{text-align:right}
-.cov tbody td{font-stretch:80%;font-weight:800;font-size:30px;line-height:1;color:var(--ink)}
-.cov tr.all th,.cov tr.all td{border-top:2px solid var(--ink);border-bottom:0;padding-top:12px}
-.cov tbody tr:nth-last-child(2) th,.cov tbody tr:nth-last-child(2) td{border-bottom:0}
+.picked{display:flex;gap:6px;align-items:baseline;font-size:15.5px;color:var(--muted);margin:0 0 12px;max-width:none}
+.picked b{color:var(--ink);font-weight:800}
+.choices{display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:720px){.choices{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+.choice{display:flex;flex-direction:column;border:1px solid var(--line);border-top:3px solid var(--ink);padding:20px;background:var(--page)}
+.choice h3{margin:0 0 4px}
+.choice .amt{font-stretch:80%;font-weight:800;color:var(--ink);font-size:44px;line-height:1.05;margin:4px 0 4px}
+.choice .amt small{font-stretch:100%;font-size:15px;font-weight:500;color:var(--muted)}
+.choice .bill{font-size:15.5px;color:var(--ink);font-weight:600;margin:0 0 12px}
+.choice .what{font-size:15.5px;margin:0 0 20px;color:var(--text)}
+.choice .buttons{margin-top:auto;display:grid;gap:8px}
+.choice .buttons a{min-height:48px}
+.same{font-size:15px;color:var(--muted);margin:12px 0 0;max-width:none}
 
-/* how it works: a real sequence, so numbered with the stamp */
-.steps{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
-.steps li{display:grid;grid-template-columns:44px 1fr;gap:4px 14px;align-items:start;padding:18px 0;border-bottom:1px solid var(--line)}
-.steps .n{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:2px;border:2px solid var(--stamp);color:var(--stamp);font-weight:800;font-size:16px;font-stretch:85%}
-.steps p{margin:0;padding-top:3px;font-size:17.5px;line-height:1.45;color:var(--ink)}
+/* which area is picked: the HTML ships South Florida picked; :has() follows the radio with or without JavaScript,
+   and the script sets data-pick for browsers without :has() */
+.buy [data-for]{display:none}
+.buy [data-for~="south"]{display:block}
+@supports selector(:has(*)){
+  .buy [data-for~="south"]{display:none}
+  .buy:has(#a-county:checked) [data-for~="county"],.buy:has(#a-south:checked) [data-for~="south"],
+  .buy:has(#a-northeast:checked) [data-for~="northeast"],.buy:has(#a-central:checked) [data-for~="central"],
+  .buy:has(#a-tampa_bay:checked) [data-for~="tampa_bay"],.buy:has(#a-southwest:checked) [data-for~="southwest"],
+  .buy:has(#a-statewide:checked) [data-for~="statewide"]{display:block}
+}
+.buy[data-pick] [data-for]{display:none}
+.buy[data-pick="county"] [data-for~="county"],.buy[data-pick="south"] [data-for~="south"],
+.buy[data-pick="northeast"] [data-for~="northeast"],.buy[data-pick="central"] [data-for~="central"],
+.buy[data-pick="tampa_bay"] [data-for~="tampa_bay"],.buy[data-pick="southwest"] [data-for~="southwest"],
+.buy[data-pick="statewide"] [data-for~="statewide"]{display:block}
+/* no JavaScript and no :has(): ticking can't change what shows, so every area's prices and buy links are listed,
+   each under its area's name, and the radio marks are hidden */
+@supports not selector(:has(*)){
+  html:not(.js) .buy [data-for]{display:block}
+  html:not(.js) .buy .picked{display:none}
+  html:not(.js) .li input{visibility:hidden}
+  html:not(.js) .li{cursor:default}
+  html:not(.js) .li:hover{background:none}
+  html:not(.js) .li input:checked~.nm{color:var(--ink);font-weight:600}
+  html:not(.js) .choice .amt,html:not(.js) .choice .bill{margin-top:12px}
+  html:not(.js) .choice .amt::before,html:not(.js) .choice .bill::before,html:not(.js) .choice .buttons a::before{display:block;font-stretch:100%;font-size:14px;font-weight:700;color:var(--muted)}
+  html:not(.js) .choice .buttons a::before{color:inherit;font-weight:500}
+  html:not(.js) .choice [data-for="county"]::before{content:"One county"}
+  html:not(.js) .choice [data-for="south northeast central tampa_bay southwest"]::before{content:"One region"}
+  html:not(.js) .choice [data-for="south"]::before{content:"South Florida"}
+  html:not(.js) .choice [data-for="northeast"]::before{content:"Northeast Florida"}
+  html:not(.js) .choice [data-for="central"]::before{content:"Central Florida"}
+  html:not(.js) .choice [data-for="tampa_bay"]::before{content:"Tampa Bay"}
+  html:not(.js) .choice [data-for="southwest"]::before{content:"Southwest Florida"}
+  html:not(.js) .choice [data-for="statewide"]::before{content:"All of Florida"}
+}
 
-.list{margin:0;padding:0;list-style:none;border-top:2px solid var(--ink)}
-.list li{padding:13px 0 13px 30px;border-bottom:1px solid var(--line);position:relative}
-.list li::before{content:"";position:absolute;left:6px;top:22px;width:8px;height:8px;background:var(--teal)}
-
-/* custom files: everything else we can build from the same data */
-.custom{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0 52px;margin-top:72px}
-.custom .intro{font-size:18px;max-width:60ch}
-.cells{display:grid;grid-template-columns:minmax(0,1fr);gap:0 40px;margin-top:22px;border-top:2px solid var(--ink)}
-@media (min-width:760px){.cells{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.cells div{padding:18px 0 16px;border-bottom:1px solid var(--line)}
-.cells h3{font-size:20px}
-.cells p{margin:0;font-size:16px}
-.custom .cta{margin-top:26px}
-section.custom{padding-top:56px}
+/* custom files: the third way to buy */
+.custom{margin-top:24px;border:1px solid var(--line);border-top:3px solid var(--ink);background:var(--band);padding:20px}
+.custom h3{margin:0 0 8px}
+.custom .intro{font-size:16.5px;margin:0 0 12px;max-width:62ch}
+.opts{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.opts li{padding:12px 0;border-bottom:1px solid var(--line);font-size:15.5px;max-width:70ch}
+.opts li b{color:var(--ink)}
+.custom .cta{margin-top:16px}
+@media (min-width:980px){.custom{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);column-gap:40px;padding:28px}.custom .cta{grid-column:1;grid-row:2;align-self:start;margin-top:4px}.custom .opts{grid-column:2;grid-row:1 / span 2}}
+.notagency{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin:16px 0 0;padding:14px 0;border-bottom:1px solid var(--line)}
+.notagency p{margin:0;font-size:16px;color:var(--ink);font-weight:600;max-width:60ch}
+.plannote{font-size:14.5px;color:var(--muted);margin:16px 0 0;max-width:72ch}
 
 /* about */
-.me{display:flex;gap:22px;align-items:center;background:var(--band);border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;padding:24px}
-.me img{width:104px;height:104px;border-radius:50%;object-fit:cover;flex:none;border:3px solid var(--page)}
-.me p{margin:0 0 10px}
-.me .who{font-family:"Archivo",Arial,sans-serif;font-weight:700;color:var(--ink);margin:0}
+.me{display:grid;grid-template-columns:72px minmax(0,1fr);gap:16px;align-items:start}
+.me img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:1px solid var(--line)}
+.me p{margin:0 0 8px}
+.me .who{font-weight:700;color:var(--ink);margin:0}
 .me .who span{font-weight:400;color:var(--muted);font-size:14.5px}
-@media (max-width:560px){.me{flex-direction:column;align-items:flex-start}}
+@media (min-width:600px){.me{grid-template-columns:96px minmax(0,1fr);gap:24px}.me img{width:96px;height:96px}}
 
-/* plans */
-.plans{display:grid;grid-template-columns:1fr;gap:16px}
-@media (min-width:680px){.plans{grid-template-columns:1fr 1fr}}
-@media (min-width:1060px){.plans{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.plan{display:flex;flex-direction:column;border:1px solid var(--line);border-top:3px solid var(--ink);border-radius:0;padding:22px;background:var(--page)}
-.plan.all{border:2px solid var(--teal);border-top:3px solid var(--teal)}
-.plan h3{font-stretch:100%;font-weight:700;font-size:16px;margin:0}
-.plan .amt{font-stretch:80%;font-weight:800;color:var(--ink);font-size:44px;line-height:1.05;margin:6px 0 2px}
-.plan .amt small{font-stretch:100%;font-size:15px;font-weight:400;color:var(--muted);letter-spacing:0}
-.plan .bill{font-size:15px;color:var(--text);margin:0 0 12px}
-.plan .sub{font-size:14.5px;color:var(--muted);margin:0 0 16px}
-.plan select{display:none;flex:none;width:100%;height:46px;border:1px solid #8E9890;border-radius:3px;background-color:var(--page);color:var(--ink);font:inherit;font-size:16px;padding:0 38px 0 12px;margin:0 0 12px}
-.js .plan select{display:block}
-.plan .go{margin-top:auto;display:grid;gap:8px}
-.plan .go a{display:block;text-align:center;padding:11px 14px;font-size:16px}
-.plannote{font-size:15px;color:var(--muted);margin:16px 0 0}
-.notagency{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;margin:22px 0 4px;padding:16px 20px;background:var(--band);border:1px solid var(--line);border-top:3px solid var(--ink)}
-.notagency p{margin:0;font-size:17px;color:var(--ink);font-weight:600;max-width:52ch}
-
-/* the desk band (comes with region and all-of-Florida plans) */
-.band{background:var(--band);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:46px 0 40px;margin-top:72px}
-.band .kick{font-family:"Archivo",Arial,sans-serif;font-stretch:80%;font-size:28px;font-weight:800;color:var(--ink);margin:0 0 16px}
-.band .txt p{margin:0}
-@media (min-width:980px){.band .wide{display:grid;grid-template-columns:330px minmax(0,1fr);gap:44px;align-items:start}.band .cap{grid-column:2}}
-.wide{max-width:1120px;margin:0 auto;padding:0 20px}
-.band .txt{margin:0 0 24px}
-.frame{border:1px solid var(--line);border-top:2px solid var(--ink);border-radius:0;overflow:hidden;background:#fff}
-.frame .chrome{display:flex;align-items:center;gap:7px;height:32px;padding:0 12px;background:var(--chrome);border-bottom:1px solid var(--line)}
-.frame .chrome i{display:none}
-.frame .chrome span{font-size:13px;font-weight:600;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.frame video,.frame img{display:block;width:100%;height:auto;aspect-ratio:16/10;background:#EDF0EC}
-.phone{display:none;max-width:300px;margin:0 auto;border:8px solid var(--ink);border-radius:30px;overflow:hidden;background:#fff}
-.phone img{display:block;width:100%;height:auto}
-@media (max-width:640px){.frame.big{display:none}.phone{display:block}.band .cap{text-align:center}}
-.band .cap{font-size:15px;color:var(--muted);margin:14px 0 0;max-width:none}
-.band .cap a{font-weight:600}
-
-dl{margin:0;border-top:2px solid var(--ink)}
-dt{font-weight:700;color:var(--ink);padding-top:16px}
-dd{margin:6px 0 0;padding-bottom:16px;border-bottom:1px solid var(--line)}
+/* questions: label column and answer column on a wide screen, like a form */
+dl{margin:0;border-top:1px solid var(--line)}
+dt{font-weight:700;color:var(--ink);padding-top:14px;line-height:1.35}
+dd{margin:6px 0 0;padding-bottom:14px;border-bottom:1px solid var(--line)}
 dd p{margin:0}
+.faq dd{font-size:16px}
+@media (min-width:900px){.faq dl{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);column-gap:40px}.faq dt{padding:16px 0;border-bottom:1px solid var(--line)}.faq dd{margin:0;padding:16px 0}.faq dl{max-width:1000px}}
+.faq dt button{all:unset;box-sizing:border-box;display:block;cursor:pointer;width:100%}
+.faq dt button:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
+@media (max-width:899px){
+  .faq dt button{position:relative;padding:14px 36px 14px 0;min-height:48px}
+  .faq dt button::after{content:"";position:absolute;right:8px;top:19px;width:9px;height:9px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
+  .faq dt button[aria-expanded="true"]::after{transform:rotate(-135deg);top:24px}
+  .js .faq dt{padding:0;border-bottom:1px solid var(--line)}
+  .faq dd{padding:0 0 14px;border-bottom:1px solid var(--line)}
+  .js .faq dd{margin:0}
+  .faq dd.shut{display:none}
+  .js .faq dd:not(.shut){margin-top:-6px}
+  .js .faq dt.open{border-bottom:0}
+}
+@media (min-width:900px){.faq dt button{cursor:default}}
+.reads{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 32px;font-size:15.5px}
+.reads a{font-weight:600}
 
-.last{text-align:left;padding:64px 0 0}
-footer{margin-top:64px;border-top:2px solid var(--ink);padding:22px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
+.s.last{border-top:0;padding-top:0}
+.home>footer{max-width:none}
+.home>footer>p:not(.fnav){max-width:760px}
+.last .sample{max-width:640px}
+footer{margin-top:64px;border-top:2px solid var(--ink);padding:20px 0 48px;font-size:12.5px;color:var(--muted);line-height:1.55}
 footer p{margin:0 0 10px;max-width:none}
-footer .fnav{font-size:15px;margin:0 0 16px;display:flex;flex-wrap:wrap;gap:6px 22px}
-footer .fnav a{font-weight:600;text-decoration:none}
+footer .fnav{font-size:15px;margin:0 0 16px;display:flex;flex-wrap:wrap;gap:4px 22px}
+footer .fnav a{font-weight:600;text-decoration:none;padding:4px 0;display:inline-block}
 footer .fnav a:hover{text-decoration:underline}
 
 /* the county pages and monthly reports (county_pages.py) take this style sheet */
@@ -251,7 +331,7 @@ footer .fnav a:hover{text-decoration:underline}
 <div class="page cp">
   <div class="bar">
     <a class="logo" href="/">License<span>Digest</span></a>
-    <nav aria-label="Main"><a href="/">GL list</a><a href="/new-contractor-licenses/">New licenses</a><a href="/custom-files/">Custom files</a><a href="/fl/" aria-current="page">Florida data</a></nav>
+    <nav aria-label="Main"><a href="/">GL list</a><a href="/new-contractor-licenses/">New licenses</a><a href="/custom-files/">Custom files</a><a href="/fl/" aria-current="page">County counts</a></nav>
   </div>
 <main class="cpm">
   <h1>Hillsborough County contractors: general liability coming up, and new licenses</h1>
@@ -275,6 +355,7 @@ footer .fnav a:hover{text-decoration:underline}
         <select name="territory" aria-label="Area"><option value="">Pick your area</option><option value="South Florida">South Florida</option><option value="Northeast Florida">Northeast Florida</option><option value="Central Florida">Central Florida</option><option value="Tampa Bay" selected>Tampa Bay</option><option value="Southwest Florida">Southwest Florida</option><option value="Statewide">All of Florida</option></select>
         <button type="submit">Send me the sample</button>
       </div>
+      <input type="hidden" name="ref" value="fl-hillsborough">
       <div class="hp" aria-hidden="true"><label>Leave this empty<input name="website" tabindex="-1" autocomplete="off"></label></div>
       <p class="aside">10 contractors from your area whose GL x-date on file is 60 to 90 days away. Free, no card. <a href="/#plans">See the plans</a>.</p>
       <p class="msg" role="status" hidden></p>
@@ -290,7 +371,7 @@ footer .fnav a:hover{text-decoration:underline}
   <p class="links"><a href="/fl/">All Florida counties</a><a href="/">How LicenseDigest works</a></p>
 </main>
   <footer>
-    <p class="fnav"><a href="/">GL list</a><a href="/new-contractor-licenses/">New licenses</a><a href="/custom-files/">Custom files</a><a href="/fl/">Florida data</a><a data-latest-report href="/fl/report/2026-10/">Monthly report</a></p>
+    <p class="fnav"><a href="/">GL list</a><a href="/new-contractor-licenses/">New licenses</a><a href="/custom-files/">Custom files</a><a href="/fl/">County counts</a><a data-latest-report href="/fl/report/2026-10/">Monthly report</a><a href="/contractor-x-dates/">Contractor x-dates</a><a href="/contractor-gl-expiration-dates-florida/">GL expiration dates</a></p>
     <p><strong>LicenseDigest</strong> is a product of <strong>Kummer Ventures LLC</strong>, 5366 Central Florida Pkwy #158, Orlando, FL 32821. <a href="mailto:support@licensedigest.com">support@licensedigest.com</a> · <a href="/terms.html">Terms of Service</a> · <a href="/privacy.html">Privacy Policy</a></p>
     <p><strong>Not a government publication.</strong> LicenseDigest is not affiliated with, endorsed by, sponsored by, or acting on behalf of the Florida Department of Business and Professional Regulation (DBPR), any Florida county or city, the State of Florida, or any government agency. Source records are public records published by DBPR and by Florida counties and cities under Chapter 119, Florida Statutes; neither DBPR nor any county or city reviews, approves, or endorses this product.</p>
     <p>Data is republished as-is from public records and may contain errors present in the source. Verify any record before relying on it for underwriting, binding, or solicitation. Subscribers are solely responsible for their own compliance with TCPA, the Florida Telephone Solicitation Act, CAN-SPAM, and all other laws governing their outreach. Phone numbers appear only after screening against Florida's Do Not Call list; they are not screened against the National Do Not Call Registry.</p>
