@@ -2,7 +2,7 @@
 """Ping IndexNow (Bing, Yandex, Seznam, Naver, Yep) about changed pages.
 
 Usage:
-  indexnow.py --base OLD --head NEW   URLs for .html/.xml files changed between commits
+  indexnow.py --base OLD --head NEW   URLs for .html/.xml files changed between commits, plus MAIN_PAGES
   indexnow.py --all                   every URL in sitemap.xml
   add --dry-run to print the payload and send nothing (also runs a self-check).
 """
@@ -12,6 +12,9 @@ HOST = "licensedigest.com"
 KEY = "337bc4cb8ab58100a006c3d8f02ac5fc"
 KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
 ENDPOINT = "https://api.indexnow.org/indexnow"
+# The pages a visitor lands on from a search: a normal push submits them too, so a page whose own file did not change
+# (its numbers come from a generator that fills it between markers) is still re-read.
+MAIN_PAGES = ["", "new-contractor-licenses/", "contractor-gl-expiration-dates-florida/", "contractor-x-dates/", "custom-files/"]
 
 
 def sitemap_urls(path="sitemap.xml"):
@@ -44,6 +47,8 @@ def changed_urls(base, head, sitemap):
             urls.append(u)
     # keep only our host; privacy/terms may not be in the sitemap, that is fine
     urls = [u for u in urls if u.startswith(f"https://{HOST}/")]
+    if out:
+        urls += [f"https://{HOST}/{p}" for p in MAIN_PAGES]
     return sorted(set(urls)), known
 
 
@@ -53,6 +58,7 @@ def self_check():
     assert file_to_url("privacy.html") == f"https://{HOST}/privacy.html"
     assert file_to_url("media/x.png") is None
     assert file_to_url("robots.txt") is None
+    assert len(set(MAIN_PAGES)) == 5 and "" in MAIN_PAGES
     assert len(KEY) == 32 and re.fullmatch(r"[0-9a-f]{32}", KEY)
     print("self-check ok", file=sys.stderr)
 
